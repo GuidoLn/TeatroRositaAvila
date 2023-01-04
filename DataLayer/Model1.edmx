@@ -1,0 +1,844 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TeatroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Artista">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreArtista" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DescripcionArtista" Type="varchar" MaxLength="150" />
+          <Property Name="Companiaid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Personaid" Type="bigint" Nullable="false" />
+          <Property Name="Cuentaid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Compania">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCompania" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DescripcionCompania" Type="varchar" MaxLength="150" />
+          <Property Name="EmailCompania" Type="varchar" MaxLength="50" />
+          <Property Name="TelefonoCompania" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Compra">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MetodoDePago" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Unidades" Type="int" Nullable="false" />
+          <Property Name="Descuento" Type="int" Nullable="false" />
+          <Property Name="LocalidadEspectaculoid" Type="bigint" Nullable="false" />
+          <Property Name="Espectaculoid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Contraseña" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="TipoUsuario" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Personaid" Type="bigint" Nullable="false" />
+          <Property Name="Cuentaid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Espectaculo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreEspectaculo" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="DescripcionEspectaculo" Type="varchar" MaxLength="150" />
+          <Property Name="FechaYHora" Type="date" />
+          <Property Name="EstadoEspectaculo" Type="bit" Nullable="false" />
+          <Property Name="PrecioEspectaculo" Type="int" />
+          <Property Name="Companiaid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocalidadAsiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NumeroAsiento" Type="int" Nullable="false" />
+          <Property Name="Entrada" Type="varchar" MaxLength="30" />
+          <Property Name="EstadoAsiento" Type="bit" Nullable="false" />
+          <Property Name="Sectorid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="LocalidadEspectaculo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Precio" Type="int" Nullable="false" />
+          <Property Name="LocalidadAsientoid" Type="bigint" Nullable="false" />
+          <Property Name="Espectaculoid" Type="bigint" Nullable="false" />
+          <Property Name="Sectorid" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreYApellido" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="25" />
+          <Property Name="mail" Type="varchar" MaxLength="30" />
+          <Property Name="Documento" Type="bigint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreSector" Type="varchar" MaxLength="90" Nullable="false" />
+          <Property Name="Cupon" Type="int" Nullable="false" />
+          <Property Name="PrecioSector" Type="int" />
+          <Property Name="EstadoSector" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Compania">
+          <End Role="Compania" Type="Self.Compania" Multiplicity="1" />
+          <End Role="Artista" Type="Self.Artista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compania">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Artista">
+              <PropertyRef Name="Companiaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Compania2">
+          <End Role="Compania" Type="Self.Compania" Multiplicity="1" />
+          <End Role="Espectaculo" Type="Self.Espectaculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compania">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Espectaculo">
+              <PropertyRef Name="Companiaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuentaid">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Cuentaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuentaid2">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Cuentaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Espectaculoid">
+          <End Role="Espectaculo" Type="Self.Espectaculo" Multiplicity="1" />
+          <End Role="LocalidadEspectaculo" Type="Self.LocalidadEspectaculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Espectaculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalidadEspectaculo">
+              <PropertyRef Name="Espectaculoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Espectaculoid2">
+          <End Role="Espectaculo" Type="Self.Espectaculo" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Espectaculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="Espectaculoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalidadAsientoid">
+          <End Role="LocalidadAsiento" Type="Self.LocalidadAsiento" Multiplicity="1" />
+          <End Role="LocalidadEspectaculo" Type="Self.LocalidadEspectaculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalidadAsiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalidadEspectaculo">
+              <PropertyRef Name="LocalidadAsientoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalidadEspectaculoid">
+          <End Role="LocalidadEspectaculo" Type="Self.LocalidadEspectaculo" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalidadEspectaculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="LocalidadEspectaculoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personaid">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Personaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personaid2">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Personaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sectorid">
+          <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+          <End Role="LocalidadAsiento" Type="Self.LocalidadAsiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sector">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalidadAsiento">
+              <PropertyRef Name="Sectorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sectorid2">
+          <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+          <End Role="LocalidadEspectaculo" Type="Self.LocalidadEspectaculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sector">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalidadEspectaculo">
+              <PropertyRef Name="Sectorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeatroModelStoreContainer">
+          <EntitySet Name="Artista" EntityType="Self.Artista" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compania" EntityType="Self.Compania" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Espectaculo" EntityType="Self.Espectaculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocalidadAsiento" EntityType="Self.LocalidadAsiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LocalidadEspectaculo" EntityType="Self.LocalidadEspectaculo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sector" EntityType="Self.Sector" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Compania" Association="Self.FK_Compania">
+            <End Role="Compania" EntitySet="Compania" />
+            <End Role="Artista" EntitySet="Artista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Compania2" Association="Self.FK_Compania2">
+            <End Role="Compania" EntitySet="Compania" />
+            <End Role="Espectaculo" EntitySet="Espectaculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuentaid" Association="Self.FK_Cuentaid">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuentaid2" Association="Self.FK_Cuentaid2">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Espectaculoid" Association="Self.FK_Espectaculoid">
+            <End Role="Espectaculo" EntitySet="Espectaculo" />
+            <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Espectaculoid2" Association="Self.FK_Espectaculoid2">
+            <End Role="Espectaculo" EntitySet="Espectaculo" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalidadAsientoid" Association="Self.FK_LocalidadAsientoid">
+            <End Role="LocalidadAsiento" EntitySet="LocalidadAsiento" />
+            <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalidadEspectaculoid" Association="Self.FK_LocalidadEspectaculoid">
+            <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personaid" Association="Self.FK_Personaid">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personaid2" Association="Self.FK_Personaid2">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sectorid" Association="Self.FK_Sectorid">
+            <End Role="Sector" EntitySet="Sector" />
+            <End Role="LocalidadAsiento" EntitySet="LocalidadAsiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sectorid2" Association="Self.FK_Sectorid2">
+            <End Role="Sector" EntitySet="Sector" />
+            <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TeatroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Artista">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreArtista" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescripcionArtista" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Companiaid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Compania" Relationship="Self.FK_Compania" FromRole="Artista" ToRole="Compania" />
+        </EntityType>
+        <EntityType Name="Cliente">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Personaid" Type="Int64" Nullable="false" />
+          <Property Name="Cuentaid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Cuentaid" FromRole="Cliente" ToRole="Cuenta" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Personaid" FromRole="Cliente" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Compania">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCompania" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescripcionCompania" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="EmailCompania" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="TelefonoCompania" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Artista" Relationship="Self.FK_Compania" FromRole="Compania" ToRole="Artista" />
+          <NavigationProperty Name="Espectaculo" Relationship="Self.FK_Compania2" FromRole="Compania" ToRole="Espectaculo" />
+        </EntityType>
+        <EntityType Name="Compra">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MetodoDePago" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Unidades" Type="Int32" Nullable="false" />
+          <Property Name="Descuento" Type="Int32" Nullable="false" />
+          <Property Name="LocalidadEspectaculoid" Type="Int64" Nullable="false" />
+          <Property Name="Espectaculoid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Espectaculo" Relationship="Self.FK_Espectaculoid2" FromRole="Compra" ToRole="Espectaculo" />
+          <NavigationProperty Name="LocalidadEspectaculo" Relationship="Self.FK_LocalidadEspectaculoid" FromRole="Compra" ToRole="LocalidadEspectaculo" />
+        </EntityType>
+        <EntityType Name="Cuenta">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contraseña" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="TipoUsuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Cuentaid" FromRole="Cuenta" ToRole="Cliente" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Cuentaid2" FromRole="Cuenta" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Empleado">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Personaid" Type="Int64" Nullable="false" />
+          <Property Name="Cuentaid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Cuenta" Relationship="Self.FK_Cuentaid2" FromRole="Empleado" ToRole="Cuenta" />
+          <NavigationProperty Name="Persona" Relationship="Self.FK_Personaid2" FromRole="Empleado" ToRole="Persona" />
+        </EntityType>
+        <EntityType Name="Espectaculo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreEspectaculo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DescripcionEspectaculo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="FechaYHora" Type="DateTime" Precision="0" />
+          <Property Name="EstadoEspectaculo" Type="Boolean" Nullable="false" />
+          <Property Name="PrecioEspectaculo" Type="Int32" />
+          <Property Name="Companiaid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Compania" Relationship="Self.FK_Compania2" FromRole="Espectaculo" ToRole="Compania" />
+          <NavigationProperty Name="Compra" Relationship="Self.FK_Espectaculoid2" FromRole="Espectaculo" ToRole="Compra" />
+          <NavigationProperty Name="LocalidadEspectaculo" Relationship="Self.FK_Espectaculoid" FromRole="Espectaculo" ToRole="LocalidadEspectaculo" />
+        </EntityType>
+        <EntityType Name="LocalidadAsiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NumeroAsiento" Type="Int32" Nullable="false" />
+          <Property Name="Entrada" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="EstadoAsiento" Type="Boolean" Nullable="false" />
+          <Property Name="Sectorid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="LocalidadEspectaculo" Relationship="Self.FK_LocalidadAsientoid" FromRole="LocalidadAsiento" ToRole="LocalidadEspectaculo" />
+          <NavigationProperty Name="Sector" Relationship="Self.FK_Sectorid" FromRole="LocalidadAsiento" ToRole="Sector" />
+        </EntityType>
+        <EntityType Name="LocalidadEspectaculo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Precio" Type="Int32" Nullable="false" />
+          <Property Name="LocalidadAsientoid" Type="Int64" Nullable="false" />
+          <Property Name="Espectaculoid" Type="Int64" Nullable="false" />
+          <Property Name="Sectorid" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Compra" Relationship="Self.FK_LocalidadEspectaculoid" FromRole="LocalidadEspectaculo" ToRole="Compra" />
+          <NavigationProperty Name="Espectaculo" Relationship="Self.FK_Espectaculoid" FromRole="LocalidadEspectaculo" ToRole="Espectaculo" />
+          <NavigationProperty Name="LocalidadAsiento" Relationship="Self.FK_LocalidadAsientoid" FromRole="LocalidadEspectaculo" ToRole="LocalidadAsiento" />
+          <NavigationProperty Name="Sector" Relationship="Self.FK_Sectorid2" FromRole="LocalidadEspectaculo" ToRole="Sector" />
+        </EntityType>
+        <EntityType Name="Persona">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreYApellido" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="25" FixedLength="false" Unicode="false" />
+          <Property Name="mail" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Documento" Type="Int64" Nullable="false" />
+          <NavigationProperty Name="Cliente" Relationship="Self.FK_Personaid" FromRole="Persona" ToRole="Cliente" />
+          <NavigationProperty Name="Empleado" Relationship="Self.FK_Personaid2" FromRole="Persona" ToRole="Empleado" />
+        </EntityType>
+        <EntityType Name="Sector">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreSector" Type="String" MaxLength="90" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Cupon" Type="Int32" Nullable="false" />
+          <Property Name="PrecioSector" Type="Int32" />
+          <Property Name="EstadoSector" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="LocalidadAsiento" Relationship="Self.FK_Sectorid" FromRole="Sector" ToRole="LocalidadAsiento" />
+          <NavigationProperty Name="LocalidadEspectaculo" Relationship="Self.FK_Sectorid2" FromRole="Sector" ToRole="LocalidadEspectaculo" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_Compania">
+          <End Role="Compania" Type="Self.Compania" Multiplicity="1" />
+          <End Role="Artista" Type="Self.Artista" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compania">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Artista">
+              <PropertyRef Name="Companiaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuentaid">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Cuentaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personaid">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Cliente" Type="Self.Cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cliente">
+              <PropertyRef Name="Personaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Compania2">
+          <End Role="Compania" Type="Self.Compania" Multiplicity="1" />
+          <End Role="Espectaculo" Type="Self.Espectaculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Compania">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Espectaculo">
+              <PropertyRef Name="Companiaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Espectaculoid2">
+          <End Role="Espectaculo" Type="Self.Espectaculo" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Espectaculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="Espectaculoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalidadEspectaculoid">
+          <End Role="LocalidadEspectaculo" Type="Self.LocalidadEspectaculo" Multiplicity="1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalidadEspectaculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="LocalidadEspectaculoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuentaid2">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Cuentaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Personaid2">
+          <End Role="Persona" Type="Self.Persona" Multiplicity="1" />
+          <End Role="Empleado" Type="Self.Empleado" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Persona">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Empleado">
+              <PropertyRef Name="Personaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Espectaculoid">
+          <End Role="Espectaculo" Type="Self.Espectaculo" Multiplicity="1" />
+          <End Role="LocalidadEspectaculo" Type="Self.LocalidadEspectaculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Espectaculo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalidadEspectaculo">
+              <PropertyRef Name="Espectaculoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LocalidadAsientoid">
+          <End Role="LocalidadAsiento" Type="Self.LocalidadAsiento" Multiplicity="1" />
+          <End Role="LocalidadEspectaculo" Type="Self.LocalidadEspectaculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LocalidadAsiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalidadEspectaculo">
+              <PropertyRef Name="LocalidadAsientoid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sectorid">
+          <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+          <End Role="LocalidadAsiento" Type="Self.LocalidadAsiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sector">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalidadAsiento">
+              <PropertyRef Name="Sectorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sectorid2">
+          <End Role="Sector" Type="Self.Sector" Multiplicity="1" />
+          <End Role="LocalidadEspectaculo" Type="Self.LocalidadEspectaculo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sector">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="LocalidadEspectaculo">
+              <PropertyRef Name="Sectorid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TeatroEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Artista" EntityType="Self.Artista" />
+          <EntitySet Name="Cliente" EntityType="Self.Cliente" />
+          <EntitySet Name="Compania" EntityType="Self.Compania" />
+          <EntitySet Name="Compra" EntityType="Self.Compra" />
+          <EntitySet Name="Cuenta" EntityType="Self.Cuenta" />
+          <EntitySet Name="Empleado" EntityType="Self.Empleado" />
+          <EntitySet Name="Espectaculo" EntityType="Self.Espectaculo" />
+          <EntitySet Name="LocalidadAsiento" EntityType="Self.LocalidadAsiento" />
+          <EntitySet Name="LocalidadEspectaculo" EntityType="Self.LocalidadEspectaculo" />
+          <EntitySet Name="Persona" EntityType="Self.Persona" />
+          <EntitySet Name="Sector" EntityType="Self.Sector" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <AssociationSet Name="FK_Compania" Association="Self.FK_Compania">
+            <End Role="Compania" EntitySet="Compania" />
+            <End Role="Artista" EntitySet="Artista" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuentaid" Association="Self.FK_Cuentaid">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personaid" Association="Self.FK_Personaid">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Cliente" EntitySet="Cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Compania2" Association="Self.FK_Compania2">
+            <End Role="Compania" EntitySet="Compania" />
+            <End Role="Espectaculo" EntitySet="Espectaculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Espectaculoid2" Association="Self.FK_Espectaculoid2">
+            <End Role="Espectaculo" EntitySet="Espectaculo" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalidadEspectaculoid" Association="Self.FK_LocalidadEspectaculoid">
+            <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuentaid2" Association="Self.FK_Cuentaid2">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Personaid2" Association="Self.FK_Personaid2">
+            <End Role="Persona" EntitySet="Persona" />
+            <End Role="Empleado" EntitySet="Empleado" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Espectaculoid" Association="Self.FK_Espectaculoid">
+            <End Role="Espectaculo" EntitySet="Espectaculo" />
+            <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LocalidadAsientoid" Association="Self.FK_LocalidadAsientoid">
+            <End Role="LocalidadAsiento" EntitySet="LocalidadAsiento" />
+            <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sectorid" Association="Self.FK_Sectorid">
+            <End Role="Sector" EntitySet="Sector" />
+            <End Role="LocalidadAsiento" EntitySet="LocalidadAsiento" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sectorid2" Association="Self.FK_Sectorid2">
+            <End Role="Sector" EntitySet="Sector" />
+            <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TeatroModelStoreContainer" CdmEntityContainer="TeatroEntities">
+          <EntitySetMapping Name="Artista">
+            <EntityTypeMapping TypeName="TeatroModel.Artista">
+              <MappingFragment StoreEntitySet="Artista">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreArtista" ColumnName="NombreArtista" />
+                <ScalarProperty Name="DescripcionArtista" ColumnName="DescripcionArtista" />
+                <ScalarProperty Name="Companiaid" ColumnName="Companiaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cliente">
+            <EntityTypeMapping TypeName="TeatroModel.Cliente">
+              <MappingFragment StoreEntitySet="Cliente">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Personaid" ColumnName="Personaid" />
+                <ScalarProperty Name="Cuentaid" ColumnName="Cuentaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compania">
+            <EntityTypeMapping TypeName="TeatroModel.Compania">
+              <MappingFragment StoreEntitySet="Compania">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreCompania" ColumnName="NombreCompania" />
+                <ScalarProperty Name="DescripcionCompania" ColumnName="DescripcionCompania" />
+                <ScalarProperty Name="EmailCompania" ColumnName="EmailCompania" />
+                <ScalarProperty Name="TelefonoCompania" ColumnName="TelefonoCompania" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Compra">
+            <EntityTypeMapping TypeName="TeatroModel.Compra">
+              <MappingFragment StoreEntitySet="Compra">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MetodoDePago" ColumnName="MetodoDePago" />
+                <ScalarProperty Name="Unidades" ColumnName="Unidades" />
+                <ScalarProperty Name="Descuento" ColumnName="Descuento" />
+                <ScalarProperty Name="LocalidadEspectaculoid" ColumnName="LocalidadEspectaculoid" />
+                <ScalarProperty Name="Espectaculoid" ColumnName="Espectaculoid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cuenta">
+            <EntityTypeMapping TypeName="TeatroModel.Cuenta">
+              <MappingFragment StoreEntitySet="Cuenta">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Contraseña" ColumnName="Contraseña" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="TipoUsuario" ColumnName="TipoUsuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Empleado">
+            <EntityTypeMapping TypeName="TeatroModel.Empleado">
+              <MappingFragment StoreEntitySet="Empleado">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Personaid" ColumnName="Personaid" />
+                <ScalarProperty Name="Cuentaid" ColumnName="Cuentaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Espectaculo">
+            <EntityTypeMapping TypeName="TeatroModel.Espectaculo">
+              <MappingFragment StoreEntitySet="Espectaculo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreEspectaculo" ColumnName="NombreEspectaculo" />
+                <ScalarProperty Name="DescripcionEspectaculo" ColumnName="DescripcionEspectaculo" />
+                <ScalarProperty Name="FechaYHora" ColumnName="FechaYHora" />
+                <ScalarProperty Name="EstadoEspectaculo" ColumnName="EstadoEspectaculo" />
+                <ScalarProperty Name="PrecioEspectaculo" ColumnName="PrecioEspectaculo" />
+                <ScalarProperty Name="Companiaid" ColumnName="Companiaid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocalidadAsiento">
+            <EntityTypeMapping TypeName="TeatroModel.LocalidadAsiento">
+              <MappingFragment StoreEntitySet="LocalidadAsiento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NumeroAsiento" ColumnName="NumeroAsiento" />
+                <ScalarProperty Name="Entrada" ColumnName="Entrada" />
+                <ScalarProperty Name="EstadoAsiento" ColumnName="EstadoAsiento" />
+                <ScalarProperty Name="Sectorid" ColumnName="Sectorid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LocalidadEspectaculo">
+            <EntityTypeMapping TypeName="TeatroModel.LocalidadEspectaculo">
+              <MappingFragment StoreEntitySet="LocalidadEspectaculo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="LocalidadAsientoid" ColumnName="LocalidadAsientoid" />
+                <ScalarProperty Name="Espectaculoid" ColumnName="Espectaculoid" />
+                <ScalarProperty Name="Sectorid" ColumnName="Sectorid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Persona">
+            <EntityTypeMapping TypeName="TeatroModel.Persona">
+              <MappingFragment StoreEntitySet="Persona">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreYApellido" ColumnName="NombreYApellido" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="Documento" ColumnName="Documento" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sector">
+            <EntityTypeMapping TypeName="TeatroModel.Sector">
+              <MappingFragment StoreEntitySet="Sector">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="NombreSector" ColumnName="NombreSector" />
+                <ScalarProperty Name="Cupon" ColumnName="Cupon" />
+                <ScalarProperty Name="PrecioSector" ColumnName="PrecioSector" />
+                <ScalarProperty Name="EstadoSector" ColumnName="EstadoSector" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TeatroModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

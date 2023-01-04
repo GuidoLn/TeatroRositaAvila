@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="cb801cfc467040a6874f3682a06c3422" Name="Diagram1">
+        <EntityTypeShape EntityType="TeatroModel.Artista" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.Cliente" Width="1.5" PointX="11" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.Compania" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.Compra" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.Cuenta" Width="1.5" PointX="8.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.Empleado" Width="1.5" PointX="11" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.Espectaculo" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.LocalidadAsiento" Width="1.5" PointX="6" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.LocalidadEspectaculo" Width="1.5" PointX="8.25" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.Persona" Width="1.5" PointX="8.75" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.Sector" Width="1.5" PointX="3.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="TeatroModel.FK_Compania" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Cuentaid" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Personaid" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Compania2" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Espectaculoid2" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_LocalidadEspectaculoid" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Cuentaid2" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Personaid2" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Espectaculoid" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_LocalidadAsientoid" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Sectorid" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Sectorid2" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
