@@ -23,5 +23,19 @@ namespace ProyectoFinal.DataLayer
     
         public virtual Espectaculo Espectaculo { get; set; }
         public virtual LocalidadEspectaculo LocalidadEspectaculo { get; set; }
+
+        public bool realizarCompra(Compra compra)
+        {
+            bool resultado = false;
+            using (TeatroEntities db = new TeatroEntities())
+            {
+                db.Compra.Add(compra);
+                if (db.SaveChanges() == 1)
+                {
+                    resultado = true;
+                }
+            }
+            return resultado;
+        }
     }
 }

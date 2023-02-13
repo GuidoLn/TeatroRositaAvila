@@ -47,6 +47,7 @@ namespace ProyectoFinal.ViewLayer
             DGUsuarios.Columns.Add("Nombre", "Nombre del Usuario");
             DGUsuarios.Columns.Add("Clave", "Clave del Usuario");
             DGUsuarios.Columns.Add("Id", "Id");
+            DGUsuarios.Columns["Id"].Visible= false;
 
             foreach (var item1 in cuentas)
             {
@@ -169,12 +170,12 @@ namespace ProyectoFinal.ViewLayer
 
             if (fila >= DGUsuarios.RowCount - 1) fila = e.RowIndex - 1;
 
-            Cuenta c = new GetData().GetByIdCuenta((long)DGUsuarios.Rows[fila].Cells[0].Value);
+            Cuenta c = new GetData().GetByIdCuenta(long.Parse(DGUsuarios.Rows[fila].Cells["Id"].Value.ToString()));
             Empleado emp = new GetData().GetByIdCEmpleado(c.Id);
             Persona p = new GetData().GetByIdPersona(emp.Personaid);
 
             // extrayendo iinformación de la grilla
-            tbIdUsuario.Text = DGUsuarios.Rows[fila].Cells[0].Value.ToString();
+            tbIdUsuario.Text = DGUsuarios.Rows[fila].Cells["Id"].Value.ToString();
             tbUsuario.Text = c.Usuario;
             tbClave.Text = c.Contraseña;
             tbTipoUsuario.Text = c.TipoUsuario;

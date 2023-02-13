@@ -52,5 +52,24 @@ namespace ProyectoFinal.DataLayer
 
             return string.Empty;
         }
+        public string verificarCuenta(string userName)
+        {
+            List<Cuenta> cuentas = new List<Cuenta>();
+
+            using (TeatroEntities db = new TeatroEntities())
+            {
+                cuentas = db.Cuenta.ToList();
+            }
+
+            foreach (Cuenta element in cuentas)
+            {
+                if (userName == element.Usuario)
+                {
+                    return element.TipoUsuario;
+                }
+            }
+
+            return string.Empty;
+        }
     }
 }

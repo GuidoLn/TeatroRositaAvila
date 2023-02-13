@@ -19,9 +19,9 @@ namespace ProyectoFinal
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            ABMLUsuarios main = new ABMLUsuarios();
-            main.FormClosed += MainForm_Closed; // agrega esto aquí
-            main.Show();
+            Login login = new  Login();
+            login.FormClosed += MainForm_Closed; // agrega esto aquí
+            login.Show();
             Application.Run();
         }
 

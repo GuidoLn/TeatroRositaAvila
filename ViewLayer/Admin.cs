@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using ProyectoFinal.ViewLayer;
 using System.Globalization;
 using ProyectoFinal.ViewLayer;
+using ProyectoFinal.ControlerLayer;
 
 namespace ProyectoFinal.ViewLayer
 {
@@ -28,6 +29,8 @@ namespace ProyectoFinal.ViewLayer
 
         private void bt_AdALogin_Click(object sender, EventArgs e)
         {
+            ContLogin contLogin = ContLogin.GetInstance();
+            contLogin.UsuarioLogueado = "Usuario";
             new Login().Show();
             this.Close();
         }
@@ -42,6 +45,12 @@ namespace ProyectoFinal.ViewLayer
         {
             EspectaculoGerente eg = new EspectaculoGerente();
             eg.Show();
+            this.Close();
+        }
+
+        private void bt_AdAAsientos_Click(object sender, EventArgs e)
+        {
+            new AsientoGerente().Show();
             this.Close();
         }
     }

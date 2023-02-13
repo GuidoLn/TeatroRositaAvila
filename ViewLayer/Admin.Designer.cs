@@ -81,6 +81,7 @@ namespace ProyectoFinal.ViewLayer
             this.bt_AdAAsientos.TabIndex = 4;
             this.bt_AdAAsientos.Text = "Asientos";
             this.bt_AdAAsientos.UseVisualStyleBackColor = false;
+            this.bt_AdAAsientos.Click += new System.EventHandler(this.bt_AdAAsientos_Click);
             // 
             // bt_AdEspectáculo
             // 

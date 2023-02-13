@@ -48,18 +48,7 @@ namespace ProyectoFinal.ViewLayer
             this.label2 = new System.Windows.Forms.Label();
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnAgregarUsuario = new System.Windows.Forms.Button();
-            this.btnEliminarUsuario = new System.Windows.Forms.Button();
-            this.btnModificarUsuario = new System.Windows.Forms.Button();
             this.pAgregadoUsuario = new System.Windows.Forms.Panel();
-            this.btnUsMenu = new System.Windows.Forms.Button();
-            this.btnUsAtras = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lbUsAgregagoClave = new System.Windows.Forms.Label();
-            this.lbUsAgregagoId = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.pUsEliminar = new System.Windows.Forms.Panel();
             this.btnUsEliminarNo = new System.Windows.Forms.Button();
             this.btnUsEliminarOk = new System.Windows.Forms.Button();
@@ -69,6 +58,17 @@ namespace ProyectoFinal.ViewLayer
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.btnUsMenu = new System.Windows.Forms.Button();
+            this.btnUsAtras = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lbUsAgregagoClave = new System.Windows.Forms.Label();
+            this.lbUsAgregagoId = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btnAgregarUsuario = new System.Windows.Forms.Button();
+            this.btnEliminarUsuario = new System.Windows.Forms.Button();
+            this.btnModificarUsuario = new System.Windows.Forms.Button();
             this.btnUsToMenu = new System.Windows.Forms.Button();
             this.tbBusqUsuario = new System.Windows.Forms.TextBox();
             this.btnBusqUsuario = new System.Windows.Forms.Button();
@@ -81,9 +81,9 @@ namespace ProyectoFinal.ViewLayer
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
             this.pAgregadoUsuario.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.pUsEliminar.SuspendLayout();
             this.panel8.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
@@ -125,7 +125,6 @@ namespace ProyectoFinal.ViewLayer
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel2.Controls.Add(this.pAgregadoUsuario);
             this.panel2.Controls.Add(this.tbTipoUsuario);
             this.panel2.Controls.Add(this.tbIdUsuario);
             this.panel2.Controls.Add(this.label7);
@@ -279,145 +278,28 @@ namespace ProyectoFinal.ViewLayer
             this.label1.Text = "Identidad de Usuario*";
             this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
-            // btnAgregarUsuario
-            // 
-            this.btnAgregarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnAgregarUsuario.Location = new System.Drawing.Point(601, 38);
-            this.btnAgregarUsuario.Name = "btnAgregarUsuario";
-            this.btnAgregarUsuario.Size = new System.Drawing.Size(126, 30);
-            this.btnAgregarUsuario.TabIndex = 2;
-            this.btnAgregarUsuario.Text = "Agregar";
-            this.btnAgregarUsuario.UseVisualStyleBackColor = true;
-            this.btnAgregarUsuario.Click += new System.EventHandler(this.btnAgregarUsuario_Click);
-            // 
-            // btnEliminarUsuario
-            // 
-            this.btnEliminarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnEliminarUsuario.Location = new System.Drawing.Point(601, 412);
-            this.btnEliminarUsuario.Name = "btnEliminarUsuario";
-            this.btnEliminarUsuario.Size = new System.Drawing.Size(126, 30);
-            this.btnEliminarUsuario.TabIndex = 4;
-            this.btnEliminarUsuario.Text = "Eliminar";
-            this.btnEliminarUsuario.UseVisualStyleBackColor = true;
-            this.btnEliminarUsuario.Click += new System.EventHandler(this.btnEliminarUsuario_Click);
-            // 
-            // btnModificarUsuario
-            // 
-            this.btnModificarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnModificarUsuario.Location = new System.Drawing.Point(455, 412);
-            this.btnModificarUsuario.Name = "btnModificarUsuario";
-            this.btnModificarUsuario.Size = new System.Drawing.Size(126, 30);
-            this.btnModificarUsuario.TabIndex = 5;
-            this.btnModificarUsuario.Text = "Modificar";
-            this.btnModificarUsuario.UseVisualStyleBackColor = true;
-            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
-            // 
             // pAgregadoUsuario
             // 
-            this.pAgregadoUsuario.Controls.Add(this.pUsEliminar);
             this.pAgregadoUsuario.Controls.Add(this.btnUsMenu);
             this.pAgregadoUsuario.Controls.Add(this.btnUsAtras);
             this.pAgregadoUsuario.Controls.Add(this.label8);
-            this.pAgregadoUsuario.Controls.Add(this.panel5);
             this.pAgregadoUsuario.Controls.Add(this.panel4);
-            this.pAgregadoUsuario.Location = new System.Drawing.Point(98, 26);
+            this.pAgregadoUsuario.Controls.Add(this.panel5);
+            this.pAgregadoUsuario.Controls.Add(this.pUsEliminar);
+            this.pAgregadoUsuario.Location = new System.Drawing.Point(21, 90);
             this.pAgregadoUsuario.Name = "pAgregadoUsuario";
             this.pAgregadoUsuario.Size = new System.Drawing.Size(737, 412);
             this.pAgregadoUsuario.TabIndex = 6;
             this.pAgregadoUsuario.Visible = false;
-            // 
-            // btnUsMenu
-            // 
-            this.btnUsMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnUsMenu.Location = new System.Drawing.Point(443, 315);
-            this.btnUsMenu.Name = "btnUsMenu";
-            this.btnUsMenu.Size = new System.Drawing.Size(181, 34);
-            this.btnUsMenu.TabIndex = 4;
-            this.btnUsMenu.Text = "Menu Principal";
-            this.btnUsMenu.UseVisualStyleBackColor = true;
-            this.btnUsMenu.Click += new System.EventHandler(this.btnUsMenu_Click);
-            // 
-            // btnUsAtras
-            // 
-            this.btnUsAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnUsAtras.Location = new System.Drawing.Point(646, 315);
-            this.btnUsAtras.Name = "btnUsAtras";
-            this.btnUsAtras.Size = new System.Drawing.Size(87, 34);
-            this.btnUsAtras.TabIndex = 3;
-            this.btnUsAtras.Text = "Atras";
-            this.btnUsAtras.UseVisualStyleBackColor = true;
-            this.btnUsAtras.Click += new System.EventHandler(this.btnUsAtras_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label8.Location = new System.Drawing.Point(131, 40);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(429, 29);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "USUARIO REGISTRADO CON EXITO!";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel5.Controls.Add(this.lbUsAgregagoClave);
-            this.panel5.Controls.Add(this.lbUsAgregagoId);
-            this.panel5.Controls.Add(this.label10);
-            this.panel5.Controls.Add(this.label9);
-            this.panel5.Location = new System.Drawing.Point(305, 135);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(319, 153);
-            this.panel5.TabIndex = 1;
-            // 
-            // lbUsAgregagoClave
-            // 
-            this.lbUsAgregagoClave.AutoSize = true;
-            this.lbUsAgregagoClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.lbUsAgregagoClave.Location = new System.Drawing.Point(135, 95);
-            this.lbUsAgregagoClave.Name = "lbUsAgregagoClave";
-            this.lbUsAgregagoClave.Size = new System.Drawing.Size(139, 29);
-            this.lbUsAgregagoClave.TabIndex = 3;
-            this.lbUsAgregagoClave.Text = "PedroMe56";
-            // 
-            // lbUsAgregagoId
-            // 
-            this.lbUsAgregagoId.AutoSize = true;
-            this.lbUsAgregagoId.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.lbUsAgregagoId.Location = new System.Drawing.Point(135, 31);
-            this.lbUsAgregagoId.Name = "lbUsAgregagoId";
-            this.lbUsAgregagoId.Size = new System.Drawing.Size(175, 29);
-            this.lbUsAgregagoId.TabIndex = 2;
-            this.lbUsAgregagoId.Text = "Roberto Carloz";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label10.Location = new System.Drawing.Point(25, 95);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 29);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Clave:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label9.Location = new System.Drawing.Point(27, 31);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 29);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Usuario:";
             // 
             // pUsEliminar
             // 
             this.pUsEliminar.Controls.Add(this.btnUsEliminarNo);
             this.pUsEliminar.Controls.Add(this.btnUsEliminarOk);
             this.pUsEliminar.Controls.Add(this.panel8);
-            this.pUsEliminar.Controls.Add(this.panel3);
             this.pUsEliminar.Controls.Add(this.label11);
-            this.pUsEliminar.Location = new System.Drawing.Point(469, 40);
+            this.pUsEliminar.Controls.Add(this.panel3);
+            this.pUsEliminar.Location = new System.Drawing.Point(0, 0);
             this.pUsEliminar.Name = "pUsEliminar";
             this.pUsEliminar.Size = new System.Drawing.Size(746, 424);
             this.pUsEliminar.TabIndex = 5;
@@ -507,6 +389,123 @@ namespace ProyectoFinal.ViewLayer
             this.label11.TabIndex = 0;
             this.label11.Text = "¿Esta seguro que desea eliminar al usuario?";
             // 
+            // btnUsMenu
+            // 
+            this.btnUsMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnUsMenu.Location = new System.Drawing.Point(443, 315);
+            this.btnUsMenu.Name = "btnUsMenu";
+            this.btnUsMenu.Size = new System.Drawing.Size(181, 34);
+            this.btnUsMenu.TabIndex = 4;
+            this.btnUsMenu.Text = "Menu Principal";
+            this.btnUsMenu.UseVisualStyleBackColor = true;
+            this.btnUsMenu.Click += new System.EventHandler(this.btnUsMenu_Click);
+            // 
+            // btnUsAtras
+            // 
+            this.btnUsAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnUsAtras.Location = new System.Drawing.Point(646, 315);
+            this.btnUsAtras.Name = "btnUsAtras";
+            this.btnUsAtras.Size = new System.Drawing.Size(87, 34);
+            this.btnUsAtras.TabIndex = 3;
+            this.btnUsAtras.Text = "Atras";
+            this.btnUsAtras.UseVisualStyleBackColor = true;
+            this.btnUsAtras.Click += new System.EventHandler(this.btnUsAtras_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label8.Location = new System.Drawing.Point(131, 40);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(429, 29);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "USUARIO REGISTRADO CON EXITO!";
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel5.Controls.Add(this.lbUsAgregagoClave);
+            this.panel5.Controls.Add(this.lbUsAgregagoId);
+            this.panel5.Controls.Add(this.label10);
+            this.panel5.Controls.Add(this.label9);
+            this.panel5.Location = new System.Drawing.Point(305, 135);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(319, 153);
+            this.panel5.TabIndex = 1;
+            // 
+            // lbUsAgregagoClave
+            // 
+            this.lbUsAgregagoClave.AutoSize = true;
+            this.lbUsAgregagoClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lbUsAgregagoClave.Location = new System.Drawing.Point(135, 95);
+            this.lbUsAgregagoClave.Name = "lbUsAgregagoClave";
+            this.lbUsAgregagoClave.Size = new System.Drawing.Size(139, 29);
+            this.lbUsAgregagoClave.TabIndex = 3;
+            this.lbUsAgregagoClave.Text = "PedroMe56";
+            // 
+            // lbUsAgregagoId
+            // 
+            this.lbUsAgregagoId.AutoSize = true;
+            this.lbUsAgregagoId.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lbUsAgregagoId.Location = new System.Drawing.Point(135, 31);
+            this.lbUsAgregagoId.Name = "lbUsAgregagoId";
+            this.lbUsAgregagoId.Size = new System.Drawing.Size(175, 29);
+            this.lbUsAgregagoId.TabIndex = 2;
+            this.lbUsAgregagoId.Text = "Roberto Carloz";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label10.Location = new System.Drawing.Point(25, 95);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 29);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Clave:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label9.Location = new System.Drawing.Point(27, 31);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(102, 29);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Usuario:";
+            // 
+            // btnAgregarUsuario
+            // 
+            this.btnAgregarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnAgregarUsuario.Location = new System.Drawing.Point(601, 38);
+            this.btnAgregarUsuario.Name = "btnAgregarUsuario";
+            this.btnAgregarUsuario.Size = new System.Drawing.Size(126, 30);
+            this.btnAgregarUsuario.TabIndex = 2;
+            this.btnAgregarUsuario.Text = "Agregar";
+            this.btnAgregarUsuario.UseVisualStyleBackColor = true;
+            this.btnAgregarUsuario.Click += new System.EventHandler(this.btnAgregarUsuario_Click);
+            // 
+            // btnEliminarUsuario
+            // 
+            this.btnEliminarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnEliminarUsuario.Location = new System.Drawing.Point(601, 412);
+            this.btnEliminarUsuario.Name = "btnEliminarUsuario";
+            this.btnEliminarUsuario.Size = new System.Drawing.Size(126, 30);
+            this.btnEliminarUsuario.TabIndex = 4;
+            this.btnEliminarUsuario.Text = "Eliminar";
+            this.btnEliminarUsuario.UseVisualStyleBackColor = true;
+            this.btnEliminarUsuario.Click += new System.EventHandler(this.btnEliminarUsuario_Click);
+            // 
+            // btnModificarUsuario
+            // 
+            this.btnModificarUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnModificarUsuario.Location = new System.Drawing.Point(455, 412);
+            this.btnModificarUsuario.Name = "btnModificarUsuario";
+            this.btnModificarUsuario.Size = new System.Drawing.Size(126, 30);
+            this.btnModificarUsuario.TabIndex = 5;
+            this.btnModificarUsuario.Text = "Modificar";
+            this.btnModificarUsuario.UseVisualStyleBackColor = true;
+            this.btnModificarUsuario.Click += new System.EventHandler(this.btnModificarUsuario_Click);
+            // 
             // btnUsToMenu
             // 
             this.btnUsToMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -580,13 +579,14 @@ namespace ProyectoFinal.ViewLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1079, 647);
+            this.ClientSize = new System.Drawing.Size(787, 647);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pAgregadoUsuario);
             this.Controls.Add(this.btnUsToMenu);
             this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.btnEliminarUsuario);
             this.Controls.Add(this.btnAgregarUsuario);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnBusqUsuario);
             this.Controls.Add(this.tbBusqUsuario);
             this.Name = "ABMLUsuarios";
@@ -599,12 +599,12 @@ namespace ProyectoFinal.ViewLayer
             this.panel2.PerformLayout();
             this.pAgregadoUsuario.ResumeLayout(false);
             this.pAgregadoUsuario.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.pUsEliminar.ResumeLayout(false);
             this.pUsEliminar.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);

@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using ProyectoFinal.DataLayer;
 using ProyectoFinal.ControlerLayer;
 using ProyectoFinal.ViewLayer;
+using System.Dynamic;
+
 
 namespace ProyectoFinal
 {
@@ -32,19 +34,28 @@ namespace ProyectoFinal
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            ContLogin controllerLoguin = ContLogin.GetInstance();
             string resultado = string.Empty;
-            resultado = new ContLogin().verificarCuenta(txtUsuario.Text, txtClave.Text);
-
+            resultado = controllerLoguin.verificarCuenta(txtUsuario.Text, txtClave.Text);
+            controllerLoguin.UsuarioLogueado = txtUsuario.Text;
             if (resultado == "admin")
             {
                 MessageBox.Show("Admin logueado");
                 new Admin().Show();
                 this.Close();
             }
-            else if (resultado == "empleado")  MessageBox.Show("Empleado logueado");
+            else if (resultado == "empleado")
+            {
+                MessageBox.Show("empleado logueado");
+                new MainMenuUser().Show();
+                this.Close();
+            }
             else if (resultado == "cliente") MessageBox.Show("Cliente logueado");
-            else MessageBox.Show("Usuario y/o contraseña incorrectos");
-            
+            else
+            {
+                MessageBox.Show("Usuario y/o contraseña incorrectos");
+                controllerLoguin.UsuarioLogueado = "";
+            }
         }
 
         private void label3_Click(object sender, EventArgs e)
