@@ -64,6 +64,7 @@
     <Compile Include="ControlerLayer\ContLogin.cs" />
     <Compile Include="ControlerLayer\CrearUsuario.cs" />
     <Compile Include="ControlerLayer\DataGridViewController.cs" />
+    <Compile Include="ControlerLayer\Diccionario.cs" />
     <Compile Include="ControlerLayer\GetData.cs" />
     <Compile Include="ControlerLayer\ModificarEspectaculo.cs" />
     <Compile Include="ControlerLayer\ModificarUsuario.cs" />

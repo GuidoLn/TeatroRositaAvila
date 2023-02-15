@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using ProyectoFinal.DataLayer;
 
 namespace ProyectoFinal.ControlerLayer
@@ -72,21 +73,38 @@ namespace ProyectoFinal.ControlerLayer
             return null;
         }
 
+        //public List<Compra> GetComprasByEspectaculo(long espectaculoId)
+        //{
+        //    List<Compra> compras = new List<Compra>();
+        //    List<Compra> comprasAux = new List<Compra>();
+        //    using (TeatroEntities db = new TeatroEntities()) compras = db.Compra.ToList();
+        //    foreach (Compra item in compras)
+        //    {
+        //        if (item.Espectaculoid == espectaculoId)
+        //        {
+        //            comprasAux.Add(item);
+        //        }
+        //    }
+
+        //    return comprasAux;
+        //}
+
         public List<Compra> GetComprasByEspectaculo(long espectaculoId)
         {
             List<Compra> compras = new List<Compra>();
-            List<Compra> comprasAux = new List<Compra>();
-            using (TeatroEntities db = new TeatroEntities()) compras = db.Compra.ToList();
-            foreach (Compra item in compras)
+
+            using (TeatroEntities db = new TeatroEntities())
             {
-                if (item.Espectaculoid == espectaculoId)
-                {
-                    comprasAux.Add(item);
-                }
+                compras = db.Compra
+                    .Where(le => le.Espectaculoid == espectaculoId)
+                    .ToList();
             }
 
-            return comprasAux;
+            return compras;
         }
+
+
+
 
         public Compania GetByNameCompañia(string name)
         {
@@ -143,6 +161,15 @@ namespace ProyectoFinal.ControlerLayer
             }
             return sector;
         }
+        public long GetByNameSectorId(string nameSector)
+        {   
+            using (TeatroEntities db = new TeatroEntities())
+            {
+                return db.Sector.FirstOrDefault(la => la.NombreSector == nameSector).Id;                 
+            }
+            
+        }
+
         public Espectaculo GetEspectaculoById(long id)
         {
             List<Espectaculo> espectaculos = new List<Espectaculo>();
@@ -156,50 +183,76 @@ namespace ProyectoFinal.ControlerLayer
         }
         // Obtiene la lista de asientos por sector fijandose cuales ya estan comprados
         // viendo el espectaculo
-        public List<LocalidadAsiento> GetAsientosBySector(string sectorName, long espectaculoId)
-        {
-            List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
-            List<LocalidadAsiento> asientosAux = new List<LocalidadAsiento>();
-            using (TeatroEntities db = new TeatroEntities()) asientosAux = db.LocalidadAsiento.ToList();
-            List<Compra> comprasByEspectaculo = new GetData().GetComprasByEspectaculo(espectaculoId);
-            Sector sector = GetSector(sectorName);
+        //public List<LocalidadAsiento> GetAsientosBySector(string sectorName, long espectaculoId)
+        //{
+        //    List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
+        //    List<LocalidadAsiento> asientosAux = new List<LocalidadAsiento>();
+        //    using (TeatroEntities db = new TeatroEntities()) asientosAux = db.LocalidadAsiento.ToList();
+        //    List<Compra> comprasByEspectaculo = new GetData().GetComprasByEspectaculo(espectaculoId);
+        //    Sector sector = GetSector(sectorName);
 
-            foreach (var asiento in asientosAux)
+        //    foreach (var asiento in asientosAux)
+        //    {
+        //        if (asiento.Sectorid == sector.Id)
+        //        {
+        //            foreach (var compra in comprasByEspectaculo)
+        //            {
+        //                compra.LocalidadEspectaculo = new GetData().GetLocalidadEspectaculoById(compra.LocalidadEspectaculoid);
+        //                if (asiento.Id == compra.LocalidadEspectaculo.LocalidadAsientoid)
+        //                {
+        //                    asiento.EstadoAsiento = false;
+        //                    break;
+        //                }
+        //            }
+        //            asientos.Add(asiento);
+        //        }
+        //    }
+        //    return asientos;
+        //}
+        private static Dictionary<string, List<LocalidadAsiento>> _asientosCache = new Dictionary<string, List<LocalidadAsiento>>();
+        public List<LocalidadAsiento> GetAsientosBySectorAndEspectaculo(long sectorId, long espectaculoId)
+        {
+            using (TeatroEntities db = new TeatroEntities())
             {
-                if (asiento.Sectorid == sector.Id)
-                {
-                    foreach (var compra in comprasByEspectaculo)
+                var compras = (
+                    from c in db.Compra
+                    join le in db.LocalidadEspectaculo on c.LocalidadEspectaculoid equals le.Id
+                    where le.Espectaculoid == espectaculoId
+                    select new { AsientoId = le.LocalidadAsientoid, Compra = c }
+                ).ToDictionary(x => x.AsientoId, x => x.Compra);
+
+                var asientos = (
+                    from a in db.LocalidadAsiento
+                    where a.Sectorid == sectorId
+                    select new LocalidadAsiento()
                     {
-                        compra.LocalidadEspectaculo = new GetData().GetLocalidadEspectaculoById(compra.LocalidadEspectaculoid);
-                        if (asiento.Id == compra.LocalidadEspectaculo.LocalidadAsientoid)
-                        {
-                            asiento.EstadoAsiento = false;
-                            break;
-                        }
-                    }
-                    asientos.Add(asiento);
-                }
+                        Id = a.Id,
+                        NumeroAsiento = a.NumeroAsiento,
+                        Sectorid = a.Sectorid,
+                        EstadoAsiento = !compras.ContainsKey(a.Id)
+                    }).ToList();
+
+                return asientos;
             }
-            return asientos;
         }
         // Obtiene la lista de asientos por sector
-        public List<LocalidadAsiento> GetAsientosBySector(string name)
-        {
-            List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
-            List<LocalidadAsiento> asientosAux = new List<LocalidadAsiento>();
-            using (TeatroEntities db = new TeatroEntities()) asientosAux = db.LocalidadAsiento.ToList();
-            Sector sector = GetSector(name);
+        //public List<LocalidadAsiento> GetAsientosBySector(string name)
+        //{
+        //    List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
+        //    List<LocalidadAsiento> asientosAux = new List<LocalidadAsiento>();
+        //    using (TeatroEntities db = new TeatroEntities()) asientosAux = db.LocalidadAsiento.ToList();
+        //    Sector sector = GetSector(name);
 
-            foreach (var asiento in asientosAux)
-            {
-                if (asiento.Sectorid == sector.Id)
-                {
-                    asientos.Add(asiento);
-                }
-                
-            }
-            return asientos;
-        }
+        //    foreach (var asiento in asientosAux)
+        //    {
+        //        if (asiento.Sectorid == sector.Id)
+        //        {
+        //            asientos.Add(asiento);
+        //        }
+
+        //    }
+        //    return asientos;
+        //}
         public List<string> GetAsientosDisponibles(long idEspectaculo)
         {
             List<string> numerosAsientos = new List<string>();
@@ -218,7 +271,7 @@ namespace ProyectoFinal.ControlerLayer
                     }
                 }
             }
-           
+
 
             return numerosAsientos;
         }
@@ -232,19 +285,38 @@ namespace ProyectoFinal.ControlerLayer
             }
             foreach (var item in asientos)
             {
-                if(int.Parse(asiento) == item.NumeroAsiento)
+                if (int.Parse(asiento) == item.NumeroAsiento)
                 {
                     sector = GetSectorById(item.Sectorid);
                 }
             }
-                        
+
             return sector;
+        }
+
+        public LocalidadAsiento GetlocalidadAsientoByAsiento(int asiento)
+        {
+            LocalidadAsiento localidad = new LocalidadAsiento();
+            List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
+            using (TeatroEntities db = new TeatroEntities())
+            {
+                asientos = db.LocalidadAsiento.ToList();
+            }
+            foreach (var item in asientos)
+            {
+                if (asiento == item.NumeroAsiento)
+                {
+                    localidad = item;
+                }
+            }
+
+            return localidad;
         }
         public float calcularPrecio(List<string> asientos, long espectaculoID)
         {
             float precioFinal = 0;
             float precioByEspectaculo = float.Parse(GetEspectaculoById(espectaculoID).PrecioEspectaculo.ToString());
-            float precioBySector; 
+            float precioBySector;
             foreach (var item in asientos)
             {
                 precioBySector = float.Parse(GetSectorByAsiento(item).PrecioSector.ToString());

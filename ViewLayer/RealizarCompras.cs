@@ -102,21 +102,21 @@ namespace ProyectoFinal.ViewLayer
         }
         private void PrepareToPaint(object sender, PaintEventArgs e)
         {
-            List<LocalidadAsiento> asientos;
+            List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
             Control control = sender as Control;
-            string sectorName = control.Text;
-            if (dgvRealizarCompra.CurrentCell != null)
-            {
-                int currentRow = dgvRealizarCompra.CurrentCell.RowIndex;
-                long espectaculoId = long.Parse(dgvRealizarCompra.Rows[currentRow].Cells["Id"].Value.ToString());
-                asientos = new GetData().GetAsientosBySector(sectorName, espectaculoId);
-                DrawOnGroupBox(control, e, asientos);
-            }
-            else
-            {
-                asientos = new GetData().GetAsientosBySector(sectorName);
-                DrawOnGroupBox(control, e, asientos);
-            }
+            long sectorId = new GetData().GetByNameSectorId(control.Text);
+            //if (dgvAsientos.CurrentCell != null)
+            //{
+            int currentRow = dgvRealizarCompra.CurrentCell.RowIndex;
+            long espectaculoId = long.Parse(dgvRealizarCompra.Rows[currentRow].Cells["Id"].Value.ToString());
+            asientos = new GetData().GetAsientosBySectorAndEspectaculo(sectorId, espectaculoId);
+            DrawOnGroupBox(control, e, asientos);
+            //}
+            //else
+            //{
+            //    asientos = new GetData().GetAsientosBySector(sectorName);
+            //    DrawOnGroupBox(control, e, asientos);
+            //}
         }
         private void DrawOnGroupBox(Control groupBox, PaintEventArgs e, List<LocalidadAsiento> asientos)
         {
@@ -200,6 +200,7 @@ namespace ProyectoFinal.ViewLayer
                 MessageBox.Show($"Error: {error}");
             }
         }
+
         private void DgvCellMouseClick(object sender, DataGridViewCellEventArgs e)
         {
             int fila = e.RowIndex;
@@ -208,12 +209,11 @@ namespace ProyectoFinal.ViewLayer
                 gbSA.Invalidate();
                 gbSC.Invalidate();
             }
-
         }
 
         private void LblMetodopago_Click(object sender, EventArgs e)
         {
-
+          
         }
 
         private void TxtBusquedaNombre_TextChanged(object sender, EventArgs e)
@@ -229,27 +229,40 @@ namespace ProyectoFinal.ViewLayer
         private void BtnComprar_Click(object sender, EventArgs e)
         {
             LocalidadEspectaculo le = new LocalidadEspectaculo();
+            Compra compra = new Compra();
             DialogResult result = MessageBox.Show("¿Está seguro de que desea realizar la compra?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-
+            bool comrpasOK = true;
             if (result == DialogResult.Yes)
             {
                 if (asientosSeleccionados.Count != 0)
                 {
                     foreach (var item in asientosSeleccionados)
                     {
-                        le.Sectorid =
-                        le.Espectaculoid =
-                        le.LocalidadAsientoid =
-                        le.Precio =
+                        le.Sectorid = new GetData().GetSectorByAsiento(item).Id;
+                        le.Espectaculoid = long.Parse(dgvRealizarCompra.CurrentRow.Cells["Id"].Value.ToString());
+                        le.LocalidadAsientoid = new GetData().GetlocalidadAsientoByAsiento(int.Parse(item)).Id;
+                        le.Precio = int.Parse(lblValorimporteTotal.Text.Replace("$",""));
                         le.Id = le.crearLocalidadEspectaculo(le);
+                        compra.Unidades = 1;
+                        compra.MetodoDePago = gbMetodopago.Text;
+                        compra.Descuento = int.Parse(txtDescuento.Text.Replace("%", ""));
+                        compra.LocalidadEspectaculoid = le.Id;
+                        compra.Espectaculoid = le.Espectaculoid;
+                        if (!compra.realizarCompra(compra))
+                        {
+                            comrpasOK = false;
+                        }
+                        
                     }
+                    if (comrpasOK)
+                    {
+                        MessageBox.Show("Compra realizada con exito");
+                        gbSA.Invalidate();
+                        gbSC.Invalidate();
+                    }              
 
                 }
-            }
-            else
-            {
-                // Aquí puedes escribir el código que se debe ejecutar cuando el usuario haga clic en "No"
-            }
+            }           
         }
 
         private void TxtCantidadAsientos_TextChanged(object sender, EventArgs e)

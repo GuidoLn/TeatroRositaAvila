@@ -109,22 +109,35 @@ namespace ProyectoFinal.ViewLayer
         }
      
         private void prepareToPaint(object sender, PaintEventArgs e)
-        {
-            List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
+        {    
             Control control = sender as Control;
             string sectorName = control.Text;
-            if (dgvAsientos.CurrentCell != null)
-            {
-                int currentRow = dgvAsientos.CurrentCell.RowIndex;
-                long espectaculoId = long.Parse(dgvAsientos.Rows[currentRow].Cells["Id"].Value.ToString());
-                asientos = new GetData().GetAsientosBySector(sectorName, espectaculoId);
-                DrawOnGroupBox(control, e, asientos);
-            }
-            else
-            {
-                asientos = new GetData().GetAsientosBySector(sectorName);
-                DrawOnGroupBox(control, e, asientos);
-            }
+            int currentRow = dgvAsientos.CurrentCell.RowIndex;
+            long espectaculoId = long.Parse(dgvAsientos.Rows[currentRow].Cells["Id"].Value.ToString());
+            long sectorId = new GetData().GetByNameSectorId(control.Text);
+            List<LocalidadAsiento> asientos = new Diccionario().GetAsientosDiccionarioByEspectaculoAndSector(sectorName,espectaculoId);
+            //if (dgvAsientos.CurrentCell != null)
+            //{            
+            DrawOnGroupBox(control, e, asientos);
+            //}
+            //else
+            //{
+            //    asientos = new GetData().GetAsientosBySector(sectorName);
+            //    DrawOnGroupBox(control, e, asientos);
+            //}
+
+            //if (dgvAsientos.CurrentCell != null)
+            //{
+            //    int currentRow = dgvAsientos.CurrentCell.RowIndex;
+            //    long espectaculoId = long.Parse(dgvAsientos.Rows[currentRow].Cells["Id"].Value.ToString());
+            //    asientos = new GetData().GetAsientosBySector(sectorName, espectaculoId);
+            //    DrawOnGroupBox(control, e, asientos);
+            //}
+            //else
+            //{
+            //    asientos = new GetData().GetAsientosBySector(sectorName);
+            //    DrawOnGroupBox(control, e, asientos);
+            //}
         }
         private void DrawOnGroupBox(Control groupBox, PaintEventArgs e, List<LocalidadAsiento> asientos)
         {
@@ -150,22 +163,13 @@ namespace ProyectoFinal.ViewLayer
                         {                            
                             g.FillRectangle(Brushes.Green, columnIndex, rowIndex, side, side);
                             g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
-                            columnIndex = columnIndex + side + space;
-                            if (asiento.NumeroAsiento == 282 || asiento.NumeroAsiento == 281 || asiento.NumeroAsiento == 283)
-                            {
-                                Console.WriteLine($"pinta asiento x:{columnIndex} y: {rowIndex} width:  {groupBox.Width}  side:  {side} groupbox: {groupBox.Text} numeroasiento: {asiento.NumeroAsiento}");
-                                g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));                        
-                            }                          
+                            columnIndex = columnIndex + side + space;                                                   
                         }
                         else
                         {                           
                             g.FillRectangle(Brushes.Red, columnIndex, rowIndex, side, side);
                             g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
-                            columnIndex = columnIndex + side + space;
-                            if (asiento.NumeroAsiento == 282 || asiento.NumeroAsiento == 281 || asiento.NumeroAsiento == 283)
-                            {
-                                Console.WriteLine($"pinta asiento x:{columnIndex} y: {rowIndex} width:  {groupBox.Width}  side:  {side} groupbox: {groupBox.Text} numeroasiento: {asiento.NumeroAsiento}");
-                            }
+                            columnIndex = columnIndex + side + space;                          
                         }
                         //g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
                         //columnIndex = columnIndex + side + space;
@@ -178,11 +182,7 @@ namespace ProyectoFinal.ViewLayer
                             g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
                             columnIndex = columnIndex + side + space;
                             columnIndex = space;
-                            rowIndex = rowIndex + side + space;
-                            if (asiento.NumeroAsiento == 282 || asiento.NumeroAsiento == 281 || asiento.NumeroAsiento == 283)
-                            {
-                                Console.WriteLine($"pinta asiento x:{columnIndex} y: {rowIndex} width:  {groupBox.Width}  side:  {side} groupbox: {groupBox.Text} numeroasiento: {asiento.NumeroAsiento}");
-                            }
+                            rowIndex = rowIndex + side + space;                       
                         }
                         else
                         {
@@ -190,13 +190,7 @@ namespace ProyectoFinal.ViewLayer
                             g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
                             columnIndex = columnIndex + side + space;
                             columnIndex = space;
-                            rowIndex = rowIndex + side + space;
-                            if (asiento.NumeroAsiento == 282 || asiento.NumeroAsiento == 281 || asiento.NumeroAsiento == 283)
-                            {
-                                Console.WriteLine($"pinta asiento x:{columnIndex} y: {rowIndex} width:   {groupBox.Width}   side:   {side}  groupbox:  {groupBox.Text} numeroasiento: {asiento.NumeroAsiento}");
-
-
-                            }
+                            rowIndex = rowIndex + side + space;                        
                         }
                         //g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
                     }
