@@ -102,21 +102,13 @@ namespace ProyectoFinal.ViewLayer
         }
         private void PrepareToPaint(object sender, PaintEventArgs e)
         {
-            List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
             Control control = sender as Control;
-            long sectorId = new GetData().GetByNameSectorId(control.Text);
-            //if (dgvAsientos.CurrentCell != null)
-            //{
+            string sectorName = control.Text;
             int currentRow = dgvRealizarCompra.CurrentCell.RowIndex;
             long espectaculoId = long.Parse(dgvRealizarCompra.Rows[currentRow].Cells["Id"].Value.ToString());
-            asientos = new GetData().GetAsientosBySectorAndEspectaculo(sectorId, espectaculoId);
+            long sectorId = new GetData().GetByNameSectorId(control.Text);
+            List<LocalidadAsiento> asientos = new Diccionario().GetAsientosDiccionarioByEspectaculoAndSector(sectorName, espectaculoId);
             DrawOnGroupBox(control, e, asientos);
-            //}
-            //else
-            //{
-            //    asientos = new GetData().GetAsientosBySector(sectorName);
-            //    DrawOnGroupBox(control, e, asientos);
-            //}
         }
         private void DrawOnGroupBox(Control groupBox, PaintEventArgs e, List<LocalidadAsiento> asientos)
         {
@@ -143,24 +135,13 @@ namespace ProyectoFinal.ViewLayer
                             g.FillRectangle(Brushes.Green, columnIndex, rowIndex, side, side);
                             g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
                             columnIndex = columnIndex + side + space;
-                            if (asiento.NumeroAsiento == 282 || asiento.NumeroAsiento == 281 || asiento.NumeroAsiento == 283)
-                            {
-                                Console.WriteLine($"pinta asiento x:{columnIndex} y: {rowIndex} width:  {groupBox.Width}  side:  {side} groupbox: {groupBox.Text} numeroasiento: {asiento.NumeroAsiento}");
-                                g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
-                            }
                         }
                         else
                         {
                             g.FillRectangle(Brushes.Red, columnIndex, rowIndex, side, side);
                             g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
                             columnIndex = columnIndex + side + space;
-                            if (asiento.NumeroAsiento == 282 || asiento.NumeroAsiento == 281 || asiento.NumeroAsiento == 283)
-                            {
-                                Console.WriteLine($"pinta asiento x:{columnIndex} y: {rowIndex} width:  {groupBox.Width}  side:  {side} groupbox: {groupBox.Text} numeroasiento: {asiento.NumeroAsiento}");
-                            }
                         }
-                        //g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
-                        //columnIndex = columnIndex + side + space;
                     }
                     else if (rowIndex + side <= groupBox.Height)
                     {
@@ -171,10 +152,6 @@ namespace ProyectoFinal.ViewLayer
                             columnIndex = columnIndex + side + space;
                             columnIndex = space;
                             rowIndex = rowIndex + side + space;
-                            if (asiento.NumeroAsiento == 282 || asiento.NumeroAsiento == 281 || asiento.NumeroAsiento == 283)
-                            {
-                                Console.WriteLine($"pinta asiento x:{columnIndex} y: {rowIndex} width:  {groupBox.Width}  side:  {side} groupbox: {groupBox.Text} numeroasiento: {asiento.NumeroAsiento}");
-                            }
                         }
                         else
                         {
@@ -183,14 +160,7 @@ namespace ProyectoFinal.ViewLayer
                             columnIndex = columnIndex + side + space;
                             columnIndex = space;
                             rowIndex = rowIndex + side + space;
-                            if (asiento.NumeroAsiento == 282 || asiento.NumeroAsiento == 281 || asiento.NumeroAsiento == 283)
-                            {
-                                Console.WriteLine($"pinta asiento x:{columnIndex} y: {rowIndex} width:   {groupBox.Width}   side:   {side}  groupbox:  {groupBox.Text} numeroasiento: {asiento.NumeroAsiento}");
-
-
-                            }
                         }
-                        //g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
                     }
 
                 }
@@ -232,6 +202,7 @@ namespace ProyectoFinal.ViewLayer
             Compra compra = new Compra();
             DialogResult result = MessageBox.Show("¿Está seguro de que desea realizar la compra?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             bool comrpasOK = true;
+            long espectaculoId = long.Parse(dgvRealizarCompra.CurrentRow.Cells["Id"].Value.ToString());
             if (result == DialogResult.Yes)
             {
                 if (asientosSeleccionados.Count != 0)
@@ -239,7 +210,7 @@ namespace ProyectoFinal.ViewLayer
                     foreach (var item in asientosSeleccionados)
                     {
                         le.Sectorid = new GetData().GetSectorByAsiento(item).Id;
-                        le.Espectaculoid = long.Parse(dgvRealizarCompra.CurrentRow.Cells["Id"].Value.ToString());
+                        le.Espectaculoid = espectaculoId;
                         le.LocalidadAsientoid = new GetData().GetlocalidadAsientoByAsiento(int.Parse(item)).Id;
                         le.Precio = int.Parse(lblValorimporteTotal.Text.Replace("$",""));
                         le.Id = le.crearLocalidadEspectaculo(le);
@@ -257,6 +228,7 @@ namespace ProyectoFinal.ViewLayer
                     if (comrpasOK)
                     {
                         MessageBox.Show("Compra realizada con exito");
+                        Diccionario.GetInstance().actualizarDiccionario(asientosSeleccionados, espectaculoId);
                         gbSA.Invalidate();
                         gbSC.Invalidate();
                     }              
@@ -302,7 +274,7 @@ namespace ProyectoFinal.ViewLayer
             asientosSeleccionados.Clear();
             long espectaculoID = long.Parse(dgvRealizarCompra.CurrentRow.Cells["Id"].Value.ToString());
             bool asientosOK = true;
-            List<string> asientosDisponibles = new GetData().GetAsientosDisponibles(espectaculoID);
+            List<string> asientosDisponibles = Diccionario.GetInstance().getAsientosDisponibles(espectaculoID);
             foreach (var item in txtAsientosSeleccionados.Text.Split(new char[] { ' ', ',', '.', '/', '-' }, StringSplitOptions.RemoveEmptyEntries))
             {
                 AsientosSeleccionados.Add(item);

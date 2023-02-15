@@ -24,7 +24,63 @@ namespace ProyectoFinal.ControlerLayer
 
         private static Dictionary<long, List<LocalidadAsiento>> _asientosCache = new Dictionary<long, List<LocalidadAsiento>>();
 
-        
+        //public void actualizarDiccionario(List<string> asientosComprados, long espectaculoId)
+        //{
+        //    List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
+        //    if (_asientosCache.ContainsKey(espectaculoId))
+        //    {
+        //        asientos = _asientosCache[espectaculoId].ToList();
+        //        // Iterar por los asientos comprados
+        //        foreach (string asiento in asientosComprados)
+        //        {
+        //            // Verificar que el asiento esté en el diccionario
+
+        //            if (asientos[])
+        //            {
+        //                // Actualizar el estado del asiento a "false"
+        //                _asientosCache[espectaculoId][asiento] = false;
+        //            }
+        //        }
+        //    }
+        //}
+        public List<string> getAsientosDisponibles(long espectaculoId)
+        {
+            var list = new List<string>();
+            List<LocalidadAsiento> asientosEspectaculo = new List<LocalidadAsiento>();
+            if (_asientosCache.ContainsKey(espectaculoId))
+            {
+                asientosEspectaculo = _asientosCache[espectaculoId].ToList();                
+                foreach (var asiento in asientosEspectaculo)
+                {
+                   
+                    if (asiento.EstadoAsiento)
+                        list.Add(asiento.NumeroAsiento.ToString());                 
+                }
+                
+            }
+            return list;
+        }
+        public void actualizarDiccionario(List<string> asientosComprados, long espectaculoId)
+        {
+            List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
+            if (_asientosCache.ContainsKey(espectaculoId))
+            {
+                asientos = _asientosCache[espectaculoId].ToList();
+                // Iterar por los asientos comprados
+                foreach (string numeroAsiento in asientosComprados)
+                {
+                    // Buscar el objeto de tipo asiento correspondiente en la lista
+                    LocalidadAsiento asiento = asientos.FirstOrDefault(a => a.NumeroAsiento == int.Parse(numeroAsiento));
+                    if (asiento != null)
+                    {
+                        // Actualizar el estado del asiento a "comprado"
+                        asiento.EstadoAsiento = false;
+                    }
+                }
+                // Actualizar el diccionario con la lista de asientos actualizada
+                _asientosCache[espectaculoId] = asientos;
+            }
+        }
 
         public void llenarDiccionario()
         {

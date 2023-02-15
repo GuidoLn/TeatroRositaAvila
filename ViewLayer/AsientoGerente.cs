@@ -115,29 +115,8 @@ namespace ProyectoFinal.ViewLayer
             int currentRow = dgvAsientos.CurrentCell.RowIndex;
             long espectaculoId = long.Parse(dgvAsientos.Rows[currentRow].Cells["Id"].Value.ToString());
             long sectorId = new GetData().GetByNameSectorId(control.Text);
-            List<LocalidadAsiento> asientos = new Diccionario().GetAsientosDiccionarioByEspectaculoAndSector(sectorName,espectaculoId);
-            //if (dgvAsientos.CurrentCell != null)
-            //{            
-            DrawOnGroupBox(control, e, asientos);
-            //}
-            //else
-            //{
-            //    asientos = new GetData().GetAsientosBySector(sectorName);
-            //    DrawOnGroupBox(control, e, asientos);
-            //}
-
-            //if (dgvAsientos.CurrentCell != null)
-            //{
-            //    int currentRow = dgvAsientos.CurrentCell.RowIndex;
-            //    long espectaculoId = long.Parse(dgvAsientos.Rows[currentRow].Cells["Id"].Value.ToString());
-            //    asientos = new GetData().GetAsientosBySector(sectorName, espectaculoId);
-            //    DrawOnGroupBox(control, e, asientos);
-            //}
-            //else
-            //{
-            //    asientos = new GetData().GetAsientosBySector(sectorName);
-            //    DrawOnGroupBox(control, e, asientos);
-            //}
+            List<LocalidadAsiento> asientos = new Diccionario().GetAsientosDiccionarioByEspectaculoAndSector(sectorName,espectaculoId);                      
+            DrawOnGroupBox(control, e, asientos);            
         }
         private void DrawOnGroupBox(Control groupBox, PaintEventArgs e, List<LocalidadAsiento> asientos)
         {
@@ -170,9 +149,7 @@ namespace ProyectoFinal.ViewLayer
                             g.FillRectangle(Brushes.Red, columnIndex, rowIndex, side, side);
                             g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
                             columnIndex = columnIndex + side + space;                          
-                        }
-                        //g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
-                        //columnIndex = columnIndex + side + space;
+                        }              
                     }
                     else if (rowIndex + side <= groupBox.Height)
                     {                        
@@ -192,7 +169,6 @@ namespace ProyectoFinal.ViewLayer
                             columnIndex = space;
                             rowIndex = rowIndex + side + space;                        
                         }
-                        //g.DrawString(asiento.NumeroAsiento.ToString(), new Font("Arial", 8), Brushes.White, new PointF(columnIndex + (side / 4), rowIndex + (side / 4)));
                     }
 
                 }

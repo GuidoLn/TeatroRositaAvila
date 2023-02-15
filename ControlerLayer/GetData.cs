@@ -253,28 +253,28 @@ namespace ProyectoFinal.ControlerLayer
         //    }
         //    return asientos;
         //}
-        public List<string> GetAsientosDisponibles(long idEspectaculo)
-        {
-            List<string> numerosAsientos = new List<string>();
-            List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
-            using (TeatroEntities db = new TeatroEntities()) asientos = db.LocalidadAsiento.ToList();
-            List<Compra> comprasByEspectaculo = new GetData().GetComprasByEspectaculo(idEspectaculo);
-            foreach (var asiento in asientos)
-            {
-                foreach (var compra in comprasByEspectaculo)
-                {
-                    compra.LocalidadEspectaculo = new GetData().GetLocalidadEspectaculoById(compra.LocalidadEspectaculoid);
-                    if (asiento.Id != compra.LocalidadEspectaculo.LocalidadAsientoid)
-                    {
-                        numerosAsientos.Add(asiento.NumeroAsiento.ToString());
-                        break;
-                    }
-                }
-            }
+        //public List<string> GetAsientosDisponibles(long idEspectaculo)
+        //{
+        //    List<string> numerosAsientos = new List<string>();
+        //    List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
+        //    using (TeatroEntities db = new TeatroEntities()) asientos = db.LocalidadAsiento.ToList();
+        //    List<Compra> comprasByEspectaculo = new GetData().GetComprasByEspectaculo(idEspectaculo);
+        //    foreach (var asiento in asientos)
+        //    {
+        //        foreach (var compra in comprasByEspectaculo)
+        //        {
+        //            compra.LocalidadEspectaculo = new GetData().GetLocalidadEspectaculoById(compra.LocalidadEspectaculoid);
+        //            if (asiento.Id != compra.LocalidadEspectaculo.LocalidadAsientoid)
+        //            {
+        //                numerosAsientos.Add(asiento.NumeroAsiento.ToString());
+        //                break;
+        //            }
+        //        }
+        //    }
 
 
-            return numerosAsientos;
-        }
+        //    return numerosAsientos;
+        //}
         public Sector GetSectorByAsiento(string asiento)
         {
             Sector sector = new Sector();
