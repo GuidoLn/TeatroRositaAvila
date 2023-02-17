@@ -34,7 +34,7 @@
             this.gbSC = new System.Windows.Forms.GroupBox();
             this.gbSA = new System.Windows.Forms.GroupBox();
             this.btnComprar = new System.Windows.Forms.Button();
-            this.btnCancelar = new System.Windows.Forms.Button();
+            this.btnAtras = new System.Windows.Forms.Button();
             this.gbCaja = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.lbllinea = new System.Windows.Forms.Label();
@@ -134,16 +134,17 @@
             this.btnComprar.UseVisualStyleBackColor = false;
             this.btnComprar.Click += new System.EventHandler(this.BtnComprar_Click);
             // 
-            // btnCancelar
+            // btnAtras
             // 
-            this.btnCancelar.BackColor = System.Drawing.Color.Red;
-            this.btnCancelar.ForeColor = System.Drawing.Color.Black;
-            this.btnCancelar.Location = new System.Drawing.Point(1153, 500);
-            this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(75, 23);
-            this.btnCancelar.TabIndex = 9;
-            this.btnCancelar.Text = "Cancelar";
-            this.btnCancelar.UseVisualStyleBackColor = false;
+            this.btnAtras.BackColor = System.Drawing.Color.Red;
+            this.btnAtras.ForeColor = System.Drawing.Color.Black;
+            this.btnAtras.Location = new System.Drawing.Point(1153, 500);
+            this.btnAtras.Name = "btnAtras";
+            this.btnAtras.Size = new System.Drawing.Size(75, 23);
+            this.btnAtras.TabIndex = 9;
+            this.btnAtras.Text = "Atras";
+            this.btnAtras.UseVisualStyleBackColor = false;
+            this.btnAtras.Click += new System.EventHandler(this.btnAtras_Click);
             // 
             // gbCaja
             // 
@@ -415,7 +416,7 @@
             this.ClientSize = new System.Drawing.Size(1290, 556);
             this.Controls.Add(this.gbSeleccionAsientos);
             this.Controls.Add(this.gbCaja);
-            this.Controls.Add(this.btnCancelar);
+            this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.btnComprar);
             this.Controls.Add(this.gbSC);
             this.Controls.Add(this.gbSA);
@@ -443,7 +444,7 @@
         private System.Windows.Forms.GroupBox gbSC;
         private System.Windows.Forms.GroupBox gbSA;
         private System.Windows.Forms.Button btnComprar;
-        private System.Windows.Forms.Button btnCancelar;
+        private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.GroupBox gbCaja;
         private System.Windows.Forms.TextBox txtDescuento;
         private System.Windows.Forms.TextBox txtValorRecibido;

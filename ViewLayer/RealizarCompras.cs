@@ -196,6 +196,22 @@ namespace ProyectoFinal.ViewLayer
 
         }
 
+        private int autoConvertToInt(string valor)
+        {
+            int descuento;
+            double descuentoAux;
+            if (valor == "")
+            {
+                descuento = 0;
+            }
+            else
+            {
+                descuentoAux = Math.Round(double.Parse(valor));
+                descuento = int.Parse(descuentoAux.ToString());
+            }
+            return descuento;
+        }
+
         private void BtnComprar_Click(object sender, EventArgs e)
         {
             LocalidadEspectaculo le = new LocalidadEspectaculo();
@@ -203,6 +219,7 @@ namespace ProyectoFinal.ViewLayer
             DialogResult result = MessageBox.Show("¿Está seguro de que desea realizar la compra?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             bool comrpasOK = true;
             long espectaculoId = long.Parse(dgvRealizarCompra.CurrentRow.Cells["Id"].Value.ToString());
+            int descuento = autoConvertToInt(txtDescuento.Text.Replace("%", ""));
             if (result == DialogResult.Yes)
             {
                 if (asientosSeleccionados.Count != 0)
@@ -216,7 +233,7 @@ namespace ProyectoFinal.ViewLayer
                         le.Id = le.crearLocalidadEspectaculo(le);
                         compra.Unidades = 1;
                         compra.MetodoDePago = gbMetodopago.Text;
-                        compra.Descuento = int.Parse(txtDescuento.Text.Replace("%", ""));
+                        compra.Descuento = descuento;
                         compra.LocalidadEspectaculoid = le.Id;
                         compra.Espectaculoid = le.Espectaculoid;
                         if (!compra.realizarCompra(compra))
@@ -229,6 +246,7 @@ namespace ProyectoFinal.ViewLayer
                     {
                         MessageBox.Show("Compra realizada con exito");
                         Diccionario.GetInstance().actualizarDiccionario(asientosSeleccionados, espectaculoId);
+                        asientosSeleccionados.Clear();
                         gbSA.Invalidate();
                         gbSC.Invalidate();
                     }              
@@ -315,20 +333,21 @@ namespace ProyectoFinal.ViewLayer
         {
             if (gbMetodopago.Text == "Credito")
             {
-                double subTotal = float.Parse(lblValorimporte.Text.ToString().Replace("$", ""));
+                int subTotal = autoConvertToInt(lblValorimporte.Text.ToString().Replace("$", ""));
                 double total = (subTotal + (subTotal * 0.1));
                 double descuento;
                 try
                 {
-                    descuento = double.Parse(txtDescuento.Text.Replace("%", ""));
                     descuento = (double.Parse(txtDescuento.Text.Replace("%", ""))) / 100;
-                    total = total - (total * descuento);
+                    total = (total - (total * descuento));
+                    total = Math.Round(total);
                     lblValorimporteTotal.Text = $"${total}";
                     lblValorTotal.Text = $"${total}";
 
                 }
                 catch (System.FormatException e)
                 {
+                    total = Math.Round(total);
                     txtDescuento.Text = "%";
                     lblValorimporteTotal.Text = $"${total}";
                     lblValorTotal.Text = $"${total}";
@@ -338,19 +357,21 @@ namespace ProyectoFinal.ViewLayer
             }
             else
             {                
-                double subTotal = float.Parse(lblValorimporte.Text.ToString().Replace("$", ""));
+                int subTotal = autoConvertToInt(lblValorimporte.Text.ToString().Replace("$", ""));
                 double total = subTotal;
                 try
                 {
-                    double descuento = double.Parse(txtDescuento.Text.Replace("%", ""));
-                    descuento = (double.Parse(txtDescuento.Text.Replace("%", ""))) / 100;
-                    total = total - (total * descuento);
+                    double descuento = (double.Parse(txtDescuento.Text.Replace("%", "")))/100;                    
+                    total = (total - (total * descuento));
+                    total = Math.Round(total);
                     lblValorimporteTotal.Text = $"${total}";
                     lblValorTotal.Text = $"${total}";
 
                 }
                 catch (System.FormatException e)
                 {
+                    Console.WriteLine("toy en cat ch");
+                    total = Math.Round(total);
                     txtDescuento.Text = "%";
                     lblValorimporteTotal.Text = $"${total}";
                     lblValorTotal.Text = $"${total}";
@@ -382,6 +403,12 @@ namespace ProyectoFinal.ViewLayer
         private void RealizarCompras_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAtras_Click(object sender, EventArgs e)
+        {
+            new MainMenuUser().Show();
+            this.Close();
         }
     }
 }

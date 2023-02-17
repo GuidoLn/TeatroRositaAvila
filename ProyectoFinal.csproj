@@ -138,6 +138,12 @@
     <Compile Include="ViewLayer\AsientoGerente.Designer.cs">
       <DependentUpon>AsientoGerente.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewLayer\ComprasRealizadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewLayer\ComprasRealizadas.Designer.cs">
+      <DependentUpon>ComprasRealizadas.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewLayer\EspectaculoGerente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewLayer\AsientoGerente.resx">
       <DependentUpon>AsientoGerente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewLayer\ComprasRealizadas.resx">
+      <DependentUpon>ComprasRealizadas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewLayer\EspectaculoGerente.resx">
       <DependentUpon>EspectaculoGerente.cs</DependentUpon>

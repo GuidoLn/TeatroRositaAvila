@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="TeatroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="TeatroModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Artista">
           <Key>
             <PropertyRef Name="Id" />
@@ -68,7 +68,7 @@
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NombreEspectaculo" Type="varchar" MaxLength="80" Nullable="false" />
           <Property Name="DescripcionEspectaculo" Type="varchar" MaxLength="150" />
-          <Property Name="FechaYHora" Type="date" />
+          <Property Name="FechaYHora" Type="datetime" />
           <Property Name="EstadoEspectaculo" Type="bit" Nullable="false" />
           <Property Name="PrecioEspectaculo" Type="int" />
           <Property Name="Companiaid" Type="bigint" Nullable="false" />
@@ -88,7 +88,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Precio" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="int" />
           <Property Name="LocalidadAsientoid" Type="bigint" Nullable="false" />
           <Property Name="Espectaculoid" Type="bigint" Nullable="false" />
           <Property Name="Sectorid" Type="bigint" Nullable="false" />
@@ -329,8 +329,7 @@
             <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeatroModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -408,7 +407,7 @@
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NombreEspectaculo" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="DescripcionEspectaculo" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
-          <Property Name="FechaYHora" Type="DateTime" Precision="0" />
+          <Property Name="FechaYHora" Type="DateTime" Precision="3" />
           <Property Name="EstadoEspectaculo" Type="Boolean" Nullable="false" />
           <Property Name="PrecioEspectaculo" Type="Int32" />
           <Property Name="Companiaid" Type="Int64" Nullable="false" />
@@ -433,7 +432,7 @@
             <PropertyRef Name="Id" />
           </Key>
           <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Precio" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Int32" />
           <Property Name="LocalidadAsientoid" Type="Int64" Nullable="false" />
           <Property Name="Espectaculoid" Type="Int64" Nullable="false" />
           <Property Name="Sectorid" Type="Int64" Nullable="false" />
