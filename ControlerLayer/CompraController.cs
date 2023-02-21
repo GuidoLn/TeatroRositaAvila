@@ -16,6 +16,20 @@ namespace ProyectoFinal.ControlerLayer
             return resultado;
         }
 
+        public List<Compra> GetComprasByEspectaculo(long espectaculoId)
+        {
+            List<Compra> compras = new List<Compra>();
+
+            using (TeatroEntities db = new TeatroEntities())
+            {
+                compras = db.Compra
+                    .Where(le => le.Espectaculoid == espectaculoId)
+                    .ToList();
+            }
+
+            return compras;
+        }
+
         public List<Compra> GetCompras()
         {
             List<Compra> compras = new List<Compra>();
