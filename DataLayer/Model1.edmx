@@ -42,6 +42,7 @@
           <Property Name="Descuento" Type="int" Nullable="false" />
           <Property Name="LocalidadEspectaculoid" Type="bigint" Nullable="false" />
           <Property Name="Espectaculoid" Type="bigint" Nullable="false" />
+          <Property Name="FechaHora" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -377,6 +378,7 @@
           <Property Name="Espectaculoid" Type="Int64" Nullable="false" />
           <NavigationProperty Name="Espectaculo" Relationship="Self.FK_Espectaculoid2" FromRole="Compra" ToRole="Espectaculo" />
           <NavigationProperty Name="LocalidadEspectaculo" Relationship="Self.FK_LocalidadEspectaculoid" FromRole="Compra" ToRole="LocalidadEspectaculo" />
+          <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -720,6 +722,7 @@
           <EntitySetMapping Name="Compra">
             <EntityTypeMapping TypeName="TeatroModel.Compra">
               <MappingFragment StoreEntitySet="Compra">
+                <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MetodoDePago" ColumnName="MetodoDePago" />
                 <ScalarProperty Name="Unidades" ColumnName="Unidades" />

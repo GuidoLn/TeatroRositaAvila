@@ -17,32 +17,56 @@ namespace ProyectoFinal.ControlerLayer
             if (_instance == null)
             {
                 _instance = new Diccionario();
-                _instance.llenarDiccionario();
+                _instance.llenarDiccionarioEspectaculos();
+                _instance.llenarDiccionarioCompras();
             }
             return _instance;
         }
 
         private static Dictionary<long, List<LocalidadAsiento>> _asientosCache = new Dictionary<long, List<LocalidadAsiento>>();
+        private static Dictionary<DateTime, List<LocalidadEspectaculo>> _localidadEspectaculoByFechaCache = new Dictionary<DateTime, List<LocalidadEspectaculo>>();
 
-        //public void actualizarDiccionario(List<string> asientosComprados, long espectaculoId)
-        //{
-        //    List<LocalidadAsiento> asientos = new List<LocalidadAsiento>();
-        //    if (_asientosCache.ContainsKey(espectaculoId))
-        //    {
-        //        asientos = _asientosCache[espectaculoId].ToList();
-        //        // Iterar por los asientos comprados
-        //        foreach (string asiento in asientosComprados)
-        //        {
-        //            // Verificar que el asiento esté en el diccionario
+        public void llenarDiccionarioCompras()
+        {
+            // Obtener todas las compras de la base de datos
+            List<Compra> compras = new GetData().GetCompras();
 
-        //            if (asientos[])
-        //            {
-        //                // Actualizar el estado del asiento a "false"
-        //                _asientosCache[espectaculoId][asiento] = false;
-        //            }
-        //        }
-        //    }
-        //}
+            // Agrupar las compras por diferencia de minutos
+            Dictionary<DateTime, List<Compra>> comprasPorMinuto = new Dictionary<DateTime, List<Compra>>();
+            foreach (Compra compra in compras)
+            {
+                DateTime fechaCompra = compra.FechaHora;
+
+                // Redondear la fecha y hora al minuto más cercano
+                DateTime fechaCompraRedondeada = fechaCompra.AddMilliseconds(-fechaCompra.Millisecond);
+                fechaCompraRedondeada = fechaCompraRedondeada.AddSeconds(-fechaCompraRedondeada.Second);
+
+
+                if (comprasPorMinuto.ContainsKey(fechaCompraRedondeada))
+                {
+                    // Agregar la compra a la lista existente para este minuto
+                    comprasPorMinuto[fechaCompraRedondeada].Add(compra);
+                }
+                else
+                {
+                    // Crear una nueva lista de compras para este minuto
+                    List<Compra> comprasDeEsteMinuto = new List<Compra>();
+                    comprasDeEsteMinuto.Add(compra);
+                    comprasPorMinuto.Add(fechaCompraRedondeada, comprasDeEsteMinuto);
+                }
+            }
+
+            // Guardar el diccionario de compras por minuto en el diccionario de asientos por compras          
+            _localidadEspectaculoByFechaCache = comprasPorMinuto.ToDictionary(
+                kvp => kvp.Key,
+                kvp => kvp.Value.Select(compra => ConvertirCompraEnLocalidadEspectaculo(compra)).ToList());
+        }
+        public LocalidadEspectaculo ConvertirCompraEnLocalidadEspectaculo(Compra compra)
+        {
+            LocalidadEspectaculo localidadEspectaculo = new LocalidadEspectaculo();
+            localidadEspectaculo = new GetData().getLocalidadEspectaculoByCompra(compra);
+            return localidadEspectaculo;
+        }
         public List<string> getAsientosDisponibles(long espectaculoId)
         {
             var list = new List<string>();
@@ -82,7 +106,7 @@ namespace ProyectoFinal.ControlerLayer
             }
         }
 
-        public void llenarDiccionario()
+        public void llenarDiccionarioEspectaculos()
         {
             List<Espectaculo> espectaculos = new GetData().GetEspectaculos();
             foreach (var item in espectaculos)

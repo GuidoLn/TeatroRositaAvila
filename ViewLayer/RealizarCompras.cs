@@ -236,6 +236,7 @@ namespace ProyectoFinal.ViewLayer
                         compra.Descuento = descuento;
                         compra.LocalidadEspectaculoid = le.Id;
                         compra.Espectaculoid = le.Espectaculoid;
+                        compra.FechaHora = DateTime.Now;
                         if (!compra.realizarCompra(compra))
                         {
                             comrpasOK = false;

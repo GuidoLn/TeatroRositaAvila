@@ -141,7 +141,7 @@ namespace ProyectoFinal.ViewLayer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(584, 421);
+            this.ClientSize = new System.Drawing.Size(580, 429);
             this.Controls.Add(this.bt_AdALogin);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);

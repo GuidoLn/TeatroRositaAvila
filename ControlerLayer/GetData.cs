@@ -52,6 +52,14 @@ namespace ProyectoFinal.ControlerLayer
 
             return companias;
         }
+        public List<Compra> GetCompras()
+        {
+            List<Compra> compras = new List<Compra>();
+
+            using (TeatroEntities db = new TeatroEntities()) compras = db.Compra.ToList();
+
+            return compras;
+        }
         public Compania GetByIdCompañia(long id)
         {
             List<Compania> companias = new List<Compania>();
@@ -209,7 +217,6 @@ namespace ProyectoFinal.ControlerLayer
         //    }
         //    return asientos;
         //}
-        private static Dictionary<string, List<LocalidadAsiento>> _asientosCache = new Dictionary<string, List<LocalidadAsiento>>();
         public List<LocalidadAsiento> GetAsientosBySectorAndEspectaculo(long sectorId, long espectaculoId)
         {
             using (TeatroEntities db = new TeatroEntities())
@@ -324,6 +331,20 @@ namespace ProyectoFinal.ControlerLayer
 
             }
             return precioFinal;
+        }
+        public LocalidadEspectaculo getLocalidadEspectaculoByCompra(Compra compra)
+        {
+            LocalidadEspectaculo localidadEspectaculo;
+            using (TeatroEntities db = new TeatroEntities())
+            {
+                localidadEspectaculo = db.Compra
+                .Where(c => c.Id == compra.Id) // filtramos por el Id de la compra
+                .Select(c => c.LocalidadEspectaculo) // seleccionamos la localidad de asiento de la compra
+                .FirstOrDefault();
+            }       
+
+           
+            return localidadEspectaculo;
         }
 
     }
