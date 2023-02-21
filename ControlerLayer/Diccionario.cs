@@ -26,6 +26,8 @@ namespace ProyectoFinal.ControlerLayer
         private static Dictionary<long, List<LocalidadAsiento>> _asientosCache = new Dictionary<long, List<LocalidadAsiento>>();
         private static Dictionary<DateTime, List<LocalidadEspectaculo>> _localidadEspectaculoByFechaCache = new Dictionary<DateTime, List<LocalidadEspectaculo>>();
 
+        public static Dictionary<DateTime, List<LocalidadEspectaculo>> LocalidadEspectaculoByFechaCache { get => _localidadEspectaculoByFechaCache; set => _localidadEspectaculoByFechaCache = value; }
+
         public void llenarDiccionarioCompras()
         {
             // Obtener todas las compras de la base de datos
@@ -150,7 +152,7 @@ namespace ProyectoFinal.ControlerLayer
 
                 return result;
             }
-        }
+        }     
         public List<LocalidadAsiento> GetAsientosDiccionarioByEspectaculo(long espectaculoId)
         {
             List<LocalidadAsiento> asientos = _asientosCache[espectaculoId];
