@@ -8,7 +8,7 @@
         <EntityTypeShape EntityType="TeatroModel.Artista" Width="1.5" PointX="3" PointY="2.875" IsExpanded="true" />
         <EntityTypeShape EntityType="TeatroModel.Cliente" Width="1.5" PointX="11" PointY="11.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TeatroModel.Compania" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeatroModel.Compra" Width="1.5" PointX="5.25" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeatroModel.Compra" Width="1.5" PointX="5.5" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TeatroModel.Cuenta" Width="1.5" PointX="8.75" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TeatroModel.Empleado" Width="1.5" PointX="11" PointY="8.375" IsExpanded="true" />
         <EntityTypeShape EntityType="TeatroModel.Espectaculo" Width="1.5" PointX="3" PointY="5.5" IsExpanded="true" />
@@ -29,6 +29,7 @@
         <AssociationConnector Association="TeatroModel.FK_LocalidadAsientoid" ManuallyRouted="false" />
         <AssociationConnector Association="TeatroModel.FK_Sectorid" ManuallyRouted="false" />
         <AssociationConnector Association="TeatroModel.FK_Sectorid2" ManuallyRouted="false" />
+        <AssociationConnector Association="TeatroModel.FK_Compra_Cuenta" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

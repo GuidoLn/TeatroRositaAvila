@@ -9,83 +9,54 @@
 //------------------------------------------------------------------------------
 
 using System.Linq;
+
 namespace ProyectoFinal.DataLayer
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
     public partial class Cuenta
     {
 
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-    public Cuenta()
-    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Cuenta()
+        {
 
-        this.Cliente = new HashSet<Cliente>();
+            this.Cliente = new HashSet<Cliente>();
 
-        this.Empleado = new HashSet<Empleado>();
+            this.Empleado = new HashSet<Empleado>();
+
+            this.Compra = new HashSet<Compra>();
+
+        }
+
+
+        public long Id { get; set; }
+
+        public string Usuario { get; set; }
+
+        public string Contraseña { get; set; }
+
+        public bool Estado { get; set; }
+
+        public string TipoUsuario { get; set; }
+
+
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Cliente> Cliente { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Empleado> Empleado { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+        public virtual ICollection<Compra> Compra { get; set; }
+
 
     }
-
-
-    public long Id { get; set; }
-
-    public string Usuario { get; set; }
-
-    public string Contraseña { get; set; }
-
-    public bool Estado { get; set; }
-
-    public string TipoUsuario { get; set; }
-
-
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Cliente> Cliente { get; set; }
-
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-    public virtual ICollection<Empleado> Empleado { get; set; }
-
-        public string verificarCuenta(string usuario, string clave)
-        {
-            List<Cuenta> cuentas = new List<Cuenta>();
-
-            using (TeatroEntities db = new TeatroEntities())
-            {
-                cuentas = db.Cuenta.ToList();
-            }
-
-            foreach (Cuenta element in cuentas)
-            {
-                if (usuario == element.Usuario && clave == element.Contraseña)
-                {
-                    return element.TipoUsuario;
-                }
-            }
-
-            return string.Empty;
-        }
-        public string verificarCuenta(string userName)
-        {
-            List<Cuenta> cuentas = new List<Cuenta>();
-
-            using (TeatroEntities db = new TeatroEntities())
-            {
-                cuentas = db.Cuenta.ToList();
-            }
-
-            foreach (Cuenta element in cuentas)
-            {
-                if (userName == element.Usuario)
-                {
-                    return element.TipoUsuario;
-                }
-            }
-
-            return string.Empty;
-        }
-    }
-
 }
+
+

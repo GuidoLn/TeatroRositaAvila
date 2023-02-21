@@ -141,7 +141,7 @@ namespace ProyectoFinal.ViewLayer
                 persona.Telefono = tbTelefono.Text;
                 persona.mail = tbEmail.Text;
 
-                bool result = new CrearUsuario().Registrar(persona, cuenta);
+                bool result = new CuentaController().Registrar(persona, cuenta);
 
                 if (result)
                 {
@@ -207,7 +207,7 @@ namespace ProyectoFinal.ViewLayer
                 persona.Telefono = tbTelefono.Text;
                 persona.mail = tbEmail.Text;
 
-                bool result = new ModificarUsuario().Modificar(persona, cuenta);
+                bool result = new CuentaController().Modificar(persona, cuenta);
 
                 if (result)
                 {
@@ -269,7 +269,7 @@ namespace ProyectoFinal.ViewLayer
             persona.Telefono = tbTelefono.Text;
             persona.mail = tbEmail.Text;
 
-            bool result = new ModificarUsuario().Modificar(persona, cuenta);
+            bool result = new CuentaController().Modificar(persona, cuenta);
 
             if (result)
             {

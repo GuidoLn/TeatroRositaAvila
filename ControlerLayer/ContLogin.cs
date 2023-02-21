@@ -11,9 +11,11 @@ namespace ProyectoFinal.ControlerLayer
     public class ContLogin
     {
         private string usuarioLogueado;
+        private long usuarioLogueadoid;
         private static ContLogin _instance;
 
         public string UsuarioLogueado { get => usuarioLogueado; set => usuarioLogueado = value; }
+        public long UsuarioLogueadoid { get => usuarioLogueadoid; set => usuarioLogueadoid = value; }
 
         private ContLogin() { }
         public static ContLogin GetInstance()
@@ -27,13 +29,17 @@ namespace ProyectoFinal.ControlerLayer
         public string verificarCuenta(string usuario, string clave)
         {
             string resultado = string.Empty;
-            resultado = new Cuenta().verificarCuenta(usuario, clave);
+            resultado = new CuentaController().verificarCuenta(usuario, clave);
+            if (resultado != string.Empty)
+            {
+                usuarioLogueadoid = new CuentaController().traerCuentaidByNombre(usuario);
+            }
             return resultado;
         }
         public string verificarCuenta(string userName)
         {
             string resultado = string.Empty;
-            resultado = new Cuenta().verificarCuenta(userName);
+            resultado = new CuentaController().verificarCuenta(userName);
             return resultado;
         }
 

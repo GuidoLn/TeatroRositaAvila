@@ -29,7 +29,7 @@ namespace ProyectoFinal.ControlerLayer
         public void llenarDiccionarioCompras()
         {
             // Obtener todas las compras de la base de datos
-            List<Compra> compras = new GetData().GetCompras();
+            List<Compra> compras = new CompraController().GetCompras();
 
             // Agrupar las compras por diferencia de minutos
             Dictionary<DateTime, List<Compra>> comprasPorMinuto = new Dictionary<DateTime, List<Compra>>();

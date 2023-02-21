@@ -12,45 +12,36 @@
 namespace ProyectoFinal.DataLayer
 {
 
-using System;
+    using System;
     using System.Collections.Generic;
-    
-public partial class Compra
-{
 
-    public long Id { get; set; }
+    public partial class Compra
+    {
 
-    public string MetodoDePago { get; set; }
+        public long Id { get; set; }
 
-    public int Unidades { get; set; }
+        public string MetodoDePago { get; set; }
 
-    public int Descuento { get; set; }
+        public int Unidades { get; set; }
 
-    public long LocalidadEspectaculoid { get; set; }
+        public int Descuento { get; set; }
 
-    public long Espectaculoid { get; set; }
+        public long LocalidadEspectaculoid { get; set; }
 
-    public System.DateTime FechaHora { get; set; }
+        public long Espectaculoid { get; set; }
+
+        public System.DateTime FechaHora { get; set; }
+
+        public Nullable<long> Cuentaid { get; set; }
 
 
 
-    public virtual Espectaculo Espectaculo { get; set; }
+        public virtual Espectaculo Espectaculo { get; set; }
 
-    public virtual LocalidadEspectaculo LocalidadEspectaculo { get; set; }
+        public virtual LocalidadEspectaculo LocalidadEspectaculo { get; set; }
 
-        public bool realizarCompra(Compra compra)
-        {
-            bool resultado = false;
-            using (TeatroEntities db = new TeatroEntities())
-            {
-                db.Compra.Add(compra);
-                if (db.SaveChanges() == 1)
-                {
-                    resultado = true;
-                }
-            }
-            return resultado;
-        }
+        public virtual Cuenta Cuenta { get; set; }
+
     }
 
 }

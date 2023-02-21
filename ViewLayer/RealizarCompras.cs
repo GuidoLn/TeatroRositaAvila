@@ -214,6 +214,7 @@ namespace ProyectoFinal.ViewLayer
 
         private void BtnComprar_Click(object sender, EventArgs e)
         {
+            CompraController compraC = new CompraController();
             LocalidadEspectaculo le = new LocalidadEspectaculo();
             Compra compra = new Compra();
             DialogResult result = MessageBox.Show("¿Está seguro de que desea realizar la compra?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -237,7 +238,8 @@ namespace ProyectoFinal.ViewLayer
                         compra.LocalidadEspectaculoid = le.Id;
                         compra.Espectaculoid = le.Espectaculoid;
                         compra.FechaHora = DateTime.Now;
-                        if (!compra.realizarCompra(compra))
+                        compra.Cuentaid = ContLogin.GetInstance().UsuarioLogueadoid;
+                        if (!compraC.realizarCompra(compra))
                         {
                             comrpasOK = false;
                         }

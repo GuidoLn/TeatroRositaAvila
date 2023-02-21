@@ -43,6 +43,7 @@
           <Property Name="LocalidadEspectaculoid" Type="bigint" Nullable="false" />
           <Property Name="Espectaculoid" Type="bigint" Nullable="false" />
           <Property Name="FechaHora" Type="datetime" Nullable="false" />
+          <Property Name="Cuentaid" Type="bigint" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -145,6 +146,18 @@
             </Principal>
             <Dependent Role="Espectaculo">
               <PropertyRef Name="Companiaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Compra_Cuenta">
+          <End Role="Cuenta" Type="Self.Cuenta" Multiplicity="0..1" />
+          <End Role="Compra" Type="Self.Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="Cuentaid" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -289,6 +302,10 @@
             <End Role="Compania" EntitySet="Compania" />
             <End Role="Espectaculo" EntitySet="Espectaculo" />
           </AssociationSet>
+          <AssociationSet Name="FK_Compra_Cuenta" Association="Self.FK_Compra_Cuenta">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
           <AssociationSet Name="FK_Cuentaid" Association="Self.FK_Cuentaid">
             <End Role="Cuenta" EntitySet="Cuenta" />
             <End Role="Cliente" EntitySet="Cliente" />
@@ -379,6 +396,8 @@
           <NavigationProperty Name="Espectaculo" Relationship="Self.FK_Espectaculoid2" FromRole="Compra" ToRole="Espectaculo" />
           <NavigationProperty Name="LocalidadEspectaculo" Relationship="Self.FK_LocalidadEspectaculoid" FromRole="Compra" ToRole="LocalidadEspectaculo" />
           <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Cuentaid" Type="Int64" />
+          <NavigationProperty Name="Cuenta" Relationship="TeatroModel.FK_Compra_Cuenta" FromRole="Compra" ToRole="Cuenta" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -391,6 +410,7 @@
           <Property Name="TipoUsuario" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
           <NavigationProperty Name="Cliente" Relationship="Self.FK_Cuentaid" FromRole="Cuenta" ToRole="Cliente" />
           <NavigationProperty Name="Empleado" Relationship="Self.FK_Cuentaid2" FromRole="Cuenta" ToRole="Empleado" />
+          <NavigationProperty Name="Compra" Relationship="TeatroModel.FK_Compra_Cuenta" FromRole="Cuenta" ToRole="Compra" />
         </EntityType>
         <EntityType Name="Empleado">
           <Key>
@@ -682,7 +702,23 @@
             <End Role="Sector" EntitySet="Sector" />
             <End Role="LocalidadEspectaculo" EntitySet="LocalidadEspectaculo" />
           </AssociationSet>
+          <AssociationSet Name="FK_Compra_Cuenta" Association="TeatroModel.FK_Compra_Cuenta">
+            <End Role="Cuenta" EntitySet="Cuenta" />
+            <End Role="Compra" EntitySet="Compra" />
+          </AssociationSet>
         </EntityContainer>
+        <Association Name="FK_Compra_Cuenta">
+          <End Type="TeatroModel.Cuenta" Role="Cuenta" Multiplicity="0..1" />
+          <End Type="TeatroModel.Compra" Role="Compra" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cuenta">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Compra">
+              <PropertyRef Name="Cuentaid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -722,6 +758,7 @@
           <EntitySetMapping Name="Compra">
             <EntityTypeMapping TypeName="TeatroModel.Compra">
               <MappingFragment StoreEntitySet="Compra">
+                <ScalarProperty Name="Cuentaid" ColumnName="Cuentaid" />
                 <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="MetodoDePago" ColumnName="MetodoDePago" />

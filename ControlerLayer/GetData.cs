@@ -52,14 +52,7 @@ namespace ProyectoFinal.ControlerLayer
 
             return companias;
         }
-        public List<Compra> GetCompras()
-        {
-            List<Compra> compras = new List<Compra>();
 
-            using (TeatroEntities db = new TeatroEntities()) compras = db.Compra.ToList();
-
-            return compras;
-        }
         public Compania GetByIdCompañia(long id)
         {
             List<Compania> companias = new List<Compania>();
