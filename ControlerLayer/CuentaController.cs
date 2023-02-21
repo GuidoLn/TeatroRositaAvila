@@ -9,6 +9,26 @@ namespace ProyectoFinal.ControlerLayer
 {
     internal class CuentaController
     {
+
+        public List<Cuenta> GetCuentas()
+        {
+            List<Cuenta> cuentas = new List<Cuenta>();
+
+            using (TeatroEntities db = new TeatroEntities()) cuentas = db.Cuenta.ToList();
+
+            return cuentas;
+        }
+        public Cuenta GetByIdCuenta(long id)
+        {
+            List<Cuenta> cuentas = new List<Cuenta>();
+
+            using (TeatroEntities db = new TeatroEntities()) cuentas = db.Cuenta.ToList();
+
+            foreach (var item in cuentas) if (id == item.Id) return item;
+
+            return null;
+        }
+
         public bool Registrar(Persona p, Cuenta c)
         {
             using (TeatroEntities db = new TeatroEntities())

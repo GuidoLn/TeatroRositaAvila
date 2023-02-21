@@ -49,20 +49,7 @@ namespace ProyectoFinal.DataLayer
 
         public virtual Sector Sector { get; set; }
 
-        public long crearLocalidadEspectaculo(LocalidadEspectaculo localidadEspectaculo)
-        {
-            long resultado = 0;
-            using (TeatroEntities db = new TeatroEntities())
-            {
-                db.LocalidadEspectaculo.Add(localidadEspectaculo);
-                if (db.SaveChanges() == 1)
-                {
-                    resultado = localidadEspectaculo.Id;
-                    return resultado;
-                }
-            }
-            return resultado;
-        }
+   
     }
 
 }
