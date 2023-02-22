@@ -47,14 +47,19 @@ namespace ProyectoFinal.ControlerLayer
                 if (comprasPorMinuto.ContainsKey(fechaCompraRedondeada))
                 {
                     // Agregar la compra a la lista existente para este minuto
+                    if(compra.EstadoCompra)
                     comprasPorMinuto[fechaCompraRedondeada].Add(compra);
                 }
                 else
                 {
                     // Crear una nueva lista de compras para este minuto
-                    List<Compra> comprasDeEsteMinuto = new List<Compra>();
-                    comprasDeEsteMinuto.Add(compra);
-                    comprasPorMinuto.Add(fechaCompraRedondeada, comprasDeEsteMinuto);
+                    if (compra.EstadoCompra)
+                    {
+                        List<Compra> comprasDeEsteMinuto = new List<Compra>();
+                        comprasDeEsteMinuto.Add(compra);
+                        comprasPorMinuto.Add(fechaCompraRedondeada, comprasDeEsteMinuto);
+                    }    
+          
                 }
             }
 
@@ -128,7 +133,7 @@ namespace ProyectoFinal.ControlerLayer
                 var compras = (
                     from c in db.Compra
                     join le in db.LocalidadEspectaculo on c.LocalidadEspectaculoid equals le.Id
-                    where le.Espectaculoid == espectaculoId
+                    where le.Espectaculoid == espectaculoId && c.EstadoCompra == true
                     select new { AsientoId = le.LocalidadAsientoid, Compra = c }
                 ).ToDictionary(x => x.AsientoId, x => x.Compra);
 
@@ -150,8 +155,7 @@ namespace ProyectoFinal.ControlerLayer
                         EstadoAsiento = estadoAsiento,
                         Sector = asiento.Sector
                     };
-
-
+                    
                     result.Add(localidadAsiento);
                 }
 

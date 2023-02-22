@@ -12,36 +12,38 @@
 namespace ProyectoFinal.DataLayer
 {
 
-    using System;
+using System;
     using System.Collections.Generic;
+    
+public partial class Compra
+{
 
-    public partial class Compra
-    {
+    public long Id { get; set; }
 
-        public long Id { get; set; }
+    public string MetodoDePago { get; set; }
 
-        public string MetodoDePago { get; set; }
+    public int Unidades { get; set; }
 
-        public int Unidades { get; set; }
+    public int Descuento { get; set; }
 
-        public int Descuento { get; set; }
+    public long LocalidadEspectaculoid { get; set; }
 
-        public long LocalidadEspectaculoid { get; set; }
+    public long Espectaculoid { get; set; }
 
-        public long Espectaculoid { get; set; }
+    public System.DateTime FechaHora { get; set; }
 
-        public System.DateTime FechaHora { get; set; }
+    public Nullable<long> Cuentaid { get; set; }
 
-        public Nullable<long> Cuentaid { get; set; }
-
+    public bool EstadoCompra { get; set; }
 
 
-        public virtual Espectaculo Espectaculo { get; set; }
 
-        public virtual LocalidadEspectaculo LocalidadEspectaculo { get; set; }
+    public virtual Espectaculo Espectaculo { get; set; }
 
-        public virtual Cuenta Cuenta { get; set; }
+    public virtual LocalidadEspectaculo LocalidadEspectaculo { get; set; }
 
-    }
+    public virtual Cuenta Cuenta { get; set; }
+
+}
 
 }

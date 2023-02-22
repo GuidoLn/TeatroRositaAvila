@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoFinal.ViewLayer;
 using System.Globalization;
-using ProyectoFinal.ViewLayer;
 using ProyectoFinal.ControlerLayer;
 
 namespace ProyectoFinal.ViewLayer

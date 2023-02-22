@@ -84,8 +84,17 @@ namespace ProyectoFinal.ViewLayer
 
         private void btnAtrasCR_Click(object sender, EventArgs e)
         {
-            new MainMenuUser().Show();
-            this.Close();
+            if(ContLogin.GetInstance().verificarCuenta() == "empleado")
+            {
+                new MainMenuUser().Show();
+                this.Close();
+            }
+            if(ContLogin.GetInstance().verificarCuenta() == "admin")
+            {
+                new Admin().Show();
+                this.Close();
+            }
+            
         }
 
         private void txtBusqueda_TextChanged(object sender, EventArgs e)

@@ -12,44 +12,43 @@
 namespace ProyectoFinal.DataLayer
 {
 
-    using System;
+using System;
     using System.Collections.Generic;
+    
+public partial class LocalidadEspectaculo
+{
 
-    public partial class LocalidadEspectaculo
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+    public LocalidadEspectaculo()
     {
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LocalidadEspectaculo()
-        {
+        this.Compra = new HashSet<Compra>();
 
-            this.Compra = new HashSet<Compra>();
-
-        }
-
-
-        public long Id { get; set; }
-
-        public Nullable<int> Precio { get; set; }
-
-        public long LocalidadAsientoid { get; set; }
-
-        public long Espectaculoid { get; set; }
-
-        public long Sectorid { get; set; }
-
-
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-
-        public virtual ICollection<Compra> Compra { get; set; }
-
-        public virtual Espectaculo Espectaculo { get; set; }
-
-        public virtual LocalidadAsiento LocalidadAsiento { get; set; }
-
-        public virtual Sector Sector { get; set; }
-
-   
     }
+
+
+    public long Id { get; set; }
+
+    public Nullable<int> Precio { get; set; }
+
+    public long LocalidadAsientoid { get; set; }
+
+    public long Espectaculoid { get; set; }
+
+    public long Sectorid { get; set; }
+
+
+
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+
+    public virtual ICollection<Compra> Compra { get; set; }
+
+    public virtual Espectaculo Espectaculo { get; set; }
+
+    public virtual LocalidadAsiento LocalidadAsiento { get; set; }
+
+    public virtual Sector Sector { get; set; }
+
+}
 
 }

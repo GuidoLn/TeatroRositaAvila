@@ -44,6 +44,7 @@
           <Property Name="Espectaculoid" Type="bigint" Nullable="false" />
           <Property Name="FechaHora" Type="datetime" Nullable="false" />
           <Property Name="Cuentaid" Type="bigint" />
+          <Property Name="EstadoCompra" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -398,6 +399,7 @@
           <Property Name="FechaHora" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Cuentaid" Type="Int64" />
           <NavigationProperty Name="Cuenta" Relationship="TeatroModel.FK_Compra_Cuenta" FromRole="Compra" ToRole="Cuenta" />
+          <Property Name="EstadoCompra" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="Cuenta">
           <Key>
@@ -758,6 +760,7 @@
           <EntitySetMapping Name="Compra">
             <EntityTypeMapping TypeName="TeatroModel.Compra">
               <MappingFragment StoreEntitySet="Compra">
+                <ScalarProperty Name="EstadoCompra" ColumnName="EstadoCompra" />
                 <ScalarProperty Name="Cuentaid" ColumnName="Cuentaid" />
                 <ScalarProperty Name="FechaHora" ColumnName="FechaHora" />
                 <ScalarProperty Name="Id" ColumnName="Id" />

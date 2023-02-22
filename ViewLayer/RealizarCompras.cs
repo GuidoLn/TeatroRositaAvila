@@ -217,7 +217,7 @@ namespace ProyectoFinal.ViewLayer
             CompraController compraC = new CompraController();
             LocalidadEspectaculo le = new LocalidadEspectaculo();
             List<Compra> comprasRealizadas = new List<Compra>();
-            Compra compra = new Compra();            
+            //Compra compra = new Compra();            
             DialogResult result = MessageBox.Show("¿Está seguro de que desea realizar la compra?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             bool comrpasOK = true;
             long espectaculoId = long.Parse(dgvRealizarCompra.CurrentRow.Cells["Id"].Value.ToString());
@@ -228,6 +228,7 @@ namespace ProyectoFinal.ViewLayer
                 {
                     foreach (var item in asientosSeleccionados)
                     {
+                        Compra compra = new Compra();
                         le.Sectorid = new SectorController().GetSectorByAsiento(item).Id;
                         le.Espectaculoid = espectaculoId;
                         le.LocalidadAsientoid = new LocalidadAsientoController().GetlocalidadAsientoByAsiento(int.Parse(item)).Id;
@@ -237,7 +238,8 @@ namespace ProyectoFinal.ViewLayer
                         compra.MetodoDePago = gbMetodopago.Text;
                         compra.Descuento = descuento;
                         compra.LocalidadEspectaculoid = le.Id;
-                        compra.Espectaculoid = le.Espectaculoid;                        
+                        compra.Espectaculoid = le.Espectaculoid;
+                        compra.EstadoCompra = true;
                         DateTime fechaCompraRedondeada = DateTime.Now.AddMilliseconds(-compra.FechaHora.Millisecond);
                         fechaCompraRedondeada = fechaCompraRedondeada.AddSeconds(-fechaCompraRedondeada.Second);
                         compra.FechaHora = fechaCompraRedondeada;
