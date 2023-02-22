@@ -17,6 +17,7 @@ namespace ProyectoFinal.ViewLayer
         public ComprasRealizadas()
         {
             InitializeComponent();
+            cargarGrilla();
         }
         private void cargarGrilla()
         {
@@ -26,12 +27,8 @@ namespace ProyectoFinal.ViewLayer
         }
         private void llenarGrilla()
         {
-            dgvCompras.Rows.Clear();
-
-            foreach (var item in Diccionario.LocalidadEspectaculoByFechaCache)
-            {
-                dgvCompras.Rows.Add(item., item.Compania.NombreCompania, item.FechaYHora, item1.PrecioEspectaculo, item1.DescripcionEspectaculo, item1.Id);
-            }
+            new DataGridViewController().llenarGrillaComprasRealizadas(dgvCompras);
+          
         }
     }
 }

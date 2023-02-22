@@ -33,7 +33,7 @@ namespace ProyectoFinal.ViewLayer
 
         private void ABMLUsuarios_Load(object sender, EventArgs e)
         {
-            List<Cuenta> cuentas = new GetData().GetCuentas();
+            List<Cuenta> cuentas = new CuentaController().GetCuentas();
 
             CargarGrilla(cuentas);
         }
@@ -153,7 +153,7 @@ namespace ProyectoFinal.ViewLayer
                     lbUsAgregagoClave.Text = cuenta.Contraseña;
                     pAgregadoUsuario.Visible = true;
 
-                    List<Cuenta> cuentas = new GetData().GetCuentas();
+                    List<Cuenta> cuentas = new CuentaController().GetCuentas();
 
                     CargarGrilla(cuentas);
 
@@ -170,7 +170,7 @@ namespace ProyectoFinal.ViewLayer
 
             if (fila >= DGUsuarios.RowCount - 1) fila = e.RowIndex - 1;
 
-            Cuenta c = new GetData().GetByIdCuenta(long.Parse(DGUsuarios.Rows[fila].Cells["Id"].Value.ToString()));
+            Cuenta c = new CuentaController().GetByIdCuenta(long.Parse(DGUsuarios.Rows[fila].Cells["Id"].Value.ToString()));
             Empleado emp = new GetData().GetByIdCEmpleado(c.Id);
             Persona p = new GetData().GetByIdPersona(emp.Personaid);
 
@@ -193,7 +193,7 @@ namespace ProyectoFinal.ViewLayer
                 if (ValidacionesFormUsuarios()) return;
                 if (tbIdUsuario.Text == "") return;
 
-                Cuenta cuenta = new GetData().GetByIdCuenta(long.Parse(tbIdUsuario.Text));
+                Cuenta cuenta = new CuentaController().GetByIdCuenta(long.Parse(tbIdUsuario.Text));
                 Empleado emp = new GetData().GetByIdCEmpleado(cuenta.Id);
                 Persona persona = new GetData().GetByIdPersona(emp.Personaid);
 
@@ -216,7 +216,7 @@ namespace ProyectoFinal.ViewLayer
 
                     MessageBox.Show("Se modifico con exito al usuario ");
 
-                    List<Cuenta> cuentas = new GetData().GetCuentas();
+                    List<Cuenta> cuentas = new CuentaController().GetCuentas();
 
                     CargarGrilla(cuentas);
 
@@ -255,7 +255,7 @@ namespace ProyectoFinal.ViewLayer
 
         private void btnUsEliminarOk_Click(object sender, EventArgs e)
         {
-            Cuenta cuenta = new GetData().GetByIdCuenta(long.Parse(tbIdUsuario.Text));
+            Cuenta cuenta = new CuentaController().GetByIdCuenta(long.Parse(tbIdUsuario.Text));
             Empleado emp = new GetData().GetByIdCEmpleado(cuenta.Id);
             Persona persona = new GetData().GetByIdPersona(emp.Personaid);
 
@@ -277,7 +277,7 @@ namespace ProyectoFinal.ViewLayer
 
                 MessageBox.Show("Se Elimino el usuario con exito ");
 
-                List<Cuenta> cuentas = new GetData().GetCuentas();
+                List<Cuenta> cuentas = new CuentaController().GetCuentas();
 
                 CargarGrilla(cuentas);
                 pUsEliminar.Visible = false;
@@ -296,11 +296,11 @@ namespace ProyectoFinal.ViewLayer
         {
             if (tbBusqUsuario.Text == "")
             {
-                List<Cuenta> cuentas = new GetData().GetCuentas();
+                List<Cuenta> cuentas = new CuentaController().GetCuentas();
                 CargarGrilla(cuentas);
             }
 
-            List<Cuenta> busqCuentas = new GetData().GetCuentas().Where(x => x.Usuario.Contains(tbBusqUsuario.Text)).ToList();
+            List<Cuenta> busqCuentas = new CuentaController().GetCuentas().Where(x => x.Usuario.Contains(tbBusqUsuario.Text)).ToList();
 
             CargarGrilla(busqCuentas);
         }

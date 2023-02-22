@@ -66,11 +66,11 @@ namespace ProyectoFinal.ControlerLayer
         public float calcularPrecio(List<string> asientos, long espectaculoID)
         {
             float precioFinal = 0;
-            float precioByEspectaculo = float.Parse(GetEspectaculoById(espectaculoID).PrecioEspectaculo.ToString());
+            float precioByEspectaculo = float.Parse(new EspectaculoController().GetEspectaculoById(espectaculoID).PrecioEspectaculo.ToString());
             float precioBySector;
             foreach (var item in asientos)
             {
-                precioBySector = float.Parse(GetSectorByAsiento(item).PrecioSector.ToString());
+                precioBySector = float.Parse(new SectorController().GetSectorByAsiento(item).PrecioSector.ToString());
                 precioFinal = precioFinal + (precioByEspectaculo * precioBySector);
 
             }

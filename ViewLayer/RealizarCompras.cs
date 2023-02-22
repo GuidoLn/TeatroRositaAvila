@@ -75,7 +75,7 @@ namespace ProyectoFinal.ViewLayer
                     dgvRealizarCompra.Columns["Id"].Visible = false;
                 }
             }
-            LlenarGrilla(new GetData().GetEspectaculos());
+            LlenarGrilla(new EspectaculoController().GetEspectaculos());
         }
 
 
@@ -106,7 +106,7 @@ namespace ProyectoFinal.ViewLayer
             string sectorName = control.Text;
             int currentRow = dgvRealizarCompra.CurrentCell.RowIndex;
             long espectaculoId = long.Parse(dgvRealizarCompra.Rows[currentRow].Cells["Id"].Value.ToString());
-            long sectorId = new GetData().GetByNameSectorId(control.Text);
+            long sectorId = new SectorController().GetByNameSectorId(control.Text);
             List<LocalidadAsiento> asientos = new Diccionario().GetAsientosDiccionarioByEspectaculoAndSector(sectorName, espectaculoId);
             DrawOnGroupBox(control, e, asientos);
         }
@@ -227,11 +227,11 @@ namespace ProyectoFinal.ViewLayer
                 {
                     foreach (var item in asientosSeleccionados)
                     {
-                        le.Sectorid = new GetData().GetSectorByAsiento(item).Id;
+                        le.Sectorid = new SectorController().GetSectorByAsiento(item).Id;
                         le.Espectaculoid = espectaculoId;
-                        le.LocalidadAsientoid = new GetData().GetlocalidadAsientoByAsiento(int.Parse(item)).Id;
+                        le.LocalidadAsientoid = new LocalidadAsientoController().GetlocalidadAsientoByAsiento(int.Parse(item)).Id;
                         le.Precio = int.Parse(lblValorimporteTotal.Text.Replace("$",""));
-                        le.Id = le.crearLocalidadEspectaculo(le);
+                        le.Id = new LocalidadEspectaculoController().crearLocalidadEspectaculo(le);
                         compra.Unidades = 1;
                         compra.MetodoDePago = gbMetodopago.Text;
                         compra.Descuento = descuento;
@@ -321,7 +321,7 @@ namespace ProyectoFinal.ViewLayer
                     }
                     lblInfoAsientosSelccionados.ForeColor = Color.Green;
                     lblInfoAsientosSelccionados.Text = $"Asientos{seleccionFinal} seleccionados";
-                    precio = new GetData().calcularPrecio(asientosSeleccionados, espectaculoID);
+                    precio = new LocalidadAsientoController().calcularPrecio(asientosSeleccionados, espectaculoID);
                     lblValorimporte.Text = $"${precio}";
                 }
 

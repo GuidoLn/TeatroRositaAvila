@@ -81,7 +81,7 @@ namespace ProyectoFinal.ViewLayer
         {
             string[] datos = { "Nombre", "Compañia", "Fecha y hora", "Precio", "Descripcion", "Id", "Sector" };
             new DataGridViewController().crearColumnas(dgvAsientos, datos);
-            llenarGrilla(new GetData().GetEspectaculos());
+            llenarGrilla(new EspectaculoController().GetEspectaculos());
 
         }
         private void llenarGrilla(List<Espectaculo> espectaculos)
@@ -114,7 +114,7 @@ namespace ProyectoFinal.ViewLayer
             string sectorName = control.Text;
             int currentRow = dgvAsientos.CurrentCell.RowIndex;
             long espectaculoId = long.Parse(dgvAsientos.Rows[currentRow].Cells["Id"].Value.ToString());
-            long sectorId = new GetData().GetByNameSectorId(control.Text);
+            long sectorId = new SectorController().GetByNameSectorId(control.Text);
             List<LocalidadAsiento> asientos = new Diccionario().GetAsientosDiccionarioByEspectaculoAndSector(sectorName,espectaculoId);                      
             DrawOnGroupBox(control, e, asientos);            
         }

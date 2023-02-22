@@ -23,31 +23,31 @@ namespace ProyectoFinal.ControlerLayer
             }
             return resultado;
         }
-    }
 
-    public LocalidadEspectaculo GetLocalidadEspectaculoById(long id)
-    {
-        List<LocalidadEspectaculo> localidadEspectaculos = new List<LocalidadEspectaculo>();
-
-        using (TeatroEntities db = new TeatroEntities()) localidadEspectaculos = db.LocalidadEspectaculo.ToList();
-
-        foreach (var item in localidadEspectaculos) if (id == item.Id) return item;
-
-        return null;
-    }
-
-    public LocalidadEspectaculo getLocalidadEspectaculoByCompra(Compra compra)
-    {
-        LocalidadEspectaculo localidadEspectaculo;
-        using (TeatroEntities db = new TeatroEntities())
+        public LocalidadEspectaculo GetLocalidadEspectaculoById(long id)
         {
-            localidadEspectaculo = db.Compra
-            .Where(c => c.Id == compra.Id) // filtramos por el Id de la compra
-            .Select(c => c.LocalidadEspectaculo) // seleccionamos la localidad de asiento de la compra
-            .FirstOrDefault();
+            List<LocalidadEspectaculo> localidadEspectaculos = new List<LocalidadEspectaculo>();
+
+            using (TeatroEntities db = new TeatroEntities()) localidadEspectaculos = db.LocalidadEspectaculo.ToList();
+
+            foreach (var item in localidadEspectaculos) if (id == item.Id) return item;
+
+            return null;
         }
 
+        public LocalidadEspectaculo getLocalidadEspectaculoByCompra(Compra compra)
+        {
+            LocalidadEspectaculo localidadEspectaculo;
+            using (TeatroEntities db = new TeatroEntities())
+            {
+                localidadEspectaculo = db.Compra
+                .Where(c => c.Id == compra.Id) // filtramos por el Id de la compra
+                .Select(c => c.LocalidadEspectaculo) // seleccionamos la localidad de asiento de la compra
+                .FirstOrDefault();
+            }
 
-        return localidadEspectaculo;
+
+            return localidadEspectaculo;
+        }
     }
 }

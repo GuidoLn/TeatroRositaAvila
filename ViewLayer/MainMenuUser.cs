@@ -47,7 +47,8 @@ namespace ProyectoFinal.ViewLayer
 
         private void btnCompras_Click(object sender, EventArgs e)
         {
-            
+            new ComprasRealizadas().Show();
+            this.Close();
         }
     }
 }

@@ -24,9 +24,9 @@ namespace ProyectoFinal.ControlerLayer
         }
 
         private static Dictionary<long, List<LocalidadAsiento>> _asientosCache = new Dictionary<long, List<LocalidadAsiento>>();
-        private static Dictionary<DateTime, List<LocalidadEspectaculo>> _localidadEspectaculoByFechaCache = new Dictionary<DateTime, List<LocalidadEspectaculo>>();
+        private static Dictionary<DateTime, List<Compra>> _compraByFechaCache = new Dictionary<DateTime, List<Compra>>();
 
-        public static Dictionary<DateTime, List<LocalidadEspectaculo>> LocalidadEspectaculoByFechaCache { get => _localidadEspectaculoByFechaCache; set => _localidadEspectaculoByFechaCache = value; }
+        public static Dictionary<DateTime, List<Compra>> CompraByFechaCache { get => _compraByFechaCache; set => _compraByFechaCache = value; }
 
         public void llenarDiccionarioCompras()
         {
@@ -59,14 +59,12 @@ namespace ProyectoFinal.ControlerLayer
             }
 
             // Guardar el diccionario de compras por minuto en el diccionario de asientos por compras          
-            _localidadEspectaculoByFechaCache = comprasPorMinuto.ToDictionary(
-                kvp => kvp.Key,
-                kvp => kvp.Value.Select(compra => ConvertirCompraEnLocalidadEspectaculo(compra)).ToList());
+            _compraByFechaCache = comprasPorMinuto;
         }
-        public LocalidadEspectaculo ConvertirCompraEnLocalidadEspectaculo(Compra compra)
+        public LocalidadEspectaculo ConvertirCompraEnLocalidadAsiento(Compra compra)
         {
             LocalidadEspectaculo localidadEspectaculo = new LocalidadEspectaculo();
-            localidadEspectaculo = new GetData().getLocalidadEspectaculoByCompra(compra);
+            localidadEspectaculo = new LocalidadEspectaculoController().getLocalidadEspectaculoByCompra(compra);
             return localidadEspectaculo;
         }
         public List<string> getAsientosDisponibles(long espectaculoId)
@@ -110,7 +108,7 @@ namespace ProyectoFinal.ControlerLayer
 
         public void llenarDiccionarioEspectaculos()
         {
-            List<Espectaculo> espectaculos = new GetData().GetEspectaculos();
+            List<Espectaculo> espectaculos = new EspectaculoController().GetEspectaculos();
             foreach (var item in espectaculos)
             {
                 _asientosCache.Add(item.Id, GetAsientosByEspectaculo(item.Id));

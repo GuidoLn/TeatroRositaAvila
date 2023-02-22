@@ -47,7 +47,7 @@ namespace ProyectoFinal.ViewLayer
         {            
             string[] datos = { "Nombre", "Compañia", "Fecha y hora", "Precio", "Descripcion", "Id" };                 
             new DataGridViewController().crearColumnas(dgvEspectaculos,datos);           
-            llenarGrilla(new GetData().GetEspectaculos());
+            llenarGrilla(new EspectaculoController().GetEspectaculos());
 
         }
         private void llenarGrilla(List<Espectaculo> espectaculos)
@@ -89,10 +89,10 @@ namespace ProyectoFinal.ViewLayer
                 espectaculo.PrecioEspectaculo = int.Parse(txtPrecio.Text);
                 espectaculo.FechaYHora = dtpFecha.Value;
                 espectaculo.Companiaid = new GetData().GetByNameCompañia(lbCompania.Text).Id;
-                if (new AgregarEspectaculo().agregarEspectaculo(espectaculo))
+                if (new EspectaculoController().agregarEspectaculo(espectaculo))
                 {
                     MessageBox.Show("Espectaculo agregado correctamente");
-                    llenarGrilla(new GetData().GetEspectaculos());
+                    llenarGrilla(new EspectaculoController().GetEspectaculos());
                     btnEliminar.Enabled = false;
                 }
                 else
@@ -197,10 +197,10 @@ namespace ProyectoFinal.ViewLayer
                     espectaculo.PrecioEspectaculo = int.Parse(txtPrecio.Text);
                     espectaculo.FechaYHora = dtpFecha.Value;
                     espectaculo.Companiaid = new GetData().GetByNameCompañia(lbCompania.Text).Id;
-                    if (new ModificarEspectaculo().modificarEspectaculo(espectaculo))
+                    if (new EspectaculoController().modificarEspectaculo(espectaculo))
                     {
                         MessageBox.Show("Espectaculo eliminado correctamente");
-                        llenarGrilla(new GetData().GetEspectaculos());
+                        llenarGrilla(new EspectaculoController().GetEspectaculos());
                         btnAgregar.Enabled = true;
                         btnModificar.Visible = true;
                         btnModificar.Enabled = false;
@@ -231,10 +231,10 @@ namespace ProyectoFinal.ViewLayer
                     espectaculo.PrecioEspectaculo = int.Parse(txtPrecio.Text);
                     espectaculo.FechaYHora = dtpFecha.Value;
                     espectaculo.Companiaid = new GetData().GetByNameCompañia(lbCompania.Text).Id;
-                    if (new ModificarEspectaculo().modificarEspectaculo(espectaculo))
+                    if (new EspectaculoController().modificarEspectaculo(espectaculo))
                     {
                         MessageBox.Show("Espectaculo modificado correctamente");
-                        llenarGrilla(new GetData().GetEspectaculos());
+                        llenarGrilla(new EspectaculoController().GetEspectaculos());
                         btnAgregar.Enabled = true;
                         btnModificar.Visible = true;
                         btnModificar.Enabled = false;
