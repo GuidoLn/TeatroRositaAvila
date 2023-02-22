@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using ProyectoFinal.DataLayer;
 using ProyectoFinal.ViewLayer;
+using ProyectoFinal.ControlerLayer;
+
 
 namespace ProyectoFinal.ControlerLayer
 {
@@ -64,10 +66,10 @@ namespace ProyectoFinal.ControlerLayer
 
             }
         }
-        public void llenarGrillaComprasRealizadas(DataGridView dataGridView)
+        public void llenarGrillaComprasRealizadasEmpleado(DataGridView dataGridView)
         {
             dataGridView.Rows.Clear();
-
+            string cuentaLogueada = ContLogin.GetInstance().UsuarioLogueado;
             using (TeatroEntities db = new TeatroEntities())
             {
                 //Dictionary<DateTime, List<Compra>> diccionarioAux = Diccionario.CompraByFechaCache;
@@ -80,6 +82,7 @@ namespace ProyectoFinal.ControlerLayer
                                        on compra.LocalidadEspectaculoid equals localidadEspectaculo.Id
                                        join cuenta in db.Cuenta
                                        on compra.Cuentaid equals cuenta.Id
+                                       where cuenta.Usuario == cuentaLogueada
                                        select new
                                        {
                                            Usuario = cuenta.Usuario,
@@ -107,6 +110,47 @@ namespace ProyectoFinal.ControlerLayer
 
         }
 
+        public void llenarGrillaComprasRealizadas(DataGridView dataGridView)
+        {
+            dataGridView.Rows.Clear();            
+            using (TeatroEntities db = new TeatroEntities())
+            {
+                //Dictionary<DateTime, List<Compra>> diccionarioAux = Diccionario.CompraByFechaCache;
+                foreach (KeyValuePair<DateTime, List<Compra>> kvp in Diccionario.CompraByFechaCache)
+                {
+                    List<Compra> comprasFechaActual = kvp.Value;
+
+                    var datosCompras = from compra in comprasFechaActual
+                                       join localidadEspectaculo in db.LocalidadEspectaculo
+                                       on compra.LocalidadEspectaculoid equals localidadEspectaculo.Id
+                                       join cuenta in db.Cuenta
+                                       on compra.Cuentaid equals cuenta.Id                                      
+                                       select new
+                                       {
+                                           Usuario = cuenta.Usuario,
+                                           FechaYHora = compra.FechaHora,
+                                           Precio = localidadEspectaculo.Precio,
+                                           Asientos = new CompraController().convertirCompraEnLocalidadAsiento(comprasFechaActual),
+                                           NumeroDeTicket = compra.Id,
+                                           Id = compra.Id
+                                       };
+
+                    var primerObjeto = datosCompras.FirstOrDefault();
+                    if (primerObjeto != null)
+                    {
+                        dataGridView.Rows.Add(
+                            primerObjeto.Usuario,
+                            primerObjeto.FechaYHora,
+                            primerObjeto.Precio,
+                            primerObjeto.Asientos,
+                            primerObjeto.NumeroDeTicket,
+                            primerObjeto.Id
+                        );
+                    }
+                }
+            }
+
+        }
 
         public List<object> GetComprasConDetalles()
         {

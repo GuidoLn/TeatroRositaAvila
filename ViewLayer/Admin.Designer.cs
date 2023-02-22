@@ -38,6 +38,7 @@ namespace ProyectoFinal.ViewLayer
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bt_AdALogin = new System.Windows.Forms.Button();
+            this.btnCompras = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -75,7 +76,7 @@ namespace ProyectoFinal.ViewLayer
             // 
             this.bt_AdAAsientos.BackColor = System.Drawing.SystemColors.Highlight;
             this.bt_AdAAsientos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.bt_AdAAsientos.Location = new System.Drawing.Point(198, 237);
+            this.bt_AdAAsientos.Location = new System.Drawing.Point(57, 227);
             this.bt_AdAAsientos.Name = "bt_AdAAsientos";
             this.bt_AdAAsientos.Size = new System.Drawing.Size(159, 45);
             this.bt_AdAAsientos.TabIndex = 4;
@@ -100,7 +101,7 @@ namespace ProyectoFinal.ViewLayer
             this.panel3.BackColor = System.Drawing.SystemColors.Highlight;
             this.panel3.BackgroundImage = global::ProyectoFinal.Properties.Resources.seat;
             this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.Location = new System.Drawing.Point(211, 246);
+            this.panel3.Location = new System.Drawing.Point(70, 236);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(29, 27);
             this.panel3.TabIndex = 5;
@@ -137,11 +138,24 @@ namespace ProyectoFinal.ViewLayer
             this.bt_AdALogin.UseVisualStyleBackColor = false;
             this.bt_AdALogin.Click += new System.EventHandler(this.bt_AdALogin_Click);
             // 
+            // btnCompras
+            // 
+            this.btnCompras.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnCompras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCompras.Location = new System.Drawing.Point(340, 236);
+            this.btnCompras.Name = "btnCompras";
+            this.btnCompras.Size = new System.Drawing.Size(213, 45);
+            this.btnCompras.TabIndex = 7;
+            this.btnCompras.Text = "Compras Realizadas";
+            this.btnCompras.UseVisualStyleBackColor = false;
+            this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 429);
+            this.Controls.Add(this.btnCompras);
             this.Controls.Add(this.bt_AdALogin);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -170,5 +184,6 @@ namespace ProyectoFinal.ViewLayer
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button bt_AdALogin;
+        private System.Windows.Forms.Button btnCompras;
     }
 }

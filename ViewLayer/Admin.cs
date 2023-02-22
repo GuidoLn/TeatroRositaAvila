@@ -53,5 +53,12 @@ namespace ProyectoFinal.ViewLayer
             new AsientoGerente().Show();
             this.Close();
         }
+
+        private void btnCompras_Click(object sender, EventArgs e)
+        {           
+                new ComprasRealizadas().Show();
+                this.Close();
+            
+        }
     }
 }

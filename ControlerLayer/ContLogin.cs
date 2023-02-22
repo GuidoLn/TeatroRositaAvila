@@ -42,6 +42,12 @@ namespace ProyectoFinal.ControlerLayer
             resultado = new CuentaController().verificarCuenta(userName);
             return resultado;
         }
+        public string verificarCuenta()
+        {
+            string resultado = string.Empty;
+            resultado = new CuentaController().verificarCuenta(usuarioLogueado);
+            return resultado;
+        }
 
 
     }

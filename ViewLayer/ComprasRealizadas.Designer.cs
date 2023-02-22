@@ -73,7 +73,7 @@
             // 
             // txtNTicketCR
             // 
-            this.txtNTicketCR.Location = new System.Drawing.Point(474, 104);
+            this.txtNTicketCR.Location = new System.Drawing.Point(474, 63);
             this.txtNTicketCR.Margin = new System.Windows.Forms.Padding(2);
             this.txtNTicketCR.Name = "txtNTicketCR";
             this.txtNTicketCR.Size = new System.Drawing.Size(112, 26);
@@ -91,7 +91,7 @@
             // 
             // txtUsuarioResponsableCR
             // 
-            this.txtUsuarioResponsableCR.Location = new System.Drawing.Point(474, 63);
+            this.txtUsuarioResponsableCR.Location = new System.Drawing.Point(474, 109);
             this.txtUsuarioResponsableCR.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuarioResponsableCR.Name = "txtUsuarioResponsableCR";
             this.txtUsuarioResponsableCR.Size = new System.Drawing.Size(112, 26);
@@ -100,7 +100,7 @@
             // lblNTicketCR
             // 
             this.lblNTicketCR.AutoSize = true;
-            this.lblNTicketCR.Location = new System.Drawing.Point(337, 107);
+            this.lblNTicketCR.Location = new System.Drawing.Point(337, 66);
             this.lblNTicketCR.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNTicketCR.Name = "lblNTicketCR";
             this.lblNTicketCR.Size = new System.Drawing.Size(133, 20);
@@ -110,7 +110,7 @@
             // lblUsuariosResponsablesCR
             // 
             this.lblUsuariosResponsablesCR.AutoSize = true;
-            this.lblUsuariosResponsablesCR.Location = new System.Drawing.Point(308, 63);
+            this.lblUsuariosResponsablesCR.Location = new System.Drawing.Point(308, 109);
             this.lblUsuariosResponsablesCR.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblUsuariosResponsablesCR.Name = "lblUsuariosResponsablesCR";
             this.lblUsuariosResponsablesCR.Size = new System.Drawing.Size(162, 20);
@@ -205,6 +205,11 @@
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(134, 20);
             this.txtBusqueda.TabIndex = 8;
+            this.txtBusqueda.TextChanged += new System.EventHandler(this.txtBusqueda_TextChanged);
+            this.txtBusqueda.Enter += new System.EventHandler(this.txtBusquedaNombre_Enter);
+            this.txtBusqueda.Leave += new System.EventHandler(this.txtBusquedaNombre_Leave);
+            this.txtBusqueda.MouseEnter += new System.EventHandler(this.txtBusquedaNombre_MouseEnter);
+            this.txtBusqueda.MouseLeave += new System.EventHandler(this.txtBusquedaNombre_MouseLeave);
             // 
             // btnAtrasCR
             // 
@@ -238,6 +243,7 @@
             this.btnEliminar.TabIndex = 3;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // ComprasRealizadas
             // 
@@ -255,6 +261,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ComprasRealizadas";
             this.Text = "ComprasRealizadas";
+            this.Load += new System.EventHandler(this.ComprasRealizadas_Load);
             this.gbComprasRealizadas.ResumeLayout(false);
             this.gbComprasRealizadas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCompras)).EndInit();

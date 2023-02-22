@@ -23,16 +23,7 @@ namespace ProyectoFinal.ViewLayer
             InitializeComponent();
 
             txtBusquedaNombre.Text = "Nombre";
-            txtBusquedaNombre.ForeColor = Color.Gray;
-            //Bitmap bmp = new Bitmap(@"D:\GUIDO\Trabajo\Curso Fut Prog\Proyecto Final\ProyectoFinal\Resources\lupa.png");
-            //txtBusquedaNombre.TextAlign = HorizontalAlignment.Left;
-            //txtBusquedaNombre.Padding = new Padding(bmp.Width + 3, 0, 0, 0);
-            //txtBusquedaNombre.Controls.Add(new PictureBox()
-            //{
-            //    Image = bmp,
-            //    Size = bmp.Size,
-            //    Location = new Point(1, (txtBusquedaNombre.Height - bmp.Height) / 2)
-            //});
+            txtBusquedaNombre.ForeColor = Color.Gray;           
             cargarGrilla();
         }
 
