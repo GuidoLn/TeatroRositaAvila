@@ -33,7 +33,7 @@ namespace ProyectoFinal.ControlerLayer
             DataGridViewButtonColumn buttonColumn = new DataGridViewButtonColumn();
             buttonColumn.Name = "Seleccionar Asientos";
             buttonColumn.Width = 150;
-            
+
             DataGridViewComboBoxColumn comboColumn = new DataGridViewComboBoxColumn();
             comboColumn.Name = "Cantidad entradas";
             comboColumn.Width = 100;
@@ -51,7 +51,8 @@ namespace ProyectoFinal.ControlerLayer
                     {
                         dgv.Columns["Id"].Visible = false;
                     }
-                } else if (items != "Cantidad entradas")
+                }
+                else if (items != "Cantidad entradas")
                 {
                     dgv.Columns.Add(buttonColumn);
                     //dgv.CellClick += new DataGridViewCellEventHandler(dgv_CellClick);
@@ -69,17 +70,16 @@ namespace ProyectoFinal.ControlerLayer
 
             using (TeatroEntities db = new TeatroEntities())
             {
+                //Dictionary<DateTime, List<Compra>> diccionarioAux = Diccionario.CompraByFechaCache;
                 foreach (KeyValuePair<DateTime, List<Compra>> kvp in Diccionario.CompraByFechaCache)
                 {
                     List<Compra> comprasFechaActual = kvp.Value;
 
                     var datosCompras = from compra in comprasFechaActual
                                        join localidadEspectaculo in db.LocalidadEspectaculo
-                                           on compra.LocalidadEspectaculoid equals localidadEspectaculo.Id
-                                       //join espectaculo in db.Espectaculo
-                                       //    on localidadEspectaculo.Espectaculoid equals espectaculo.Id
+                                       on compra.LocalidadEspectaculoid equals localidadEspectaculo.Id
                                        join cuenta in db.Cuenta
-                                           on compra.Cuentaid equals cuenta.Id
+                                       on compra.Cuentaid equals cuenta.Id
                                        select new
                                        {
                                            Usuario = cuenta.Usuario,
@@ -90,26 +90,28 @@ namespace ProyectoFinal.ControlerLayer
                                            Id = compra.Id
                                        };
 
-                    foreach (var datos in datosCompras)
+                    var primerObjeto = datosCompras.FirstOrDefault();
+                    if (primerObjeto != null)
                     {
                         dataGridView.Rows.Add(
-                            datos.Usuario,
-                            datos.FechaYHora,
-                            datos.Precio,
-                            datos.Asientos,
-                            datos.NumeroDeTicket,
-                            datos.Id
+                            primerObjeto.Usuario,
+                            primerObjeto.FechaYHora,
+                            primerObjeto.Precio,
+                            primerObjeto.Asientos,
+                            primerObjeto.NumeroDeTicket,
+                            primerObjeto.Id
                         );
                     }
                 }
             }
-            
+
         }
 
 
         public List<object> GetComprasConDetalles()
         {
-            using (TeatroEntities dbContext = new TeatroEntities()) {
+            using (TeatroEntities dbContext = new TeatroEntities())
+            {
                 var comprasDetalles = (from c in dbContext.Compra
                                        join le in dbContext.LocalidadEspectaculo on c.LocalidadEspectaculoid equals le.Id
                                        join u in dbContext.Cuenta on c.Cuentaid equals u.Id

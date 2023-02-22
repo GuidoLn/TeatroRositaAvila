@@ -105,6 +105,13 @@ namespace ProyectoFinal.ControlerLayer
                 _asientosCache[espectaculoId] = asientos;
             }
         }
+        public void actualizarDiccionario(List<Compra> asientosComprados, DateTime fechaComprado)
+        {            
+            if (!_compraByFechaCache.ContainsKey(fechaComprado))
+            {
+                _compraByFechaCache.Add(fechaComprado, asientosComprados);
+            }
+        }
 
         public void llenarDiccionarioEspectaculos()
         {

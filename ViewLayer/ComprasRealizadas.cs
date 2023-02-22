@@ -30,5 +30,11 @@ namespace ProyectoFinal.ViewLayer
             new DataGridViewController().llenarGrillaComprasRealizadas(dgvCompras);
           
         }
+
+        private void btnAtrasCR_Click(object sender, EventArgs e)
+        {
+            new MainMenuUser().Show();
+            this.Close();
+        }
     }
 }

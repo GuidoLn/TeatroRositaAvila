@@ -106,7 +106,7 @@
             // 
             this.gbSC.Location = new System.Drawing.Point(199, 216);
             this.gbSC.Name = "gbSC";
-            this.gbSC.Size = new System.Drawing.Size(495, 248);
+            this.gbSC.Size = new System.Drawing.Size(527, 328);
             this.gbSC.TabIndex = 6;
             this.gbSC.TabStop = false;
             this.gbSC.Text = "Palco";
@@ -116,7 +116,7 @@
             // 
             this.gbSA.Location = new System.Drawing.Point(16, 216);
             this.gbSA.Name = "gbSA";
-            this.gbSA.Size = new System.Drawing.Size(156, 248);
+            this.gbSA.Size = new System.Drawing.Size(177, 271);
             this.gbSA.TabIndex = 7;
             this.gbSA.TabStop = false;
             this.gbSA.Text = "Platea Baja";

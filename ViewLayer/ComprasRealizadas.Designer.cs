@@ -64,9 +64,9 @@
             this.gbComprasRealizadas.Controls.Add(this.TXTImporteCR);
             this.gbComprasRealizadas.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbComprasRealizadas.Location = new System.Drawing.Point(17, 256);
-            this.gbComprasRealizadas.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbComprasRealizadas.Margin = new System.Windows.Forms.Padding(2);
             this.gbComprasRealizadas.Name = "gbComprasRealizadas";
-            this.gbComprasRealizadas.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbComprasRealizadas.Padding = new System.Windows.Forms.Padding(2);
             this.gbComprasRealizadas.Size = new System.Drawing.Size(686, 184);
             this.gbComprasRealizadas.TabIndex = 0;
             this.gbComprasRealizadas.TabStop = false;
@@ -74,7 +74,7 @@
             // txtNTicketCR
             // 
             this.txtNTicketCR.Location = new System.Drawing.Point(474, 104);
-            this.txtNTicketCR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtNTicketCR.Margin = new System.Windows.Forms.Padding(2);
             this.txtNTicketCR.Name = "txtNTicketCR";
             this.txtNTicketCR.Size = new System.Drawing.Size(112, 26);
             this.txtNTicketCR.TabIndex = 6;
@@ -92,7 +92,7 @@
             // txtUsuarioResponsableCR
             // 
             this.txtUsuarioResponsableCR.Location = new System.Drawing.Point(474, 63);
-            this.txtUsuarioResponsableCR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtUsuarioResponsableCR.Margin = new System.Windows.Forms.Padding(2);
             this.txtUsuarioResponsableCR.Name = "txtUsuarioResponsableCR";
             this.txtUsuarioResponsableCR.Size = new System.Drawing.Size(112, 26);
             this.txtUsuarioResponsableCR.TabIndex = 5;
@@ -140,7 +140,7 @@
             // txtAsientosCR
             // 
             this.txtAsientosCR.Location = new System.Drawing.Point(178, 60);
-            this.txtAsientosCR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtAsientosCR.Margin = new System.Windows.Forms.Padding(2);
             this.txtAsientosCR.Name = "txtAsientosCR";
             this.txtAsientosCR.Size = new System.Drawing.Size(112, 26);
             this.txtAsientosCR.TabIndex = 7;
@@ -149,7 +149,7 @@
             // 
             this.txtFYHCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFYHCR.Location = new System.Drawing.Point(178, 23);
-            this.txtFYHCR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtFYHCR.Margin = new System.Windows.Forms.Padding(2);
             this.txtFYHCR.Name = "txtFYHCR";
             this.txtFYHCR.Size = new System.Drawing.Size(112, 23);
             this.txtFYHCR.TabIndex = 9;
@@ -157,7 +157,7 @@
             // TXTImporteCR
             // 
             this.TXTImporteCR.Location = new System.Drawing.Point(474, 18);
-            this.TXTImporteCR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.TXTImporteCR.Margin = new System.Windows.Forms.Padding(2);
             this.TXTImporteCR.Name = "TXTImporteCR";
             this.TXTImporteCR.Size = new System.Drawing.Size(112, 26);
             this.TXTImporteCR.TabIndex = 2;
@@ -177,7 +177,7 @@
             // 
             this.btnModificarCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificarCR.Location = new System.Drawing.Point(195, 444);
-            this.btnModificarCR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnModificarCR.Margin = new System.Windows.Forms.Padding(2);
             this.btnModificarCR.Name = "btnModificarCR";
             this.btnModificarCR.Size = new System.Drawing.Size(100, 28);
             this.btnModificarCR.TabIndex = 3;
@@ -186,10 +186,13 @@
             // 
             // dgvCompras
             // 
+            this.dgvCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvCompras.GridColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvCompras.Location = new System.Drawing.Point(17, 65);
-            this.dgvCompras.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvCompras.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCompras.Name = "dgvCompras";
+            this.dgvCompras.ReadOnly = true;
             this.dgvCompras.RowHeadersWidth = 51;
             this.dgvCompras.RowTemplate.Height = 24;
             this.dgvCompras.Size = new System.Drawing.Size(755, 179);
@@ -198,7 +201,7 @@
             // txtBusqueda
             // 
             this.txtBusqueda.Location = new System.Drawing.Point(73, 31);
-            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtBusqueda.Margin = new System.Windows.Forms.Padding(2);
             this.txtBusqueda.Name = "txtBusqueda";
             this.txtBusqueda.Size = new System.Drawing.Size(134, 20);
             this.txtBusqueda.TabIndex = 8;
@@ -207,12 +210,13 @@
             // 
             this.btnAtrasCR.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAtrasCR.Location = new System.Drawing.Point(603, 458);
-            this.btnAtrasCR.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnAtrasCR.Margin = new System.Windows.Forms.Padding(2);
             this.btnAtrasCR.Name = "btnAtrasCR";
             this.btnAtrasCR.Size = new System.Drawing.Size(100, 28);
             this.btnAtrasCR.TabIndex = 9;
             this.btnAtrasCR.Text = "ATRAS";
             this.btnAtrasCR.UseVisualStyleBackColor = true;
+            this.btnAtrasCR.Click += new System.EventHandler(this.btnAtrasCR_Click);
             // 
             // dtpFecHora
             // 
@@ -248,7 +252,7 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnModificarCR);
             this.Controls.Add(this.gbComprasRealizadas);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "ComprasRealizadas";
             this.Text = "ComprasRealizadas";
             this.gbComprasRealizadas.ResumeLayout(false);

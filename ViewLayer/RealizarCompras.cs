@@ -216,7 +216,8 @@ namespace ProyectoFinal.ViewLayer
         {
             CompraController compraC = new CompraController();
             LocalidadEspectaculo le = new LocalidadEspectaculo();
-            Compra compra = new Compra();
+            List<Compra> comprasRealizadas = new List<Compra>();
+            Compra compra = new Compra();            
             DialogResult result = MessageBox.Show("¿Está seguro de que desea realizar la compra?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             bool comrpasOK = true;
             long espectaculoId = long.Parse(dgvRealizarCompra.CurrentRow.Cells["Id"].Value.ToString());
@@ -236,10 +237,16 @@ namespace ProyectoFinal.ViewLayer
                         compra.MetodoDePago = gbMetodopago.Text;
                         compra.Descuento = descuento;
                         compra.LocalidadEspectaculoid = le.Id;
-                        compra.Espectaculoid = le.Espectaculoid;
-                        compra.FechaHora = DateTime.Now;
+                        compra.Espectaculoid = le.Espectaculoid;                        
+                        DateTime fechaCompraRedondeada = DateTime.Now.AddMilliseconds(-compra.FechaHora.Millisecond);
+                        fechaCompraRedondeada = fechaCompraRedondeada.AddSeconds(-fechaCompraRedondeada.Second);
+                        compra.FechaHora = fechaCompraRedondeada;
                         compra.Cuentaid = ContLogin.GetInstance().UsuarioLogueadoid;
-                        if (!compraC.realizarCompra(compra))
+                        if (compraC.realizarCompra(compra))
+                        {
+                            comprasRealizadas.Add(compra);                             
+                        }
+                        else
                         {
                             comrpasOK = false;
                         }
@@ -248,12 +255,14 @@ namespace ProyectoFinal.ViewLayer
                     if (comrpasOK)
                     {
                         MessageBox.Show("Compra realizada con exito");
+                        
                         Diccionario.GetInstance().actualizarDiccionario(asientosSeleccionados, espectaculoId);
+                        Diccionario.GetInstance().actualizarDiccionario(comprasRealizadas, comprasRealizadas[0].FechaHora);
                         asientosSeleccionados.Clear();
                         gbSA.Invalidate();
                         gbSC.Invalidate();
                     }              
-
+                    
                 }
             }           
         }
