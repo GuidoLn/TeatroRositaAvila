@@ -183,7 +183,7 @@ namespace ProyectoFinal.ViewLayer
 
         private void LblMetodopago_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void TxtBusquedaNombre_TextChanged(object sender, EventArgs e)
@@ -218,13 +218,14 @@ namespace ProyectoFinal.ViewLayer
             LocalidadEspectaculo le = new LocalidadEspectaculo();
             List<Compra> comprasRealizadas = new List<Compra>();
             //Compra compra = new Compra();            
-            DialogResult result = MessageBox.Show("¿Está seguro de que desea realizar la compra?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
             bool comrpasOK = true;
             long espectaculoId = long.Parse(dgvRealizarCompra.CurrentRow.Cells["Id"].Value.ToString());
             int descuento = autoConvertToInt(txtDescuento.Text.Replace("%", ""));
-            if (result == DialogResult.Yes)
+            DateTime fechaCompraRedondeada;
+            if (asientosSeleccionados.Count != 0)
             {
-                if (asientosSeleccionados.Count != 0)
+                DialogResult result = MessageBox.Show("¿Está seguro de que desea realizar la compra?", "Advertencia", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
                 {
                     foreach (var item in asientosSeleccionados)
                     {
@@ -232,7 +233,7 @@ namespace ProyectoFinal.ViewLayer
                         le.Sectorid = new SectorController().GetSectorByAsiento(item).Id;
                         le.Espectaculoid = espectaculoId;
                         le.LocalidadAsientoid = new LocalidadAsientoController().GetlocalidadAsientoByAsiento(int.Parse(item)).Id;
-                        le.Precio = int.Parse(lblValorimporteTotal.Text.Replace("$",""));
+                        le.Precio = int.Parse(lblValorimporteTotal.Text.Replace("$", ""));
                         le.Id = new LocalidadEspectaculoController().crearLocalidadEspectaculo(le);
                         compra.Unidades = 1;
                         compra.MetodoDePago = gbMetodopago.Text;
@@ -240,33 +241,32 @@ namespace ProyectoFinal.ViewLayer
                         compra.LocalidadEspectaculoid = le.Id;
                         compra.Espectaculoid = le.Espectaculoid;
                         compra.EstadoCompra = true;
-                        DateTime fechaCompraRedondeada = DateTime.Now.AddMilliseconds(-compra.FechaHora.Millisecond);
+                        fechaCompraRedondeada = DateTime.Now.AddMilliseconds(-compra.FechaHora.Millisecond);
                         fechaCompraRedondeada = fechaCompraRedondeada.AddSeconds(-fechaCompraRedondeada.Second);
                         compra.FechaHora = fechaCompraRedondeada;
                         compra.Cuentaid = ContLogin.GetInstance().UsuarioLogueadoid;
                         if (compraC.realizarCompra(compra))
                         {
-                            comprasRealizadas.Add(compra);                             
+                            comprasRealizadas.Add(compra);
                         }
                         else
                         {
                             comrpasOK = false;
                         }
-                        
+
                     }
                     if (comrpasOK)
                     {
                         MessageBox.Show("Compra realizada con exito");
-                        
                         Diccionario.GetInstance().actualizarDiccionario(asientosSeleccionados, espectaculoId);
-                        Diccionario.GetInstance().actualizarDiccionario(comprasRealizadas, comprasRealizadas[0].FechaHora);
+                        Diccionario.GetInstance().actualizarDiccionario(comprasRealizadas, comprasRealizadas[0].Id);
                         asientosSeleccionados.Clear();
                         gbSA.Invalidate();
                         gbSC.Invalidate();
-                    }              
-                    
+                    }
+
                 }
-            }           
+            }
         }
 
         private void TxtCantidadAsientos_TextChanged(object sender, EventArgs e)
@@ -370,12 +370,12 @@ namespace ProyectoFinal.ViewLayer
 
             }
             else
-            {                
+            {
                 int subTotal = autoConvertToInt(lblValorimporte.Text.ToString().Replace("$", ""));
                 double total = subTotal;
                 try
                 {
-                    double descuento = (double.Parse(txtDescuento.Text.Replace("%", "")))/100;                    
+                    double descuento = (double.Parse(txtDescuento.Text.Replace("%", ""))) / 100;
                     total = (total - (total * descuento));
                     total = Math.Round(total);
                     lblValorimporteTotal.Text = $"${total}";

@@ -86,7 +86,30 @@ namespace ProyectoFinal.ControlerLayer
 
             return localidadEspectaculo;
         }
+        public bool eliminarCompras(long idEliminar)
+        {
+            bool result = false;  
+            Dictionary<long, List<Compra>> diccionario = Diccionario.CompraByFechaCache;
+            List<Compra> comprasEliminar = diccionario[idEliminar];
+            using (TeatroEntities db = new TeatroEntities())
+            {
+                var idComprasEliminar = comprasEliminar.Select(c => c.Id).ToList();
 
+                // Filtrar las compras de la base de datos que tienen un IdCompra en la lista idComprasEliminar
+                var comprasActualizar = db.Compra.Where(c => idComprasEliminar.Contains(c.Id));
+
+                // Actualizar el estado de las compras en la lista comprasActualizar
+                comprasActualizar.ToList().ForEach(c => c.EstadoCompra = false);
+
+                if (db.SaveChanges() > 0)
+                {
+                    Diccionario.GetInstance().actualizarDiccionario(idEliminar);                    
+                    result = true;
+                }
+                
+            }
+            return result;
+        }
 
     }
 }

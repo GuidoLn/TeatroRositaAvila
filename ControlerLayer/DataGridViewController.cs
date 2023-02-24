@@ -73,7 +73,7 @@ namespace ProyectoFinal.ControlerLayer
             using (TeatroEntities db = new TeatroEntities())
             {
                 //Dictionary<DateTime, List<Compra>> diccionarioAux = Diccionario.CompraByFechaCache;
-                foreach (KeyValuePair<DateTime, List<Compra>> kvp in Diccionario.CompraByFechaCache)
+                foreach (KeyValuePair<long, List<Compra>> kvp in Diccionario.CompraByFechaCache)
                 {
                     List<Compra> comprasFechaActual = kvp.Value;
 
@@ -83,6 +83,8 @@ namespace ProyectoFinal.ControlerLayer
                                        join cuenta in db.Cuenta
                                        on compra.Cuentaid equals cuenta.Id
                                        where cuenta.Usuario == cuentaLogueada
+                                       join espectaculo in db.Espectaculo
+                                       on localidadEspectaculo.Espectaculoid equals espectaculo.Id
                                        select new
                                        {
                                            Usuario = cuenta.Usuario,
@@ -90,19 +92,21 @@ namespace ProyectoFinal.ControlerLayer
                                            Precio = localidadEspectaculo.Precio,
                                            Asientos = new CompraController().convertirCompraEnLocalidadAsiento(comprasFechaActual),
                                            NumeroDeTicket = compra.Id,
-                                           Id = compra.Id
+                                           Id = compra.Id,
+                                           Espectaculo = espectaculo.NombreEspectaculo
                                        };
+
 
                     var primerObjeto = datosCompras.FirstOrDefault();
                     if (primerObjeto != null)
                     {
                         dataGridView.Rows.Add(
-                            primerObjeto.Usuario,
+                            primerObjeto.Espectaculo,
                             primerObjeto.FechaYHora,
                             primerObjeto.Precio,
                             primerObjeto.Asientos,
                             primerObjeto.NumeroDeTicket,
-                            primerObjeto.Id
+                            primerObjeto.Usuario
                         );
                     }
                 }
@@ -116,7 +120,7 @@ namespace ProyectoFinal.ControlerLayer
             using (TeatroEntities db = new TeatroEntities())
             {
                 //Dictionary<DateTime, List<Compra>> diccionarioAux = Diccionario.CompraByFechaCache;
-                foreach (KeyValuePair<DateTime, List<Compra>> kvp in Diccionario.CompraByFechaCache)
+                foreach (KeyValuePair<long, List<Compra>> kvp in Diccionario.CompraByFechaCache)
                 {
                     List<Compra> comprasFechaActual = kvp.Value;
 
@@ -124,7 +128,9 @@ namespace ProyectoFinal.ControlerLayer
                                        join localidadEspectaculo in db.LocalidadEspectaculo
                                        on compra.LocalidadEspectaculoid equals localidadEspectaculo.Id
                                        join cuenta in db.Cuenta
-                                       on compra.Cuentaid equals cuenta.Id                                      
+                                       on compra.Cuentaid equals cuenta.Id
+                                       join espectaculo in db.Espectaculo
+                                       on localidadEspectaculo.Espectaculoid equals espectaculo.Id                                      
                                        select new
                                        {
                                            Usuario = cuenta.Usuario,
@@ -132,19 +138,21 @@ namespace ProyectoFinal.ControlerLayer
                                            Precio = localidadEspectaculo.Precio,
                                            Asientos = new CompraController().convertirCompraEnLocalidadAsiento(comprasFechaActual),
                                            NumeroDeTicket = compra.Id,
-                                           Id = compra.Id
+                                           Id = compra.Id,
+                                           Espectaculo = espectaculo.NombreEspectaculo
                                        };
+
 
                     var primerObjeto = datosCompras.FirstOrDefault();
                     if (primerObjeto != null)
                     {
                         dataGridView.Rows.Add(
-                            primerObjeto.Usuario,
+                            primerObjeto.Espectaculo,
                             primerObjeto.FechaYHora,
                             primerObjeto.Precio,
                             primerObjeto.Asientos,
                             primerObjeto.NumeroDeTicket,
-                            primerObjeto.Id
+                            primerObjeto.Usuario
                         );
                     }
                 }

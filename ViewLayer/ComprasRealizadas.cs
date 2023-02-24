@@ -24,7 +24,7 @@ namespace ProyectoFinal.ViewLayer
                 lblUsuariosResponsablesCR.Visible = false;
                 txtUsuarioResponsableCR.Visible = false;
             }
-
+            btnEliminar.Enabled = false;
             txtBusqueda.Text = "NumeroDeTicket";
             txtBusqueda.ForeColor = Color.Gray;
             cargarGrilla();
@@ -67,7 +67,7 @@ namespace ProyectoFinal.ViewLayer
         }
         private void cargarGrilla()
         {
-            string[] datos = { "Usuario", "Fecha y hora", "Precio", "Asientos", "NumeroDeTicket", "Id" };
+            string[] datos = { "Espectaculo", "Fecha y hora", "Precio", "Asientos", "NumeroDeTicket", "Usuario" };
             new DataGridViewController().crearColumnas(dgvCompras, datos);
             llenarGrilla();
         }
@@ -108,6 +108,39 @@ namespace ProyectoFinal.ViewLayer
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            DialogResult dialogResult = MessageBox.Show("¿Quiere eliminar esta compra?", "ADVERTENCIA", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                long idEliminar = long.Parse(txtNTicketCR.Text);
+                if (new CompraController().eliminarCompras(idEliminar))
+                {
+                    MessageBox.Show("Compra eliminada con exito");
+                    llenarGrilla();
+                    btnEliminar.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("Error al eliminar la compra");
+                }
+            }
+           
+        }
+
+        private void dgvCompras_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            int row = e.RowIndex;
+            if (row == dgvCompras.RowCount - 1) row = e.RowIndex - 1;           
+            txtUsuarioResponsableCR.Text = dgvCompras.Rows[row].Cells[5].Value.ToString();
+            txtFYHCR.Text = dgvCompras.Rows[row].Cells[1].Value.ToString();
+            TXTImporteCR.Text = dgvCompras.Rows[row].Cells[2].Value.ToString();
+            txtAsientosCR.Text = dgvCompras.Rows[row].Cells[3].Value.ToString();
+            txtNTicketCR.Text = dgvCompras.Rows[row].Cells[4].Value.ToString();
+            btnEliminar.Enabled = true;
+
+        }
+
+        private void btnModificarCR_Click(object sender, EventArgs e)
         {
 
         }

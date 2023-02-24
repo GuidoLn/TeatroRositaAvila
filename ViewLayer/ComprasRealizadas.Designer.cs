@@ -183,12 +183,14 @@
             this.btnModificarCR.TabIndex = 3;
             this.btnModificarCR.Text = "Modificar";
             this.btnModificarCR.UseVisualStyleBackColor = true;
+            this.btnModificarCR.Click += new System.EventHandler(this.btnModificarCR_Click);
             // 
             // dgvCompras
             // 
             this.dgvCompras.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCompras.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dgvCompras.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvCompras.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvCompras.GridColor = System.Drawing.SystemColors.ActiveBorder;
             this.dgvCompras.Location = new System.Drawing.Point(17, 65);
             this.dgvCompras.Margin = new System.Windows.Forms.Padding(2);
             this.dgvCompras.Name = "dgvCompras";
@@ -197,6 +199,7 @@
             this.dgvCompras.RowTemplate.Height = 24;
             this.dgvCompras.Size = new System.Drawing.Size(755, 179);
             this.dgvCompras.TabIndex = 4;
+            this.dgvCompras.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvCompras_RowHeaderMouseClick);
             // 
             // txtBusqueda
             // 
