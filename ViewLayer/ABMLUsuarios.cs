@@ -187,8 +187,24 @@ namespace ProyectoFinal.ViewLayer
 
         private void btnModificarUsuario_Click(object sender, EventArgs e)
         {
-            if (tbUsuario.Enabled == false) CambiarEstadoTB(true);
-            else
+            DialogResult resultDialog;
+            if (tbUsuario.Enabled != false)
+            {
+                resultDialog = MessageBox.Show("¿Desea aplicar los cambios?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            }
+            else { 
+            
+            resultDialog = MessageBox.Show("¿Estás seguro de que desea modificar este elemento?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            }
+            if (tbUsuario.Enabled == false && resultDialog == DialogResult.Yes)
+            {
+                CambiarEstadoTB(true);
+                btnModificarUsuario.Text = "Guardar";
+            }
+
+
+            else if (tbUsuario.Enabled == true)
             {
                 if (ValidacionesFormUsuarios()) return;
                 if (tbIdUsuario.Text == "") return;
@@ -215,6 +231,7 @@ namespace ProyectoFinal.ViewLayer
 
 
                     MessageBox.Show("Se modifico con exito al usuario ");
+                    btnModificarUsuario.Text = "Modificar";
 
                     List<Cuenta> cuentas = new CuentaController().GetCuentas();
 
@@ -222,6 +239,7 @@ namespace ProyectoFinal.ViewLayer
 
                 }
                 else MessageBox.Show("No se pudo realizar la modificacion . Error", cuenta.Usuario);
+                btnModificarUsuario.Text = "Modificar";
             }
         }
 
