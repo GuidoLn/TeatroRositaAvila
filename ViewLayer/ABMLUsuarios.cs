@@ -322,5 +322,45 @@ namespace ProyectoFinal.ViewLayer
 
             CargarGrilla(busqCuentas);
         }
+
+        private void tbBusqUsuario_TextChanged(object sender, EventArgs e)
+        {
+            new PropsTexBox().txtBusquedaNombre_TextChanged(sender, e, tbBusqUsuario, DGUsuarios, "Nombre");
+        }
+
+        private void tbBusqUsuario_MouseEnter(object sender, EventArgs e)
+        {
+            if (tbBusqUsuario.Text == "Nombre Del Usuario")
+            {
+                tbBusqUsuario.Text = string.Empty;
+                tbBusqUsuario.ForeColor = Color.Black;
+            }
+        }
+
+        private void tbBusqUsuario_MouseLeave(object sender, EventArgs e)
+        {
+            if (tbBusqUsuario.Text == "" && !tbBusqUsuario.Focused)
+            {
+                tbBusqUsuario.Text = "Nombre Del Usuario";
+                tbBusqUsuario.ForeColor = Color.Gray;
+            }
+        }
+        private void tbBusqUsuario_Enter(object sender, EventArgs e)
+        {
+            if (tbBusqUsuario.Text == "Nombre Del Usuario")
+            {
+                tbBusqUsuario.Text = "";
+                tbBusqUsuario.ForeColor = Color.Black;
+            }
+        }
+
+        private void tbBusqUsuario_Leave(object sender, EventArgs e)
+        {
+            if (tbBusqUsuario.Text == "")
+            {
+                tbBusqUsuario.Text = "Nombre Del Usuario";
+                tbBusqUsuario.ForeColor = Color.Gray;
+            }
+        }
     }
 }

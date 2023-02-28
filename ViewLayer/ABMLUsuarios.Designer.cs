@@ -49,6 +49,16 @@ namespace ProyectoFinal.ViewLayer
             this.tbUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.pAgregadoUsuario = new System.Windows.Forms.Panel();
+            this.btnUsMenu = new System.Windows.Forms.Button();
+            this.btnUsAtras = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.lbUsAgregagoClave = new System.Windows.Forms.Label();
+            this.lbUsAgregagoId = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.pUsEliminar = new System.Windows.Forms.Panel();
             this.btnUsEliminarNo = new System.Windows.Forms.Button();
             this.btnUsEliminarOk = new System.Windows.Forms.Button();
@@ -58,34 +68,23 @@ namespace ProyectoFinal.ViewLayer
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.btnUsMenu = new System.Windows.Forms.Button();
-            this.btnUsAtras = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.lbUsAgregagoClave = new System.Windows.Forms.Label();
-            this.lbUsAgregagoId = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel7 = new System.Windows.Forms.Panel();
             this.btnAgregarUsuario = new System.Windows.Forms.Button();
             this.btnEliminarUsuario = new System.Windows.Forms.Button();
             this.btnModificarUsuario = new System.Windows.Forms.Button();
             this.btnUsToMenu = new System.Windows.Forms.Button();
             this.tbBusqUsuario = new System.Windows.Forms.TextBox();
-            this.btnBusqUsuario = new System.Windows.Forms.Button();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
             this.panel2.SuspendLayout();
             this.pAgregadoUsuario.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.pUsEliminar.SuspendLayout();
             this.panel8.SuspendLayout();
-            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -292,6 +291,110 @@ namespace ProyectoFinal.ViewLayer
             this.pAgregadoUsuario.TabIndex = 6;
             this.pAgregadoUsuario.Visible = false;
             // 
+            // btnUsMenu
+            // 
+            this.btnUsMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnUsMenu.Location = new System.Drawing.Point(443, 315);
+            this.btnUsMenu.Name = "btnUsMenu";
+            this.btnUsMenu.Size = new System.Drawing.Size(181, 34);
+            this.btnUsMenu.TabIndex = 4;
+            this.btnUsMenu.Text = "Menu Principal";
+            this.btnUsMenu.UseVisualStyleBackColor = true;
+            this.btnUsMenu.Click += new System.EventHandler(this.btnUsMenu_Click);
+            // 
+            // btnUsAtras
+            // 
+            this.btnUsAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnUsAtras.Location = new System.Drawing.Point(646, 315);
+            this.btnUsAtras.Name = "btnUsAtras";
+            this.btnUsAtras.Size = new System.Drawing.Size(87, 34);
+            this.btnUsAtras.TabIndex = 3;
+            this.btnUsAtras.Text = "Atras";
+            this.btnUsAtras.UseVisualStyleBackColor = true;
+            this.btnUsAtras.Click += new System.EventHandler(this.btnUsAtras_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label8.Location = new System.Drawing.Point(131, 40);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(429, 29);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "USUARIO REGISTRADO CON EXITO!";
+            // 
+            // panel4
+            // 
+            this.panel4.BackgroundImage = global::ProyectoFinal.Properties.Resources.usuario;
+            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel4.Controls.Add(this.panel6);
+            this.panel4.Location = new System.Drawing.Point(54, 135);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(222, 137);
+            this.panel4.TabIndex = 0;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
+            this.panel6.BackgroundImage = global::ProyectoFinal.Properties.Resources.kisspng_chroma_key_check_mark_tilde_symbol_green_tick_5ac32c3e1d4770_2128125115227402861199;
+            this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel6.Location = new System.Drawing.Point(148, 36);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(71, 52);
+            this.panel6.TabIndex = 1;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
+            this.panel5.Controls.Add(this.lbUsAgregagoClave);
+            this.panel5.Controls.Add(this.lbUsAgregagoId);
+            this.panel5.Controls.Add(this.label10);
+            this.panel5.Controls.Add(this.label9);
+            this.panel5.Location = new System.Drawing.Point(305, 135);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(319, 153);
+            this.panel5.TabIndex = 1;
+            // 
+            // lbUsAgregagoClave
+            // 
+            this.lbUsAgregagoClave.AutoSize = true;
+            this.lbUsAgregagoClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lbUsAgregagoClave.Location = new System.Drawing.Point(135, 95);
+            this.lbUsAgregagoClave.Name = "lbUsAgregagoClave";
+            this.lbUsAgregagoClave.Size = new System.Drawing.Size(139, 29);
+            this.lbUsAgregagoClave.TabIndex = 3;
+            this.lbUsAgregagoClave.Text = "PedroMe56";
+            // 
+            // lbUsAgregagoId
+            // 
+            this.lbUsAgregagoId.AutoSize = true;
+            this.lbUsAgregagoId.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.lbUsAgregagoId.Location = new System.Drawing.Point(135, 31);
+            this.lbUsAgregagoId.Name = "lbUsAgregagoId";
+            this.lbUsAgregagoId.Size = new System.Drawing.Size(175, 29);
+            this.lbUsAgregagoId.TabIndex = 2;
+            this.lbUsAgregagoId.Text = "Roberto Carloz";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label10.Location = new System.Drawing.Point(25, 95);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(80, 29);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Clave:";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
+            this.label9.Location = new System.Drawing.Point(27, 31);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(102, 29);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Usuario:";
+            // 
             // pUsEliminar
             // 
             this.pUsEliminar.Controls.Add(this.btnUsEliminarNo);
@@ -389,89 +492,25 @@ namespace ProyectoFinal.ViewLayer
             this.label11.TabIndex = 0;
             this.label11.Text = "¿Esta seguro que desea eliminar al usuario?";
             // 
-            // btnUsMenu
+            // panel3
             // 
-            this.btnUsMenu.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnUsMenu.Location = new System.Drawing.Point(443, 315);
-            this.btnUsMenu.Name = "btnUsMenu";
-            this.btnUsMenu.Size = new System.Drawing.Size(181, 34);
-            this.btnUsMenu.TabIndex = 4;
-            this.btnUsMenu.Text = "Menu Principal";
-            this.btnUsMenu.UseVisualStyleBackColor = true;
-            this.btnUsMenu.Click += new System.EventHandler(this.btnUsMenu_Click);
+            this.panel3.BackgroundImage = global::ProyectoFinal.Properties.Resources.usuario;
+            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel3.Controls.Add(this.panel7);
+            this.panel3.Location = new System.Drawing.Point(116, 159);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(205, 125);
+            this.panel3.TabIndex = 1;
             // 
-            // btnUsAtras
+            // panel7
             // 
-            this.btnUsAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnUsAtras.Location = new System.Drawing.Point(646, 315);
-            this.btnUsAtras.Name = "btnUsAtras";
-            this.btnUsAtras.Size = new System.Drawing.Size(87, 34);
-            this.btnUsAtras.TabIndex = 3;
-            this.btnUsAtras.Text = "Atras";
-            this.btnUsAtras.UseVisualStyleBackColor = true;
-            this.btnUsAtras.Click += new System.EventHandler(this.btnUsAtras_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label8.Location = new System.Drawing.Point(131, 40);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(429, 29);
-            this.label8.TabIndex = 2;
-            this.label8.Text = "USUARIO REGISTRADO CON EXITO!";
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.panel5.Controls.Add(this.lbUsAgregagoClave);
-            this.panel5.Controls.Add(this.lbUsAgregagoId);
-            this.panel5.Controls.Add(this.label10);
-            this.panel5.Controls.Add(this.label9);
-            this.panel5.Location = new System.Drawing.Point(305, 135);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(319, 153);
-            this.panel5.TabIndex = 1;
-            // 
-            // lbUsAgregagoClave
-            // 
-            this.lbUsAgregagoClave.AutoSize = true;
-            this.lbUsAgregagoClave.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.lbUsAgregagoClave.Location = new System.Drawing.Point(135, 95);
-            this.lbUsAgregagoClave.Name = "lbUsAgregagoClave";
-            this.lbUsAgregagoClave.Size = new System.Drawing.Size(139, 29);
-            this.lbUsAgregagoClave.TabIndex = 3;
-            this.lbUsAgregagoClave.Text = "PedroMe56";
-            // 
-            // lbUsAgregagoId
-            // 
-            this.lbUsAgregagoId.AutoSize = true;
-            this.lbUsAgregagoId.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.lbUsAgregagoId.Location = new System.Drawing.Point(135, 31);
-            this.lbUsAgregagoId.Name = "lbUsAgregagoId";
-            this.lbUsAgregagoId.Size = new System.Drawing.Size(175, 29);
-            this.lbUsAgregagoId.TabIndex = 2;
-            this.lbUsAgregagoId.Text = "Roberto Carloz";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label10.Location = new System.Drawing.Point(25, 95);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(80, 29);
-            this.label10.TabIndex = 1;
-            this.label10.Text = "Clave:";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F);
-            this.label9.Location = new System.Drawing.Point(27, 31);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(102, 29);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "Usuario:";
+            this.panel7.BackColor = System.Drawing.Color.Transparent;
+            this.panel7.BackgroundImage = global::ProyectoFinal.Properties.Resources.x;
+            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.panel7.Location = new System.Drawing.Point(124, 25);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(69, 52);
+            this.panel7.TabIndex = 2;
             // 
             // btnAgregarUsuario
             // 
@@ -523,57 +562,11 @@ namespace ProyectoFinal.ViewLayer
             this.tbBusqUsuario.Name = "tbBusqUsuario";
             this.tbBusqUsuario.Size = new System.Drawing.Size(142, 20);
             this.tbBusqUsuario.TabIndex = 15;
-            // 
-            // btnBusqUsuario
-            // 
-            this.btnBusqUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnBusqUsuario.Location = new System.Drawing.Point(182, 41);
-            this.btnBusqUsuario.Name = "btnBusqUsuario";
-            this.btnBusqUsuario.Size = new System.Drawing.Size(163, 30);
-            this.btnBusqUsuario.TabIndex = 16;
-            this.btnBusqUsuario.Text = "Buscar por Usuario";
-            this.btnBusqUsuario.UseVisualStyleBackColor = true;
-            this.btnBusqUsuario.Click += new System.EventHandler(this.btnBusqUsuario_Click);
-            // 
-            // panel3
-            // 
-            this.panel3.BackgroundImage = global::ProyectoFinal.Properties.Resources.usuario;
-            this.panel3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel3.Controls.Add(this.panel7);
-            this.panel3.Location = new System.Drawing.Point(116, 159);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(205, 125);
-            this.panel3.TabIndex = 1;
-            // 
-            // panel7
-            // 
-            this.panel7.BackColor = System.Drawing.Color.Transparent;
-            this.panel7.BackgroundImage = global::ProyectoFinal.Properties.Resources.x;
-            this.panel7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel7.Location = new System.Drawing.Point(124, 25);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(69, 52);
-            this.panel7.TabIndex = 2;
-            // 
-            // panel4
-            // 
-            this.panel4.BackgroundImage = global::ProyectoFinal.Properties.Resources.usuario;
-            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel4.Controls.Add(this.panel6);
-            this.panel4.Location = new System.Drawing.Point(54, 135);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(222, 137);
-            this.panel4.TabIndex = 0;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.Transparent;
-            this.panel6.BackgroundImage = global::ProyectoFinal.Properties.Resources.kisspng_chroma_key_check_mark_tilde_symbol_green_tick_5ac32c3e1d4770_2128125115227402861199;
-            this.panel6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.panel6.Location = new System.Drawing.Point(148, 36);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(71, 52);
-            this.panel6.TabIndex = 1;
+            this.tbBusqUsuario.TextChanged += new System.EventHandler(this.tbBusqUsuario_TextChanged);
+            this.tbBusqUsuario.Enter += new System.EventHandler(this.tbBusqUsuario_Enter);
+            this.tbBusqUsuario.Leave += new System.EventHandler(this.tbBusqUsuario_Leave);
+            this.tbBusqUsuario.MouseEnter += new System.EventHandler(this.tbBusqUsuario_MouseEnter);
+            this.tbBusqUsuario.MouseLeave += new System.EventHandler(this.tbBusqUsuario_MouseLeave);
             // 
             // ABMLUsuarios
             // 
@@ -587,7 +580,6 @@ namespace ProyectoFinal.ViewLayer
             this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.btnEliminarUsuario);
             this.Controls.Add(this.btnAgregarUsuario);
-            this.Controls.Add(this.btnBusqUsuario);
             this.Controls.Add(this.tbBusqUsuario);
             this.Name = "ABMLUsuarios";
             this.Text = "ABMLUsuarios";
@@ -599,14 +591,14 @@ namespace ProyectoFinal.ViewLayer
             this.panel2.PerformLayout();
             this.pAgregadoUsuario.ResumeLayout(false);
             this.pAgregadoUsuario.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.pUsEliminar.ResumeLayout(false);
             this.pUsEliminar.PerformLayout();
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -659,7 +651,6 @@ namespace ProyectoFinal.ViewLayer
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnUsToMenu;
         private System.Windows.Forms.TextBox tbBusqUsuario;
-        private System.Windows.Forms.Button btnBusqUsuario;
         private System.Windows.Forms.ComboBox tbTipoUsuario;
     }
 }
