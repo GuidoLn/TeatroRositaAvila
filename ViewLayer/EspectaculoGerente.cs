@@ -263,5 +263,45 @@ namespace ProyectoFinal.ViewLayer
             btnGuardar.Visible = false;
             btnEliminar.Enabled = false;
         }
+
+        private void txtSearchShow_TextChanged(object sender, EventArgs e)
+        {
+            new PropsTexBox().txtBusquedaNombre_TextChanged(sender, e, txtSearchShow, dgvEspectaculos, "Nombre");
+        }
+
+        private void tbBusqUsuario_MouseEnter(object sender, EventArgs e)
+        {
+            if (txtSearchShow.Text == "Nombre del Espectaculo")
+            {
+                txtSearchShow.Text = string.Empty;
+                txtSearchShow.ForeColor = Color.Black;
+            }
+        }
+
+        private void tbBusqUsuario_MouseLeave(object sender, EventArgs e)
+        {
+            if (txtSearchShow.Text == "" && !txtSearchShow.Focused)
+            {
+                txtSearchShow.Text = "Nombre del Espectaculo";
+                txtSearchShow.ForeColor = Color.Gray;
+            }
+        }
+        private void tbBusqUsuario_Enter(object sender, EventArgs e)
+        {
+            if (txtSearchShow.Text == "Nombre del Espectaculo")
+            {
+                txtSearchShow.Text = "";
+                txtSearchShow.ForeColor = Color.Black;
+            }
+        }
+
+        private void tbBusqUsuario_Leave(object sender, EventArgs e)
+        {
+            if (txtSearchShow.Text == "")
+            {
+                txtSearchShow.Text = "Nombre del Espectaculo";
+                txtSearchShow.ForeColor = Color.Gray;
+            }
+        }
     }
 }

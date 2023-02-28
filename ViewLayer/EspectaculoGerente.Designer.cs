@@ -48,6 +48,7 @@
             this.btnAtras = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
+            this.txtSearchShow = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEspectaculos)).BeginInit();
             this.gbEspectaculos.SuspendLayout();
             this.SuspendLayout();
@@ -57,12 +58,12 @@
             this.dgvEspectaculos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvEspectaculos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dgvEspectaculos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvEspectaculos.Location = new System.Drawing.Point(12, 29);
+            this.dgvEspectaculos.Location = new System.Drawing.Point(12, 35);
             this.dgvEspectaculos.MultiSelect = false;
             this.dgvEspectaculos.Name = "dgvEspectaculos";
             this.dgvEspectaculos.ReadOnly = true;
             this.dgvEspectaculos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvEspectaculos.Size = new System.Drawing.Size(823, 190);
+            this.dgvEspectaculos.Size = new System.Drawing.Size(823, 184);
             this.dgvEspectaculos.TabIndex = 0;
             this.dgvEspectaculos.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvEspectaculos_RowHeaderMouseClick);
             // 
@@ -255,11 +256,24 @@
             this.btnLimpiar.Visible = false;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
+            // txtSearchShow
+            // 
+            this.txtSearchShow.Location = new System.Drawing.Point(639, 2);
+            this.txtSearchShow.Multiline = true;
+            this.txtSearchShow.Name = "txtSearchShow";
+            this.txtSearchShow.Size = new System.Drawing.Size(190, 27);
+            this.txtSearchShow.TabIndex = 5;
+            this.txtSearchShow.Enter += new System.EventHandler(this.tbBusqUsuario_Enter);
+            this.txtSearchShow.Leave += new System.EventHandler(this.tbBusqUsuario_Leave);
+            this.txtSearchShow.MouseEnter += new System.EventHandler(this.tbBusqUsuario_Enter);
+            this.txtSearchShow.MouseLeave += new System.EventHandler(this.tbBusqUsuario_Leave);
+            // 
             // EspectaculoGerente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 479);
+            this.Controls.Add(this.txtSearchShow);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
             this.Controls.Add(this.btnAtras);
@@ -275,6 +289,7 @@
             this.gbEspectaculos.ResumeLayout(false);
             this.gbEspectaculos.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -300,5 +315,6 @@
         private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.TextBox txtSearchShow;
     }
 }
