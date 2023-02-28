@@ -37,7 +37,7 @@ namespace ProyectoFinal.ViewLayer
         }
         public void cargarListBox()
         {
-            List<Compania> companias = new GetData().GetCompanias();
+            List<Compania> companias = new CompaniaController().GetCompanias();
             foreach (var item in companias)
             {
                 lbCompania.Items.Add(item.NombreCompania);
@@ -57,7 +57,7 @@ namespace ProyectoFinal.ViewLayer
             {
                 if (item1.EstadoEspectaculo)
                 {
-                    item1.Compania = new GetData().GetByIdCompañia(item1.Companiaid);
+                    item1.Compania = new CompaniaController().GetByIdCompañia(item1.Companiaid);
                     dgvEspectaculos.Rows.Add(item1.NombreEspectaculo, item1.Compania.NombreCompania, item1.FechaYHora, item1.PrecioEspectaculo, item1.DescripcionEspectaculo, item1.Id);
                 }
             }
@@ -88,7 +88,7 @@ namespace ProyectoFinal.ViewLayer
                 espectaculo.DescripcionEspectaculo = txtDescripcion.Text;
                 espectaculo.PrecioEspectaculo = int.Parse(txtPrecio.Text);
                 espectaculo.FechaYHora = dtpFecha.Value;
-                espectaculo.Companiaid = new GetData().GetByNameCompañia(lbCompania.Text).Id;
+                espectaculo.Companiaid = new CompaniaController().GetByNameCompañia(lbCompania.Text).Id;
                 if (new EspectaculoController().agregarEspectaculo(espectaculo))
                 {
                     MessageBox.Show("Espectaculo agregado correctamente");
@@ -196,7 +196,7 @@ namespace ProyectoFinal.ViewLayer
                     espectaculo.DescripcionEspectaculo = txtDescripcion.Text;
                     espectaculo.PrecioEspectaculo = int.Parse(txtPrecio.Text);
                     espectaculo.FechaYHora = dtpFecha.Value;
-                    espectaculo.Companiaid = new GetData().GetByNameCompañia(lbCompania.Text).Id;
+                    espectaculo.Companiaid = new CompaniaController().GetByNameCompañia(lbCompania.Text).Id;
                     if (new EspectaculoController().modificarEspectaculo(espectaculo))
                     {
                         MessageBox.Show("Espectaculo eliminado correctamente");
@@ -230,7 +230,7 @@ namespace ProyectoFinal.ViewLayer
                     espectaculo.DescripcionEspectaculo = txtDescripcion.Text;
                     espectaculo.PrecioEspectaculo = int.Parse(txtPrecio.Text);
                     espectaculo.FechaYHora = dtpFecha.Value;
-                    espectaculo.Companiaid = new GetData().GetByNameCompañia(lbCompania.Text).Id;
+                    espectaculo.Companiaid = new CompaniaController().GetByNameCompañia(lbCompania.Text).Id;
                     if (new EspectaculoController().modificarEspectaculo(espectaculo))
                     {
                         MessageBox.Show("Espectaculo modificado correctamente");

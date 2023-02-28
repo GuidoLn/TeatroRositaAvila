@@ -94,7 +94,7 @@ namespace ProyectoFinal.ViewLayer
 
                 if (item1.EstadoEspectaculo)
                 {
-                    item1.Compania = new GetData().GetByIdCompañia(item1.Companiaid);
+                    item1.Compania = new CompaniaController().GetByIdCompañia(item1.Companiaid);
                     dgvRealizarCompra.Rows.Add(item1.NombreEspectaculo, item1.PrecioEspectaculo, item1.Id);
                 }
 

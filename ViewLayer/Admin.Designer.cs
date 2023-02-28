@@ -39,6 +39,7 @@ namespace ProyectoFinal.ViewLayer
             this.panel1 = new System.Windows.Forms.Panel();
             this.bt_AdALogin = new System.Windows.Forms.Button();
             this.btnCompras = new System.Windows.Forms.Button();
+            this.btnCompania = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -150,11 +151,24 @@ namespace ProyectoFinal.ViewLayer
             this.btnCompras.UseVisualStyleBackColor = false;
             this.btnCompras.Click += new System.EventHandler(this.btnCompras_Click);
             // 
+            // btnCompania
+            // 
+            this.btnCompania.BackColor = System.Drawing.SystemColors.Highlight;
+            this.btnCompania.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
+            this.btnCompania.Location = new System.Drawing.Point(57, 288);
+            this.btnCompania.Name = "btnCompania";
+            this.btnCompania.Size = new System.Drawing.Size(159, 45);
+            this.btnCompania.TabIndex = 8;
+            this.btnCompania.Text = "Compañias";
+            this.btnCompania.UseVisualStyleBackColor = false;
+            this.btnCompania.Click += new System.EventHandler(this.btnCompania_Click);
+            // 
             // Admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(580, 429);
+            this.Controls.Add(this.btnCompania);
             this.Controls.Add(this.btnCompras);
             this.Controls.Add(this.bt_AdALogin);
             this.Controls.Add(this.panel3);
@@ -185,5 +199,6 @@ namespace ProyectoFinal.ViewLayer
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button bt_AdALogin;
         private System.Windows.Forms.Button btnCompras;
+        private System.Windows.Forms.Button btnCompania;
     }
 }

@@ -59,15 +59,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlerLayer\CompaniaController.cs" />
     <Compile Include="ControlerLayer\CompraController.cs" />
     <Compile Include="ControlerLayer\ContLogin.cs" />
     <Compile Include="ControlerLayer\CuentaController.cs" />
     <Compile Include="ControlerLayer\DataGridViewController.cs" />
     <Compile Include="ControlerLayer\Diccionario.cs" />
+    <Compile Include="ControlerLayer\EmpleadoController.cs" />
     <Compile Include="ControlerLayer\EspectaculoController.cs" />
-    <Compile Include="ControlerLayer\GetData.cs" />
     <Compile Include="ControlerLayer\LocalidadAsientoController.cs" />
     <Compile Include="ControlerLayer\LocalidadEspectaculoController.cs" />
+    <Compile Include="ControlerLayer\PersonaController.cs" />
     <Compile Include="ControlerLayer\PropsTexBox.cs" />
     <Compile Include="ControlerLayer\SectorController.cs" />
     <Compile Include="DataLayer\Artista.cs">
@@ -121,6 +123,12 @@
     <Compile Include="DataLayer\sysdiagrams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewLayer\ABMLCompania.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewLayer\ABMLCompania.Designer.cs">
+      <DependentUpon>ABMLCompania.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewLayer\ABMLUsuarios.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -165,6 +173,12 @@
     <Compile Include="ViewLayer\MainMenuUser.Designer.cs">
       <DependentUpon>MainMenuUser.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewLayer\ModificarCompras.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewLayer\ModificarCompras.Designer.cs">
+      <DependentUpon>ModificarCompras.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewLayer\RealizarCompras.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +195,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ViewLayer\ABMLCompania.resx">
+      <DependentUpon>ABMLCompania.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ViewLayer\ABMLUsuarios.resx">
       <DependentUpon>ABMLUsuarios.cs</DependentUpon>
     </EmbeddedResource>
@@ -201,6 +218,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewLayer\MainMenuUser.resx">
       <DependentUpon>MainMenuUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewLayer\ModificarCompras.resx">
+      <DependentUpon>ModificarCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewLayer\RealizarCompras.resx">
       <DependentUpon>RealizarCompras.cs</DependentUpon>

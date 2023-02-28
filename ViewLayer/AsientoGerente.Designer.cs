@@ -99,7 +99,7 @@
             this.gbSC.Size = new System.Drawing.Size(669, 248);
             this.gbSC.TabIndex = 4;
             this.gbSC.TabStop = false;
-            this.gbSC.Text = "Palco";
+            this.gbSC.Text = "Platea Baja";
             this.gbSC.Paint += new System.Windows.Forms.PaintEventHandler(this.prepareToPaint);
             // 
             // gbSA
@@ -109,7 +109,7 @@
             this.gbSA.Size = new System.Drawing.Size(156, 248);
             this.gbSA.TabIndex = 4;
             this.gbSA.TabStop = false;
-            this.gbSA.Text = "Platea Baja";
+            this.gbSA.Text = "Palco";
             this.gbSA.Paint += new System.Windows.Forms.PaintEventHandler(this.prepareToPaint);
             // 
             // gbSD

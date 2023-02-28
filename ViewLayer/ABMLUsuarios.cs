@@ -171,8 +171,8 @@ namespace ProyectoFinal.ViewLayer
             if (fila >= DGUsuarios.RowCount - 1) fila = e.RowIndex - 1;
 
             Cuenta c = new CuentaController().GetByIdCuenta(long.Parse(DGUsuarios.Rows[fila].Cells["Id"].Value.ToString()));
-            Empleado emp = new GetData().GetByIdCEmpleado(c.Id);
-            Persona p = new GetData().GetByIdPersona(emp.Personaid);
+            Empleado emp = new EmpleadoController().GetByIdCEmpleado(c.Id);
+            Persona p = new PersonaController().GetByIdPersona(emp.Personaid);
 
             // extrayendo iinformación de la grilla
             tbIdUsuario.Text = DGUsuarios.Rows[fila].Cells["Id"].Value.ToString();
@@ -194,8 +194,8 @@ namespace ProyectoFinal.ViewLayer
                 if (tbIdUsuario.Text == "") return;
 
                 Cuenta cuenta = new CuentaController().GetByIdCuenta(long.Parse(tbIdUsuario.Text));
-                Empleado emp = new GetData().GetByIdCEmpleado(cuenta.Id);
-                Persona persona = new GetData().GetByIdPersona(emp.Personaid);
+                Empleado emp = new EmpleadoController().GetByIdCEmpleado(cuenta.Id);
+                Persona persona = new PersonaController().GetByIdPersona(emp.Personaid);
 
                 cuenta.Usuario = tbUsuario.Text;
                 cuenta.Contraseña = tbClave.Text;
@@ -256,8 +256,8 @@ namespace ProyectoFinal.ViewLayer
         private void btnUsEliminarOk_Click(object sender, EventArgs e)
         {
             Cuenta cuenta = new CuentaController().GetByIdCuenta(long.Parse(tbIdUsuario.Text));
-            Empleado emp = new GetData().GetByIdCEmpleado(cuenta.Id);
-            Persona persona = new GetData().GetByIdPersona(emp.Personaid);
+            Empleado emp = new EmpleadoController().GetByIdCEmpleado(cuenta.Id);
+            Persona persona = new PersonaController().GetByIdPersona(emp.Personaid);
 
             cuenta.Usuario = tbUsuario.Text;
             cuenta.Contraseña = tbClave.Text;

@@ -59,5 +59,11 @@ namespace ProyectoFinal.ViewLayer
                 this.Close();
             
         }
+
+        private void btnCompania_Click(object sender, EventArgs e)
+        {
+            new ABMLCompania().Show();
+            this.Close();
+        }
     }
 }

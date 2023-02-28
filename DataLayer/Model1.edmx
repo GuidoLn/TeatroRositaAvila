@@ -31,6 +31,7 @@
           <Property Name="DescripcionCompania" Type="varchar" MaxLength="150" />
           <Property Name="EmailCompania" Type="varchar" MaxLength="50" />
           <Property Name="TelefonoCompania" Type="varchar" MaxLength="50" />
+          <Property Name="EstadoCompania" Type="bit" />
         </EntityType>
         <EntityType Name="Compra">
           <Key>
@@ -383,6 +384,7 @@
           <Property Name="TelefonoCompania" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Artista" Relationship="Self.FK_Compania" FromRole="Compania" ToRole="Artista" />
           <NavigationProperty Name="Espectaculo" Relationship="Self.FK_Compania2" FromRole="Compania" ToRole="Espectaculo" />
+          <Property Name="EstadoCompania" Type="Boolean" />
         </EntityType>
         <EntityType Name="Compra">
           <Key>
@@ -749,6 +751,7 @@
           <EntitySetMapping Name="Compania">
             <EntityTypeMapping TypeName="TeatroModel.Compania">
               <MappingFragment StoreEntitySet="Compania">
+                <ScalarProperty Name="EstadoCompania" ColumnName="EstadoCompania" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="NombreCompania" ColumnName="NombreCompania" />
                 <ScalarProperty Name="DescripcionCompania" ColumnName="DescripcionCompania" />

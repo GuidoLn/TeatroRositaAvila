@@ -97,7 +97,7 @@
             this.dgvRealizarCompra.ReadOnly = true;
             this.dgvRealizarCompra.RowHeadersWidth = 51;
             this.dgvRealizarCompra.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRealizarCompra.Size = new System.Drawing.Size(678, 163);
+            this.dgvRealizarCompra.Size = new System.Drawing.Size(876, 163);
             this.dgvRealizarCompra.TabIndex = 5;
             this.dgvRealizarCompra.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvCellMouseClick);
             this.dgvRealizarCompra.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvRealizarCompra_CellContentClick);
@@ -106,27 +106,27 @@
             // 
             this.gbSC.Location = new System.Drawing.Point(199, 216);
             this.gbSC.Name = "gbSC";
-            this.gbSC.Size = new System.Drawing.Size(527, 328);
+            this.gbSC.Size = new System.Drawing.Size(747, 457);
             this.gbSC.TabIndex = 6;
             this.gbSC.TabStop = false;
-            this.gbSC.Text = "Palco";
+            this.gbSC.Text = "Platea Baja";
             this.gbSC.Paint += new System.Windows.Forms.PaintEventHandler(this.PrepareToPaint);
             // 
             // gbSA
             // 
             this.gbSA.Location = new System.Drawing.Point(16, 216);
             this.gbSA.Name = "gbSA";
-            this.gbSA.Size = new System.Drawing.Size(177, 271);
+            this.gbSA.Size = new System.Drawing.Size(177, 457);
             this.gbSA.TabIndex = 7;
             this.gbSA.TabStop = false;
-            this.gbSA.Text = "Platea Baja";
+            this.gbSA.Text = "Palco";
             this.gbSA.Paint += new System.Windows.Forms.PaintEventHandler(this.PrepareToPaint);
             // 
             // btnComprar
             // 
             this.btnComprar.BackColor = System.Drawing.Color.LawnGreen;
             this.btnComprar.ForeColor = System.Drawing.Color.Black;
-            this.btnComprar.Location = new System.Drawing.Point(1036, 500);
+            this.btnComprar.Location = new System.Drawing.Point(1102, 511);
             this.btnComprar.Name = "btnComprar";
             this.btnComprar.Size = new System.Drawing.Size(75, 23);
             this.btnComprar.TabIndex = 8;
@@ -138,7 +138,7 @@
             // 
             this.btnAtras.BackColor = System.Drawing.Color.Red;
             this.btnAtras.ForeColor = System.Drawing.Color.Black;
-            this.btnAtras.Location = new System.Drawing.Point(1153, 500);
+            this.btnAtras.Location = new System.Drawing.Point(1219, 511);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(75, 23);
             this.btnAtras.TabIndex = 9;
@@ -164,7 +164,7 @@
             this.gbCaja.Controls.Add(this.lblValorimporte);
             this.gbCaja.Controls.Add(this.lblSubtotal);
             this.gbCaja.Controls.Add(this.lblMetodopago);
-            this.gbCaja.Location = new System.Drawing.Point(732, 226);
+            this.gbCaja.Location = new System.Drawing.Point(968, 226);
             this.gbCaja.Name = "gbCaja";
             this.gbCaja.Size = new System.Drawing.Size(520, 238);
             this.gbCaja.TabIndex = 10;
@@ -373,7 +373,7 @@
             this.gbSeleccionAsientos.Controls.Add(this.txtCantidadAsientos);
             this.gbSeleccionAsientos.Controls.Add(this.lblAsientos);
             this.gbSeleccionAsientos.Controls.Add(this.txtAsientosSeleccionados);
-            this.gbSeleccionAsientos.Location = new System.Drawing.Point(732, 37);
+            this.gbSeleccionAsientos.Location = new System.Drawing.Point(968, 37);
             this.gbSeleccionAsientos.Name = "gbSeleccionAsientos";
             this.gbSeleccionAsientos.Size = new System.Drawing.Size(520, 183);
             this.gbSeleccionAsientos.TabIndex = 14;
@@ -413,7 +413,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1290, 556);
+            this.ClientSize = new System.Drawing.Size(1500, 685);
             this.Controls.Add(this.gbSeleccionAsientos);
             this.Controls.Add(this.gbCaja);
             this.Controls.Add(this.btnAtras);
