@@ -23,6 +23,7 @@ namespace ProyectoFinal.ViewLayer
                 btnEliminar.Visible = false;
                 lblUsuariosResponsablesCR.Visible = false;
                 txtUsuarioResponsableCR.Visible = false;
+                gbComprasRealizadas.Visible = false;
             }
             btnEliminar.Enabled = false;
             txtBusqueda.Text = "NumeroDeTicket";
@@ -139,10 +140,6 @@ namespace ProyectoFinal.ViewLayer
             btnEliminar.Enabled = true;
 
         }
-
-        private void btnModificarCR_Click(object sender, EventArgs e)
-        {
-
-        }
+                
     }
 }

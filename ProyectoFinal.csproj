@@ -173,12 +173,6 @@
     <Compile Include="ViewLayer\MainMenuUser.Designer.cs">
       <DependentUpon>MainMenuUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="ViewLayer\ModificarCompras.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ViewLayer\ModificarCompras.Designer.cs">
-      <DependentUpon>ModificarCompras.cs</DependentUpon>
-    </Compile>
     <Compile Include="ViewLayer\RealizarCompras.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -218,9 +212,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewLayer\MainMenuUser.resx">
       <DependentUpon>MainMenuUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ViewLayer\ModificarCompras.resx">
-      <DependentUpon>ModificarCompras.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewLayer\RealizarCompras.resx">
       <DependentUpon>RealizarCompras.cs</DependentUpon>

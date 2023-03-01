@@ -77,6 +77,7 @@ namespace ProyectoFinal
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             p_contOlvidada.Visible = true;
+            p_contOlvidada.BringToFront();
         }
     }
 }

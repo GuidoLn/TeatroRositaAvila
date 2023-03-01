@@ -127,7 +127,7 @@ namespace ProyectoFinal.ViewLayer
                 int columnIndex = space;
                 foreach (var asiento in asientos)
                 {
-                    if (columnIndex + side <= groupBox.Width)
+                    if (columnIndex + side <= groupBox.Width - side)
                     {
 
                         if (asiento.EstadoAsiento)

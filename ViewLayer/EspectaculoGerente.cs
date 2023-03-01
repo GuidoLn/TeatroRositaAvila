@@ -24,6 +24,8 @@ namespace ProyectoFinal.ViewLayer
             btnModificar.Enabled = false;
             dtpFecha.CustomFormat = "dd/MM/yy hh:mm";
             btnEliminar.Enabled = false;
+            txtSearchShow.Text = "Nombre del Espectaculo";
+            txtSearchShow.ForeColor = Color.Gray;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -266,6 +268,7 @@ namespace ProyectoFinal.ViewLayer
 
         private void txtSearchShow_TextChanged(object sender, EventArgs e)
         {
+            if(txtSearchShow.Text != "Nombre del Espectaculo")
             new PropsTexBox().txtBusquedaNombre_TextChanged(sender, e, txtSearchShow, dgvEspectaculos, "Nombre");
         }
 

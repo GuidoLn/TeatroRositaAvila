@@ -49,6 +49,7 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.txtSearchShow = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvEspectaculos)).BeginInit();
             this.gbEspectaculos.SuspendLayout();
             this.SuspendLayout();
@@ -258,21 +259,33 @@
             // 
             // txtSearchShow
             // 
-            this.txtSearchShow.Location = new System.Drawing.Point(639, 2);
+            this.txtSearchShow.Location = new System.Drawing.Point(204, 2);
             this.txtSearchShow.Multiline = true;
             this.txtSearchShow.Name = "txtSearchShow";
             this.txtSearchShow.Size = new System.Drawing.Size(190, 27);
             this.txtSearchShow.TabIndex = 5;
+            this.txtSearchShow.TextChanged += new System.EventHandler(this.txtSearchShow_TextChanged);
             this.txtSearchShow.Enter += new System.EventHandler(this.tbBusqUsuario_Enter);
             this.txtSearchShow.Leave += new System.EventHandler(this.tbBusqUsuario_Leave);
-            this.txtSearchShow.MouseEnter += new System.EventHandler(this.tbBusqUsuario_Enter);
-            this.txtSearchShow.MouseLeave += new System.EventHandler(this.tbBusqUsuario_Leave);
+            this.txtSearchShow.MouseEnter += new System.EventHandler(this.tbBusqUsuario_MouseEnter);
+            this.txtSearchShow.MouseLeave += new System.EventHandler(this.tbBusqUsuario_MouseLeave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 2);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(186, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Busqueda por nombre";
             // 
             // EspectaculoGerente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(847, 479);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearchShow);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnGuardar);
@@ -316,5 +329,6 @@
         private System.Windows.Forms.Button btnGuardar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.TextBox txtSearchShow;
+        private System.Windows.Forms.Label label1;
     }
 }

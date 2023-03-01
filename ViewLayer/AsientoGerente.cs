@@ -93,10 +93,8 @@ namespace ProyectoFinal.ViewLayer
         } 
         private void dgvCellMouseClick(object sender, DataGridViewCellEventArgs e)
         {
-            gbSA.Invalidate();
-            gbSB.Invalidate();
-            gbSC.Invalidate();
-            gbSD.Invalidate();
+            gbSA.Invalidate();            
+            gbSC.Invalidate();            
         }
      
         private void prepareToPaint(object sender, PaintEventArgs e)
@@ -126,7 +124,7 @@ namespace ProyectoFinal.ViewLayer
                 int columnIndex = space;
                 foreach (var asiento in asientos)
                 {
-                    if (columnIndex + side <= groupBox.Width)
+                    if (columnIndex + side <= groupBox.Width - side )
                     {
                         
                         if (asiento.EstadoAsiento)

@@ -75,6 +75,7 @@ namespace ProyectoFinal.ViewLayer
             this.btnModificarUsuario = new System.Windows.Forms.Button();
             this.btnUsToMenu = new System.Windows.Forms.Button();
             this.tbBusqUsuario = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGUsuarios)).BeginInit();
@@ -284,7 +285,6 @@ namespace ProyectoFinal.ViewLayer
             this.pAgregadoUsuario.Controls.Add(this.label8);
             this.pAgregadoUsuario.Controls.Add(this.panel4);
             this.pAgregadoUsuario.Controls.Add(this.panel5);
-            this.pAgregadoUsuario.Controls.Add(this.pUsEliminar);
             this.pAgregadoUsuario.Location = new System.Drawing.Point(21, 90);
             this.pAgregadoUsuario.Name = "pAgregadoUsuario";
             this.pAgregadoUsuario.Size = new System.Drawing.Size(737, 412);
@@ -402,7 +402,7 @@ namespace ProyectoFinal.ViewLayer
             this.pUsEliminar.Controls.Add(this.panel8);
             this.pUsEliminar.Controls.Add(this.label11);
             this.pUsEliminar.Controls.Add(this.panel3);
-            this.pUsEliminar.Location = new System.Drawing.Point(0, 0);
+            this.pUsEliminar.Location = new System.Drawing.Point(12, 75);
             this.pUsEliminar.Name = "pUsEliminar";
             this.pUsEliminar.Size = new System.Drawing.Size(746, 424);
             this.pUsEliminar.TabIndex = 5;
@@ -558,7 +558,7 @@ namespace ProyectoFinal.ViewLayer
             // 
             // tbBusqUsuario
             // 
-            this.tbBusqUsuario.Location = new System.Drawing.Point(21, 48);
+            this.tbBusqUsuario.Location = new System.Drawing.Point(215, 50);
             this.tbBusqUsuario.Name = "tbBusqUsuario";
             this.tbBusqUsuario.Size = new System.Drawing.Size(142, 20);
             this.tbBusqUsuario.TabIndex = 15;
@@ -568,15 +568,27 @@ namespace ProyectoFinal.ViewLayer
             this.tbBusqUsuario.MouseEnter += new System.EventHandler(this.tbBusqUsuario_MouseEnter);
             this.tbBusqUsuario.MouseLeave += new System.EventHandler(this.tbBusqUsuario_MouseLeave);
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(21, 48);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(188, 20);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Busqueda por Usuario";
+            // 
             // ABMLUsuarios
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(787, 647);
+            this.ClientSize = new System.Drawing.Size(787, 516);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pAgregadoUsuario);
             this.Controls.Add(this.btnUsToMenu);
+            this.Controls.Add(this.pUsEliminar);
             this.Controls.Add(this.btnModificarUsuario);
             this.Controls.Add(this.btnEliminarUsuario);
             this.Controls.Add(this.btnAgregarUsuario);
@@ -652,5 +664,6 @@ namespace ProyectoFinal.ViewLayer
         private System.Windows.Forms.Button btnUsToMenu;
         private System.Windows.Forms.TextBox tbBusqUsuario;
         private System.Windows.Forms.ComboBox tbTipoUsuario;
+        private System.Windows.Forms.Label label14;
     }
 }

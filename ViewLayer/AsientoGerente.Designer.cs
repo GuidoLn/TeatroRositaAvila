@@ -34,8 +34,6 @@
             this.btnAtras = new System.Windows.Forms.Button();
             this.gbSC = new System.Windows.Forms.GroupBox();
             this.gbSA = new System.Windows.Forms.GroupBox();
-            this.gbSD = new System.Windows.Forms.GroupBox();
-            this.gbSB = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAsientos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,7 +50,7 @@
             this.dgvAsientos.Name = "dgvAsientos";
             this.dgvAsientos.ReadOnly = true;
             this.dgvAsientos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAsientos.Size = new System.Drawing.Size(1048, 150);
+            this.dgvAsientos.Size = new System.Drawing.Size(1057, 150);
             this.dgvAsientos.TabIndex = 0;
             this.dgvAsientos.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAsientos_CellContentClick);
             this.dgvAsientos.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvCellMouseClick);
@@ -84,7 +82,7 @@
             // 
             this.btnAtras.BackColor = System.Drawing.SystemColors.Highlight;
             this.btnAtras.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold);
-            this.btnAtras.Location = new System.Drawing.Point(920, 536);
+            this.btnAtras.Location = new System.Drawing.Point(1105, 683);
             this.btnAtras.Name = "btnAtras";
             this.btnAtras.Size = new System.Drawing.Size(140, 37);
             this.btnAtras.TabIndex = 3;
@@ -94,9 +92,9 @@
             // 
             // gbSC
             // 
-            this.gbSC.Location = new System.Drawing.Point(218, 262);
+            this.gbSC.Location = new System.Drawing.Point(205, 218);
             this.gbSC.Name = "gbSC";
-            this.gbSC.Size = new System.Drawing.Size(669, 248);
+            this.gbSC.Size = new System.Drawing.Size(864, 492);
             this.gbSC.TabIndex = 4;
             this.gbSC.TabStop = false;
             this.gbSC.Text = "Platea Baja";
@@ -104,45 +102,21 @@
             // 
             // gbSA
             // 
-            this.gbSA.Location = new System.Drawing.Point(35, 262);
+            this.gbSA.Location = new System.Drawing.Point(12, 218);
             this.gbSA.Name = "gbSA";
-            this.gbSA.Size = new System.Drawing.Size(156, 248);
+            this.gbSA.Size = new System.Drawing.Size(187, 492);
             this.gbSA.TabIndex = 4;
             this.gbSA.TabStop = false;
             this.gbSA.Text = "Palco";
             this.gbSA.Paint += new System.Windows.Forms.PaintEventHandler(this.prepareToPaint);
             // 
-            // gbSD
-            // 
-            this.gbSD.Location = new System.Drawing.Point(833, 252);
-            this.gbSD.Name = "gbSD";
-            this.gbSD.Size = new System.Drawing.Size(281, 258);
-            this.gbSD.TabIndex = 4;
-            this.gbSD.TabStop = false;
-            this.gbSD.Text = "Palcos Altos";
-            this.gbSD.Visible = false;
-            this.gbSD.Paint += new System.Windows.Forms.PaintEventHandler(this.prepareToPaint);
-            // 
-            // gbSB
-            // 
-            this.gbSB.Location = new System.Drawing.Point(839, 252);
-            this.gbSB.Name = "gbSB";
-            this.gbSB.Size = new System.Drawing.Size(281, 124);
-            this.gbSB.TabIndex = 4;
-            this.gbSB.TabStop = false;
-            this.gbSB.Text = "Gallinero";
-            this.gbSB.Visible = false;
-            this.gbSB.Paint += new System.Windows.Forms.PaintEventHandler(this.prepareToPaint);
-            // 
             // AsientoGerente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1072, 585);
-            this.Controls.Add(this.gbSB);
+            this.ClientSize = new System.Drawing.Size(1260, 732);
             this.Controls.Add(this.gbSC);
             this.Controls.Add(this.gbSA);
-            this.Controls.Add(this.gbSD);
             this.Controls.Add(this.btnAtras);
             this.Controls.Add(this.txtBusquedaNombre);
             this.Controls.Add(this.lblBusqueda);
@@ -165,7 +139,5 @@
         private System.Windows.Forms.Button btnAtras;
         private System.Windows.Forms.GroupBox gbSC;
         private System.Windows.Forms.GroupBox gbSA;
-        private System.Windows.Forms.GroupBox gbSD;
-        private System.Windows.Forms.GroupBox gbSB;
     }
 }

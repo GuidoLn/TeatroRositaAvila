@@ -17,6 +17,9 @@ namespace ProyectoFinal.ViewLayer
         public ABMLUsuarios()
         {
             InitializeComponent();
+            btnModificarUsuario.Enabled = false;
+            tbBusqUsuario.Text = "Nombre del Usuario";
+            tbBusqUsuario.ForeColor = Color.Gray;
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
@@ -43,11 +46,11 @@ namespace ProyectoFinal.ViewLayer
             DGUsuarios.Columns.Clear();
             DGUsuarios.Rows.Clear();
 
-            
+
             DGUsuarios.Columns.Add("Nombre", "Nombre del Usuario");
             DGUsuarios.Columns.Add("Clave", "Clave del Usuario");
             DGUsuarios.Columns.Add("Id", "Id");
-            DGUsuarios.Columns["Id"].Visible= false;
+            DGUsuarios.Columns["Id"].Visible = false;
 
             foreach (var item1 in cuentas)
             {
@@ -125,7 +128,8 @@ namespace ProyectoFinal.ViewLayer
             {
                 LimpiarTB();
                 CambiarEstadoTB(true);
-            } else
+            }
+            else
             {
                 if (ValidacionesFormUsuarios()) return;
 
@@ -152,6 +156,7 @@ namespace ProyectoFinal.ViewLayer
                     lbUsAgregagoId.Text = cuenta.Usuario;
                     lbUsAgregagoClave.Text = cuenta.Contraseña;
                     pAgregadoUsuario.Visible = true;
+                    pAgregadoUsuario.BringToFront();
 
                     List<Cuenta> cuentas = new CuentaController().GetCuentas();
 
@@ -165,7 +170,7 @@ namespace ProyectoFinal.ViewLayer
         private void DGUsuarios_RowHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
         {
             CambiarEstadoTB(false);
-
+            btnModificarUsuario.Enabled = true;
             int fila = e.RowIndex;
 
             if (fila >= DGUsuarios.RowCount - 1) fila = e.RowIndex - 1;
@@ -188,59 +193,61 @@ namespace ProyectoFinal.ViewLayer
         private void btnModificarUsuario_Click(object sender, EventArgs e)
         {
             DialogResult resultDialog;
-            if (tbUsuario.Enabled != false)
-            {
-                resultDialog = MessageBox.Show("¿Desea aplicar los cambios?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            }
-            else { 
-            
-            resultDialog = MessageBox.Show("¿Estás seguro de que desea modificar este elemento?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-
-            }
-            if (tbUsuario.Enabled == false && resultDialog == DialogResult.Yes)
+            if (tbUsuario.Enabled == false && btnModificarUsuario.Text == "Modificar")
             {
                 CambiarEstadoTB(true);
                 btnModificarUsuario.Text = "Guardar";
             }
-
-
-            else if (tbUsuario.Enabled == true)
+            else if (tbUsuario.Enabled == true && btnModificarUsuario.Text == "Guardar")
             {
-                if (ValidacionesFormUsuarios()) return;
-                if (tbIdUsuario.Text == "") return;
+                resultDialog = MessageBox.Show("¿Desea aplicar los cambios?", "Confirmación", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                Cuenta cuenta = new CuentaController().GetByIdCuenta(long.Parse(tbIdUsuario.Text));
-                Empleado emp = new EmpleadoController().GetByIdCEmpleado(cuenta.Id);
-                Persona persona = new PersonaController().GetByIdPersona(emp.Personaid);
-
-                cuenta.Usuario = tbUsuario.Text;
-                cuenta.Contraseña = tbClave.Text;
-                cuenta.TipoUsuario = tbTipoUsuario.Text;
-                cuenta.Estado = true;
-
-                persona.NombreYApellido = tbNombreApellido.Text;
-                persona.Documento = long.Parse(tbDNI.Text);
-                persona.Telefono = tbTelefono.Text;
-                persona.mail = tbEmail.Text;
-
-                bool result = new CuentaController().Modificar(persona, cuenta);
-
-                if (result)
+            if (resultDialog == DialogResult.Yes)
                 {
-                    CambiarEstadoTB(false);
+                    if (ValidacionesFormUsuarios()) return;
+                    if (tbIdUsuario.Text == "") return;
+
+                    Cuenta cuenta = new CuentaController().GetByIdCuenta(long.Parse(tbIdUsuario.Text));
+                    Empleado emp = new EmpleadoController().GetByIdCEmpleado(cuenta.Id);
+                    Persona persona = new PersonaController().GetByIdPersona(emp.Personaid);
+
+                    cuenta.Usuario = tbUsuario.Text;
+                    cuenta.Contraseña = tbClave.Text;
+                    cuenta.TipoUsuario = tbTipoUsuario.Text;
+                    cuenta.Estado = true;
+
+                    persona.NombreYApellido = tbNombreApellido.Text;
+                    persona.Documento = long.Parse(tbDNI.Text);
+                    persona.Telefono = tbTelefono.Text;
+                    persona.mail = tbEmail.Text;
+
+                    bool result = new CuentaController().Modificar(persona, cuenta);
+
+                    if (result)
+                    {
+                        CambiarEstadoTB(false);
 
 
-                    MessageBox.Show("Se modifico con exito al usuario ");
-                    btnModificarUsuario.Text = "Modificar";
+                        MessageBox.Show("Se modifico con exito al usuario ");
+                        btnModificarUsuario.Text = "Modificar";
+                        btnModificarUsuario.Enabled = true;
 
-                    List<Cuenta> cuentas = new CuentaController().GetCuentas();
 
-                    CargarGrilla(cuentas);
+                        List<Cuenta> cuentas = new CuentaController().GetCuentas();
 
+                        CargarGrilla(cuentas);
+
+                    }
+                    else MessageBox.Show("No se pudo realizar la modificacion . Error", cuenta.Usuario);
+                    {
+                        btnModificarUsuario.Text = "Modificar";                        
+                    }
+                    
                 }
-                else MessageBox.Show("No se pudo realizar la modificacion . Error", cuenta.Usuario);
-                btnModificarUsuario.Text = "Modificar";
+
             }
+
+
         }
 
         private void btnEliminarUsuario_Click(object sender, EventArgs e)
@@ -248,8 +255,18 @@ namespace ProyectoFinal.ViewLayer
             if (tbIdUsuario.Text != "")
             {
                 lbUsEliminarId.Text = tbUsuario.Text;
-                lbUsEliminarClave.Text = tbClave.Text;
-                pUsEliminar.Visible = true;
+                lbUsEliminarClave.Text = tbClave.Text;                
+                if (long.Parse(tbIdUsuario.Text) != ContLogin.GetInstance().UsuarioLogueadoid)
+                {
+                    pUsEliminar.BringToFront();
+                    pUsEliminar.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("No se puede eliminar el Usuario logueado");
+                }
+              
+                
             }
         }
 
@@ -299,6 +316,7 @@ namespace ProyectoFinal.ViewLayer
 
                 CargarGrilla(cuentas);
                 pUsEliminar.Visible = false;
+                LimpiarTB();
 
             }
             else MessageBox.Show("No se pudo Eliminar. Error", cuenta.Usuario);
@@ -325,12 +343,13 @@ namespace ProyectoFinal.ViewLayer
 
         private void tbBusqUsuario_TextChanged(object sender, EventArgs e)
         {
+            if (tbBusqUsuario.Text != "Nombre del Usuario")
             new PropsTexBox().txtBusquedaNombre_TextChanged(sender, e, tbBusqUsuario, DGUsuarios, "Nombre");
         }
 
         private void tbBusqUsuario_MouseEnter(object sender, EventArgs e)
         {
-            if (tbBusqUsuario.Text == "Nombre Del Usuario")
+            if (tbBusqUsuario.Text == "Nombre del Usuario")
             {
                 tbBusqUsuario.Text = string.Empty;
                 tbBusqUsuario.ForeColor = Color.Black;
@@ -341,13 +360,13 @@ namespace ProyectoFinal.ViewLayer
         {
             if (tbBusqUsuario.Text == "" && !tbBusqUsuario.Focused)
             {
-                tbBusqUsuario.Text = "Nombre Del Usuario";
+                tbBusqUsuario.Text = "Nombre del Usuario";
                 tbBusqUsuario.ForeColor = Color.Gray;
             }
         }
         private void tbBusqUsuario_Enter(object sender, EventArgs e)
         {
-            if (tbBusqUsuario.Text == "Nombre Del Usuario")
+            if (tbBusqUsuario.Text == "Nombre del Usuario")
             {
                 tbBusqUsuario.Text = "";
                 tbBusqUsuario.ForeColor = Color.Black;
@@ -358,7 +377,7 @@ namespace ProyectoFinal.ViewLayer
         {
             if (tbBusqUsuario.Text == "")
             {
-                tbBusqUsuario.Text = "Nombre Del Usuario";
+                tbBusqUsuario.Text = "Nombre del Usuario";
                 tbBusqUsuario.ForeColor = Color.Gray;
             }
         }
