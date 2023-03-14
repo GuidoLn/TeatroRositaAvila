@@ -17,6 +17,8 @@ Este proyecto consiste en una aplicación de escritorio desarrollada en .NET con
 <p>Para instalar la aplicación, siga estos pasos:</p>
 
 <ol>
+  <li>Cree una base de datos en SQL Server con el nombre "Teatro".</li>
+  <li>Restaure la base de datos utilizando el archivo de backup que se encuentra en la carpeta <code>Documentación/Backup</code>.</li>
   <li>Clone este repositorio en su máquina local.</li>
   <li>Abra la solución en Visual Studio.</li>
   <li>Compile el proyecto.</li>
@@ -53,4 +55,4 @@ Este proyecto consiste en una aplicación de escritorio desarrollada en .NET con
 
 <h2>Contacto</h2>
 
-<p>Si tiene alguna pregunta o problema con la aplicación, no dude en comunicarse conmigo a través de mi correo electrónico: estacionar@gmail.com.</p>
+<p>Si tiene alguna pregunta o problema con la aplicación, no dude en comunicarse conmigo a través de mi correo electrónico: [correo electrónico].</p>
